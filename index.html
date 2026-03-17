@@ -1,66 +1,227 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Out.Track Studio</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Out.Track Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-<h1>Out.Track Studio</h1>
-
 <nav>
-<a href="#portfolio">Portfolio</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
+  <a href="#" class="nav-logo" onclick="showMain()">Out.Track Studio</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showMain(); scrollToSection('about'); return false;">About</a></li>
+    <li><a href="#" onclick="showMain(); scrollToSection('portfolio'); return false;">Portfolio</a></li>
+    <li class="nav-dropdown">
+      <a href="#" onclick="return false;">Projects</a>
+      <div class="dropdown-menu">
+        <a href="#" onclick="showProject('urban'); return false;">Urban Silence</a>
+        <a href="#" onclick="showProject('portrait'); return false;">Portraits</a>
+        <a href="#" onclick="showProject('landscape'); return false;">Landscapes</a>
+        <a href="#" onclick="showProject('analog'); return false;">Analog Series</a>
+      </div>
+    </li>
+  </ul>
 </nav>
 
-</header>
+<div id="main-page">
 
-<section id="portfolio">
+  <section class="hero">
+    <img class="hero-img" src="images/photo1.jpg" alt="Out.Track Studio"/>
+    <span class="hero-caption">© Out.Track Studio — Paris</span>
+  </section>
 
-<div class="gallery">
+  <section id="about">
+    <p class="section-label">— About</p>
+    <p class="about-text">
+      Photographer based in Paris, exploring the tension between stillness and motion, light and shadow.
+    </p>
+    <p class="about-sub">
+      Out.Track Studio captures the poetry of everyday spaces — urban textures, human presence, fleeting moments. Each image is a quiet document of the world as it passes.
+    </p>
+    <a href="mailto:margaux.pontie@gmail.com" class="about-contact">margaux.pontie@gmail.com</a>
+  </section>
 
-<img src="/images/photo1.jpg">
-<img src="/images/photo2.jpg">
-<img src="/images/photo3.jpg">
-<img src="/images/photo4.jpg">
-<img src="/images/photo5.jpg">
-<img src="/images/photo6.jpg">
+  <div class="divider"></div>
+
+  <section id="portfolio">
+    <div class="portfolio-header">
+      <p class="section-label">— Portfolio</p>
+    </div>
+    <div class="portfolio-grid" id="portfolio-grid"></div>
+  </section>
+
+  <footer>
+    <span>© 2025 Out.Track Studio</span>
+    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+  </footer>
 
 </div>
 
-</section>
+<div id="project-urban" class="project-page">
+  <a class="back-link" onclick="showMain()">Retour</a>
+  <div class="project-page-header">
+    <p class="section-label">— Projects</p>
+    <h1>Urban Silence</h1>
+  </div>
+  <div class="project-page-grid" id="urban-grid"></div>
+  <footer>
+    <span>© 2025 Out.Track Studio</span>
+    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+  </footer>
+</div>
 
-<section id="about">
+<div id="project-portrait" class="project-page">
+  <a class="back-link" onclick="showMain()">Retour</a>
+  <div class="project-page-header">
+    <p class="section-label">— Projects</p>
+    <h1>Portraits</h1>
+  </div>
+  <div class="project-page-grid" id="portrait-grid"></div>
+  <footer>
+    <span>© 2025 Out.Track Studio</span>
+    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+  </footer>
+</div>
 
-<h2>About</h2>
+<div id="project-landscape" class="project-page">
+  <a class="back-link" onclick="showMain()">Retour</a>
+  <div class="project-page-header">
+    <p class="section-label">— Projects</p>
+    <h1>Landscapes</h1>
+  </div>
+  <div class="project-page-grid" id="landscape-grid"></div>
+  <footer>
+    <span>© 2025 Out.Track Studio</span>
+    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+  </footer>
+</div>
 
-<p>
-Photographer based in Paris.
-</p>
+<div id="project-analog" class="project-page">
+  <a class="back-link" onclick="showMain()">Retour</a>
+  <div class="project-page-header">
+    <p class="section-label">— Projects</p>
+    <h1>Analog Series</h1>
+  </div>
+  <div class="project-page-grid" id="analog-grid"></div>
+  <footer>
+    <span>© 2025 Out.Track Studio</span>
+    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+  </footer>
+</div>
 
-</section>
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+  </div>
+  <div class="lightbox-close" onclick="closeLightboxDirect()"></div>
+  <div class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)"></div>
+  <div class="lightbox-nav lightbox-next" onclick="lightboxNav(1)"></div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
 
-<section id="contact">
+<script>
+  function showMain() {
+    document.getElementById('main-page').style.display = 'block';
+    document.querySelectorAll('.project-page').forEach(p => p.classList.remove('active'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-<h2>Contact</h2>
+  function showProject(name) {
+    document.getElementById('main-page').style.display = 'none';
+    document.querySelectorAll('.project-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('project-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-<p>
-email : margaux.pontie@gmail.com
-</p>
+  function scrollToSection(id) {
+    setTimeout(() => {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
 
-</section>
+  const photos = [
+    'images/photo1.jpg',
+    'images/photo2.jpg',
+    'images/photo3.jpg',
+    'images/photo4.jpg',
+    'images/photo5.jpg',
+    'images/photo6.jpg',
+  ];
 
-<footer>
+  function buildGrid(containerId, count, imgList) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    for (let i = 0; i < count; i++) {
+      const src = imgList[i % imgList.length];
+      const item = document.createElement('div');
+      item.className = 'grid-item';
+      item.dataset.src = src;
+      item.innerHTML = `
+        <img src="${src}" alt="Photo ${i+1}" loading="lazy"/>
+        <div class="grid-item-overlay"></div>
+      `;
+      item.addEventListener('click', () => openLightbox(containerId, i));
+      container.appendChild(item);
+    }
+  }
 
-© Out.Track Studio
+  buildGrid('portfolio-grid', 40, photos);
+  buildGrid('urban-grid', 9, photos);
+  buildGrid('portrait-grid', 9, photos);
+  buildGrid('landscape-grid', 9, photos);
+  buildGrid('analog-grid', 9, photos);
 
-</footer>
+  let currentGroup = null;
+  let currentIndex = 0;
+
+  function getGroupImages(groupId) {
+    return Array.from(document.querySelectorAll(`#${groupId} .grid-item[data-src]`)).map(el => el.dataset.src);
+  }
+
+  function openLightbox(groupId, index) {
+    currentGroup = groupId;
+    currentIndex = index;
+    const imgs = getGroupImages(groupId);
+    document.getElementById('lightbox-img').src = imgs[index];
+    updateCounter(index + 1, imgs.length);
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightboxDirect() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeLightbox(e) {
+    if (e.target.id === 'lightbox') closeLightboxDirect();
+  }
+
+  function lightboxNav(dir) {
+    const imgs = getGroupImages(currentGroup);
+    currentIndex = (currentIndex + dir + imgs.length) % imgs.length;
+    const img = document.getElementById('lightbox-img');
+    img.style.opacity = '0';
+    setTimeout(() => { img.src = imgs[currentIndex]; img.style.opacity = '1'; }, 180);
+    updateCounter(currentIndex + 1, imgs.length);
+  }
+
+  function updateCounter(current, total) {
+    document.getElementById('lightbox-counter').textContent = `${current} / ${total}`;
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightboxDirect();
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+  });
+</script>
 
 </body>
-
 </html>
