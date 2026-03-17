@@ -292,6 +292,12 @@ footer span, footer a {
   text-decoration: none;
   transition: color .25s;
 }
+
+ .footer-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
  
 footer a:hover { color: var(--accent); }
  
@@ -434,7 +440,6 @@ footer a:hover { color: var(--accent); }
     <p class="label">— About</p>
     <p class="about-title">Photographer based in Paris, exploring the tension between stillness and motion, light and shadow.</p>
     <p class="about-body">Out.Track Studio captures the poetry of everyday spaces — urban textures, human presence, fleeting moments. Each image is a quiet document of the world as it passes.</p>
-    <a href="mailto:margaux.pontie@gmail.com" class="mail-link">margaux.pontie@gmail.com</a>
   </section>
  
   <div class="sep"></div>
@@ -444,9 +449,12 @@ footer a:hover { color: var(--accent); }
     <div class="grid" id="home-grid"></div>
   </section>
  
-  <footer>
+ <footer>
     <span>© 2025 Out.Track Studio</span>
-    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+    <div class="footer-right">
+      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+    </div>
   </footer>
  
 </div>
