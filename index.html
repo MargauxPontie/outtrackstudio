@@ -1,58 +1,438 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Out.Track Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Out.Track Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0a0a0a;
+  --dark: #151515;
+  --mid: #2a2a2a;
+  --gray: #666;
+  --light: #aaa;
+  --cream: #d8d4ce;
+  --white: #ece9e4;
+  --accent: #c4aa88;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Syne', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 44px;
+  background: linear-gradient(rgba(10,10,10,.92), transparent);
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-right a {
+  font-size: .65rem;
+  font-weight: 400;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+  transition: color .25s;
+  cursor: pointer;
+}
+
+.nav-right a:hover { color: var(--accent); }
+
+.dropdown { position: relative; }
+
+.dropdown > a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dropdown > a::after {
+  content: '';
+  width: 5px; height: 5px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .3s;
+}
+
+.dropdown:hover > a::after {
+  transform: rotate(-135deg) translateY(-2px);
+}
+
+.drop-menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  min-width: 170px;
+  background: rgba(12,12,12,.97);
+  border: 1px solid var(--mid);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity .22s, transform .22s;
+}
+
+.dropdown:hover .drop-menu {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.drop-menu a {
+  display: block;
+  padding: 13px 18px;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  border-bottom: 1px solid var(--dark);
+  transition: color .2s, padding-left .2s;
+}
+
+.drop-menu a:last-child { border-bottom: none; }
+.drop-menu a:hover { color: var(--accent); padding-left: 24px; }
+
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(.72);
+  transform: scale(1.04);
+  animation: zoom 9s ease forwards;
+}
+
+@keyframes zoom { to { transform: scale(1); } }
+
+.hero-credit {
+  position: absolute;
+  bottom: 40px; left: 44px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .8rem;
+  color: var(--gray);
+  letter-spacing: .08em;
+}
+
+#about {
+  padding: 130px 44px 110px;
+  max-width: 860px;
+}
+
+.label {
+  font-size: .55rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+.about-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--white);
+}
+
+.about-body {
+  margin-top: 28px;
+  font-size: .78rem;
+  line-height: 1.95;
+  color: var(--light);
+  max-width: 520px;
+  letter-spacing: .03em;
+}
+
+.mail-link {
+  display: inline-block;
+  margin-top: 44px;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mid);
+  padding-bottom: 2px;
+  transition: color .25s, border-color .25s;
+}
+
+.mail-link:hover { color: var(--accent); border-color: var(--accent); }
+
+.sep {
+  width: 1px; height: 70px;
+  background: var(--mid);
+  margin: 0 44px;
+}
+
+#portfolio { padding: 70px 0 110px; }
+
+.section-head { padding: 0 44px 52px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+
+.cell {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--dark);
+  cursor: pointer;
+  position: relative;
+}
+
+.cell img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease, filter .4s;
+  filter: brightness(.88);
+}
+
+.cell:hover img { transform: scale(1.06); filter: brightness(1); }
+
+.page { display: none; padding: 110px 44px 80px; min-height: 100vh; }
+.page.on { display: block; }
+
+.page h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: .04em;
+  margin-bottom: 52px;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.page-grid .cell { aspect-ratio: 2/3; }
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--light);
+  cursor: pointer;
+  margin-bottom: 44px;
+  transition: color .25s;
+  border: none;
+  background: none;
+  font-family: 'Syne', sans-serif;
+}
+
+.back::before { content: '←'; font-size: .85rem; }
+.back:hover { color: var(--accent); }
+
+footer {
+  padding: 40px 44px;
+  border-top: 1px solid var(--dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer span, footer a {
+  font-size: .58rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color .25s;
+}
+
+footer a:hover { color: var(--accent); }
+
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgba(5,5,5,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s, background .35s;
+}
+
+.lb.on {
+  opacity: 1;
+  pointer-events: all;
+  background: rgba(5,5,5,.96);
+}
+
+.lb-wrap {
+  transform: scale(.96);
+  transition: transform .38s cubic-bezier(.16,1,.3,1);
+}
+
+.lb.on .lb-wrap { transform: scale(1); }
+
+.lb-wrap img {
+  display: block;
+  max-width: 88vw;
+  max-height: 86vh;
+  object-fit: contain;
+  box-shadow: 0 32px 100px rgba(0,0,0,.7);
+}
+
+.lb-close {
+  position: fixed;
+  top: 24px; right: 32px;
+  width: 38px; height: 38px;
+  cursor: pointer;
+  opacity: .45;
+  transition: opacity .2s;
+}
+
+.lb-close:hover { opacity: 1; }
+
+.lb-close::before, .lb-close::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 20px; height: 1px;
+  background: var(--cream);
+}
+
+.lb-close::before { transform: translate(-50%,-50%) rotate(45deg); }
+.lb-close::after  { transform: translate(-50%,-50%) rotate(-45deg); }
+
+.lb-prev, .lb-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  cursor: pointer;
+  opacity: .3;
+  transition: opacity .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lb-prev { left: 20px; }
+.lb-next { right: 20px; }
+.lb-prev:hover, .lb-next:hover { opacity: 1; }
+
+.lb-prev::before, .lb-next::before {
+  content: '';
+  width: 11px; height: 11px;
+  border-top: 1px solid var(--cream);
+  border-right: 1px solid var(--cream);
+  display: block;
+}
+
+.lb-prev::before { transform: rotate(-135deg); }
+.lb-next::before { transform: rotate(45deg); }
+
+.lb-count {
+  position: fixed;
+  bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  font-size: .55rem;
+  letter-spacing: .22em;
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  nav { padding: 18px 20px; }
+  .nav-right { gap: 20px; }
+  #about { padding: 90px 20px 80px; }
+  .section-head { padding: 0 20px 36px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .page { padding: 90px 20px 60px; }
+  .page-grid { grid-template-columns: repeat(2, 1fr); }
+  footer { padding: 28px 20px; flex-direction: column; gap: 12px; }
+  .sep { margin: 0 20px; }
+}
+
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo" onclick="showMain()">Out.Track Studio</a>
-  <ul class="nav-links">
-    <li><a href="#" onclick="showMain(); scrollToSection('about'); return false;">About</a></li>
-    <li><a href="#" onclick="showMain(); scrollToSection('portfolio'); return false;">Portfolio</a></li>
-    <li class="nav-dropdown">
-      <a href="#" onclick="return false;">Projects</a>
-      <div class="dropdown-menu">
-        <a href="#" onclick="showProject('urban'); return false;">Urban Silence</a>
-        <a href="#" onclick="showProject('portrait'); return false;">Portraits</a>
-        <a href="#" onclick="showProject('landscape'); return false;">Landscapes</a>
-        <a href="#" onclick="showProject('analog'); return false;">Analog Series</a>
+  <span class="logo" onclick="goHome()">Out.Track Studio</span>
+  <ul class="nav-right">
+    <li><a onclick="goHome(); to('about')">About</a></li>
+    <li><a onclick="goHome(); to('portfolio')">Portfolio</a></li>
+    <li class="dropdown">
+      <a href="#">Projects</a>
+      <div class="drop-menu">
+        <a onclick="goPage('urban')">Urban Silence</a>
+        <a onclick="goPage('portrait')">Portraits</a>
+        <a onclick="goPage('landscape')">Landscapes</a>
+        <a onclick="goPage('analog')">Analog Series</a>
       </div>
     </li>
   </ul>
 </nav>
 
-<div id="main-page">
+<div id="home">
 
-  <section class="hero">
-    <img class="hero-img" src="images/photo1.jpg" alt="Out.Track Studio"/>
-    <span class="hero-caption">© Out.Track Studio — Paris</span>
-  </section>
+  <div class="hero">
+    <img src="images/photo1.jpg" alt="Out.Track Studio"/>
+    <span class="hero-credit">© Out.Track Studio — Paris</span>
+  </div>
 
   <section id="about">
-    <p class="section-label">— About</p>
-    <p class="about-text">
-      Photographer based in Paris, exploring the tension between stillness and motion, light and shadow.
-    </p>
-    <p class="about-sub">
-      Out.Track Studio captures the poetry of everyday spaces — urban textures, human presence, fleeting moments. Each image is a quiet document of the world as it passes.
-    </p>
-    <a href="mailto:margaux.pontie@gmail.com" class="about-contact">margaux.pontie@gmail.com</a>
+    <p class="label">— About</p>
+    <p class="about-title">Photographer based in Paris, exploring the tension between stillness and motion, light and shadow.</p>
+    <p class="about-body">Out.Track Studio captures the poetry of everyday spaces — urban textures, human presence, fleeting moments. Each image is a quiet document of the world as it passes.</p>
+    <a href="mailto:margaux.pontie@gmail.com" class="mail-link">margaux.pontie@gmail.com</a>
   </section>
 
-  <div class="divider"></div>
+  <div class="sep"></div>
 
   <section id="portfolio">
-    <div class="portfolio-header">
-      <p class="section-label">— Portfolio</p>
-    </div>
-    <div class="portfolio-grid" id="portfolio-grid"></div>
+    <div class="section-head"><p class="label">— Portfolio</p></div>
+    <div class="grid" id="home-grid"></div>
   </section>
 
   <footer>
@@ -62,165 +442,130 @@
 
 </div>
 
-<div id="project-urban" class="project-page">
-  <a class="back-link" onclick="showMain()">Retour</a>
-  <div class="project-page-header">
-    <p class="section-label">— Projects</p>
-    <h1>Urban Silence</h1>
-  </div>
-  <div class="project-page-grid" id="urban-grid"></div>
-  <footer>
-    <span>© 2025 Out.Track Studio</span>
-    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
-  </footer>
+<div id="p-urban" class="page">
+  <button class="back" onclick="goHome()">Retour</button>
+  <p class="label">— Projects</p>
+  <h1>Urban Silence</h1>
+  <div class="page-grid" id="g-urban"></div>
+  <footer><span>© 2025 Out.Track Studio</span><a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a></footer>
 </div>
 
-<div id="project-portrait" class="project-page">
-  <a class="back-link" onclick="showMain()">Retour</a>
-  <div class="project-page-header">
-    <p class="section-label">— Projects</p>
-    <h1>Portraits</h1>
-  </div>
-  <div class="project-page-grid" id="portrait-grid"></div>
-  <footer>
-    <span>© 2025 Out.Track Studio</span>
-    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
-  </footer>
+<div id="p-portrait" class="page">
+  <button class="back" onclick="goHome()">Retour</button>
+  <p class="label">— Projects</p>
+  <h1>Portraits</h1>
+  <div class="page-grid" id="g-portrait"></div>
+  <footer><span>© 2025 Out.Track Studio</span><a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a></footer>
 </div>
 
-<div id="project-landscape" class="project-page">
-  <a class="back-link" onclick="showMain()">Retour</a>
-  <div class="project-page-header">
-    <p class="section-label">— Projects</p>
-    <h1>Landscapes</h1>
-  </div>
-  <div class="project-page-grid" id="landscape-grid"></div>
-  <footer>
-    <span>© 2025 Out.Track Studio</span>
-    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
-  </footer>
+<div id="p-landscape" class="page">
+  <button class="back" onclick="goHome()">Retour</button>
+  <p class="label">— Projects</p>
+  <h1>Landscapes</h1>
+  <div class="page-grid" id="g-landscape"></div>
+  <footer><span>© 2025 Out.Track Studio</span><a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a></footer>
 </div>
 
-<div id="project-analog" class="project-page">
-  <a class="back-link" onclick="showMain()">Retour</a>
-  <div class="project-page-header">
-    <p class="section-label">— Projects</p>
-    <h1>Analog Series</h1>
-  </div>
-  <div class="project-page-grid" id="analog-grid"></div>
-  <footer>
-    <span>© 2025 Out.Track Studio</span>
-    <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
-  </footer>
+<div id="p-analog" class="page">
+  <button class="back" onclick="goHome()">Retour</button>
+  <p class="label">— Projects</p>
+  <h1>Analog Series</h1>
+  <div class="page-grid" id="g-analog"></div>
+  <footer><span>© 2025 Out.Track Studio</span><a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a></footer>
 </div>
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <div class="lightbox-inner">
-    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
-  </div>
-  <div class="lightbox-close" onclick="closeLightboxDirect()"></div>
-  <div class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)"></div>
-  <div class="lightbox-nav lightbox-next" onclick="lightboxNav(1)"></div>
-  <div class="lightbox-counter" id="lightbox-counter"></div>
+<div class="lb" id="lb" onclick="lbClose(event)">
+  <div class="lb-wrap"><img id="lb-img" src="" alt=""/></div>
+  <div class="lb-close" onclick="lbShut()"></div>
+  <div class="lb-prev" onclick="lbMove(-1)"></div>
+  <div class="lb-next" onclick="lbMove(1)"></div>
+  <div class="lb-count" id="lb-count"></div>
 </div>
 
 <script>
-  function showMain() {
-    document.getElementById('main-page').style.display = 'block';
-    document.querySelectorAll('.project-page').forEach(p => p.classList.remove('active'));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+const photos = [
+  'images/photo1.jpg',
+  'images/photo2.jpg',
+  'images/photo3.jpg',
+  'images/photo4.jpg',
+  'images/photo5.jpg',
+  'images/photo6.jpg',
+];
+
+function goHome() {
+  document.getElementById('home').style.display = 'block';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function to(id) {
+  setTimeout(() => document.getElementById(id)?.scrollIntoView({behavior:'smooth'}), 80);
+}
+
+function goPage(name) {
+  document.getElementById('home').style.display = 'none';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  document.getElementById('p-'+name)?.classList.add('on');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function makeGrid(gridId, count) {
+  const el = document.getElementById(gridId);
+  if (!el) return;
+  for (let i = 0; i < count; i++) {
+    const src = photos[i % photos.length];
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.src = src;
+    cell.innerHTML = '<img src="'+src+'" alt="" loading="lazy"/>';
+    cell.addEventListener('click', (function(g,idx){ return function(){ lbOpen(g,idx); }; })(gridId,i));
+    el.appendChild(cell);
   }
+}
 
-  function showProject(name) {
-    document.getElementById('main-page').style.display = 'none';
-    document.querySelectorAll('.project-page').forEach(p => p.classList.remove('active'));
-    document.getElementById('project-' + name).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+makeGrid('home-grid', 40);
+makeGrid('g-urban', 9);
+makeGrid('g-portrait', 9);
+makeGrid('g-landscape', 9);
+makeGrid('g-analog', 9);
 
-  function scrollToSection(id) {
-    setTimeout(() => {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  }
+let lbGroup = '', lbIdx = 0;
 
-  const photos = [
-    'images/photo1.jpg',
-    'images/photo2.jpg',
-    'images/photo3.jpg',
-    'images/photo4.jpg',
-    'images/photo5.jpg',
-    'images/photo6.jpg',
-  ];
+function lbImgs(g) {
+  return Array.from(document.querySelectorAll('#'+g+' .cell[data-src]')).map(c => c.dataset.src);
+}
 
-  function buildGrid(containerId, count, imgList) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    for (let i = 0; i < count; i++) {
-      const src = imgList[i % imgList.length];
-      const item = document.createElement('div');
-      item.className = 'grid-item';
-      item.dataset.src = src;
-      item.innerHTML = `
-        <img src="${src}" alt="Photo ${i+1}" loading="lazy"/>
-        <div class="grid-item-overlay"></div>
-      `;
-      item.addEventListener('click', () => openLightbox(containerId, i));
-      container.appendChild(item);
-    }
-  }
+function lbOpen(g, i) {
+  lbGroup = g; lbIdx = i;
+  const imgs = lbImgs(g);
+  document.getElementById('lb-img').src = imgs[i];
+  document.getElementById('lb-count').textContent = (i+1)+' / '+imgs.length;
+  document.getElementById('lb').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
 
-  buildGrid('portfolio-grid', 40, photos);
-  buildGrid('urban-grid', 9, photos);
-  buildGrid('portrait-grid', 9, photos);
-  buildGrid('landscape-grid', 9, photos);
-  buildGrid('analog-grid', 9, photos);
+function lbShut() {
+  document.getElementById('lb').classList.remove('on');
+  document.body.style.overflow = '';
+}
 
-  let currentGroup = null;
-  let currentIndex = 0;
+function lbClose(e) { if (e.target.id === 'lb') lbShut(); }
 
-  function getGroupImages(groupId) {
-    return Array.from(document.querySelectorAll(`#${groupId} .grid-item[data-src]`)).map(el => el.dataset.src);
-  }
+function lbMove(d) {
+  const imgs = lbImgs(lbGroup);
+  lbIdx = (lbIdx + d + imgs.length) % imgs.length;
+  const img = document.getElementById('lb-img');
+  img.style.opacity = '0';
+  setTimeout(() => { img.src = imgs[lbIdx]; img.style.opacity = '1'; }, 160);
+  document.getElementById('lb-count').textContent = (lbIdx+1)+' / '+imgs.length;
+}
 
-  function openLightbox(groupId, index) {
-    currentGroup = groupId;
-    currentIndex = index;
-    const imgs = getGroupImages(groupId);
-    document.getElementById('lightbox-img').src = imgs[index];
-    updateCounter(index + 1, imgs.length);
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightboxDirect() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function closeLightbox(e) {
-    if (e.target.id === 'lightbox') closeLightboxDirect();
-  }
-
-  function lightboxNav(dir) {
-    const imgs = getGroupImages(currentGroup);
-    currentIndex = (currentIndex + dir + imgs.length) % imgs.length;
-    const img = document.getElementById('lightbox-img');
-    img.style.opacity = '0';
-    setTimeout(() => { img.src = imgs[currentIndex]; img.style.opacity = '1'; }, 180);
-    updateCounter(currentIndex + 1, imgs.length);
-  }
-
-  function updateCounter(current, total) {
-    document.getElementById('lightbox-counter').textContent = `${current} / ${total}`;
-  }
-
-  document.addEventListener('keydown', e => {
-    if (!document.getElementById('lightbox').classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightboxDirect();
-    if (e.key === 'ArrowRight') lightboxNav(1);
-    if (e.key === 'ArrowLeft') lightboxNav(-1);
-  });
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lb').classList.contains('on')) return;
+  if (e.key === 'Escape') lbShut();
+  if (e.key === 'ArrowRight') lbMove(1);
+  if (e.key === 'ArrowLeft') lbMove(-1);
+});
 </script>
 
 </body>
