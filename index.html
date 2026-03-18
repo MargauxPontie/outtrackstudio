@@ -451,7 +451,7 @@ footer span {
 <div id="home">
 
   <div class="hero">
-    <img src="images/photo1.jpg" alt="Out.Track Studio"/>
+    <img src="images/photo000.jpg" alt="Out.Track Studio"/>
     <span class="hero-credit">© Out.Track Studio — Paris</span>
   </div>
 
@@ -649,12 +649,10 @@ footer span {
 
 <script>
 const photos = [
-  'images/photo1.jpg',
-  'images/photo2.jpg',
-  'images/photo3.jpg',
-  'images/photo4.jpg',
-  'images/photo5.jpg',
-  'images/photo6.jpg',
+  'images/photo075.jpg',
+  'images/photo076.jpg',
+  'images/photo077.jpg',
+  'images/photo080.jpg',
 ];
 
 const byProject = {
@@ -700,8 +698,7 @@ function makeGrid(gridId, imgList) {
   });
 }
 
-makeGrid('home-grid', Array.from({length:40}, function(_,i){ return photos[i % photos.length]; }));
-Object.keys(byProject).forEach(function(g){ makeGrid(g, byProject[g]); });
+makeGrid('home-grid', photos);
 
 let lbGroup = '', lbIdx = 0;
 
