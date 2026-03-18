@@ -245,6 +245,20 @@ nav {
 
 .page-grid .cell { aspect-ratio: 2/3; }
 
+#p-aerial .page-grid .cell,
+#p-asia .page-grid .cell,
+#p-latam .page-grid .cell,
+#p-africa .page-grid .cell,
+#p-urban .page-grid .cell { aspect-ratio: 1/1; }
+
+#p-peaks .page-grid { grid-template-columns: 1fr; }
+#p-peaks .page-grid .cell { aspect-ratio: 16/9; }
+
+#p-mountains .page-grid,
+#p-landscapes .page-grid { grid-template-columns: repeat(2, 1fr); }
+#p-mountains .page-grid .cell,
+#p-landscapes .page-grid .cell { aspect-ratio: 3/2; }
+
 .back {
   display: inline-flex;
   align-items: center;
