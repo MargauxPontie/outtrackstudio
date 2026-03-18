@@ -6,9 +6,9 @@
 <title>Out.Track Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400&display=swap" rel="stylesheet">
 <style>
- 
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
 :root {
   --black: #0a0a0a;
   --dark: #151515;
@@ -19,9 +19,9 @@
   --white: #ece9e4;
   --accent: #c4aa88;
 }
- 
+
 html { scroll-behavior: smooth; }
- 
+
 body {
   background: var(--black);
   color: var(--cream);
@@ -29,7 +29,7 @@ body {
   font-weight: 300;
   overflow-x: hidden;
 }
- 
+
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -40,7 +40,7 @@ nav {
   padding: 26px 44px;
   background: linear-gradient(rgba(10,10,10,.92), transparent);
 }
- 
+
 .logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.15rem;
@@ -50,14 +50,14 @@ nav {
   color: var(--white);
   cursor: pointer;
 }
- 
+
 .nav-right {
   display: flex;
   align-items: center;
   gap: 36px;
   list-style: none;
 }
- 
+
 .nav-right a {
   font-size: .65rem;
   font-weight: 400;
@@ -68,17 +68,17 @@ nav {
   transition: color .25s;
   cursor: pointer;
 }
- 
+
 .nav-right a:hover { color: var(--accent); }
- 
+
 .dropdown { position: relative; }
- 
+
 .dropdown > a {
   display: flex;
   align-items: center;
   gap: 7px;
 }
- 
+
 .dropdown > a::after {
   content: '';
   width: 5px; height: 5px;
@@ -87,30 +87,34 @@ nav {
   transform: rotate(45deg) translateY(-2px);
   transition: transform .3s;
 }
- 
+
 .dropdown:hover > a::after {
   transform: rotate(-135deg) translateY(-2px);
 }
- 
+
 .drop-menu {
   position: absolute;
-  top: calc(100% + 16px);
+  top: 100%;
   right: 0;
+  padding-top: 16px;
   min-width: 220px;
-  background: rgba(12,12,12,.97);
-  border: 1px solid var(--mid);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   transition: opacity .22s, transform .22s;
 }
- 
+
 .dropdown:hover .drop-menu {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
 }
- 
+
+.drop-menu-inner {
+  background: rgba(12,12,12,.97);
+  border: 1px solid var(--mid);
+}
+
 .drop-menu a {
   display: block;
   padding: 13px 18px;
@@ -119,16 +123,16 @@ nav {
   border-bottom: 1px solid var(--dark);
   transition: color .2s, padding-left .2s;
 }
- 
+
 .drop-menu a:last-child { border-bottom: none; }
 .drop-menu a:hover { color: var(--accent); padding-left: 24px; }
- 
+
 .hero {
   height: 100vh;
   position: relative;
   overflow: hidden;
 }
- 
+
 .hero img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -136,9 +140,9 @@ nav {
   transform: scale(1.04);
   animation: zoom 9s ease forwards;
 }
- 
+
 @keyframes zoom { to { transform: scale(1); } }
- 
+
 .hero-credit {
   position: absolute;
   bottom: 40px; left: 44px;
@@ -148,12 +152,12 @@ nav {
   color: var(--gray);
   letter-spacing: .08em;
 }
- 
+
 #about {
   padding: 130px 44px 110px;
   max-width: 860px;
 }
- 
+
 .label {
   font-size: .55rem;
   letter-spacing: .28em;
@@ -161,7 +165,7 @@ nav {
   color: var(--accent);
   margin-bottom: 32px;
 }
- 
+
 .about-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.5rem, 2.4vw, 2.1rem);
@@ -169,7 +173,7 @@ nav {
   line-height: 1.65;
   color: var(--white);
 }
- 
+
 .about-body {
   margin-top: 28px;
   font-size: .78rem;
@@ -178,22 +182,22 @@ nav {
   max-width: 520px;
   letter-spacing: .03em;
 }
- 
+
 .sep {
   width: 1px; height: 70px;
   background: var(--mid);
   margin: 0 44px;
 }
- 
+
 #portfolio { padding: 70px 0 110px; }
 .section-head { padding: 0 44px 52px; }
- 
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3px;
 }
- 
+
 .cell {
   aspect-ratio: 3/4;
   overflow: hidden;
@@ -201,7 +205,7 @@ nav {
   cursor: pointer;
   position: relative;
 }
- 
+
 .cell img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -209,12 +213,12 @@ nav {
   transition: transform .6s ease, filter .4s;
   filter: brightness(.88);
 }
- 
+
 .cell:hover img { transform: scale(1.06); filter: brightness(1); }
- 
+
 .page { display: none; padding: 110px 44px 80px; min-height: 100vh; }
 .page.on { display: block; }
- 
+
 .page h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 4.5vw, 4rem);
@@ -223,7 +227,7 @@ nav {
   letter-spacing: .04em;
   margin-bottom: 24px;
 }
- 
+
 .page-desc {
   font-size: .78rem;
   line-height: 1.95;
@@ -232,15 +236,15 @@ nav {
   letter-spacing: .03em;
   margin-bottom: 52px;
 }
- 
+
 .page-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
 }
- 
+
 .page-grid .cell { aspect-ratio: 2/3; }
- 
+
 .back {
   display: inline-flex;
   align-items: center;
@@ -256,10 +260,10 @@ nav {
   background: none;
   font-family: 'Syne', sans-serif;
 }
- 
+
 .back::before { content: '←'; font-size: .85rem; }
 .back:hover { color: var(--accent); }
- 
+
 footer {
   padding: 40px 44px;
   border-top: 1px solid var(--dark);
@@ -267,20 +271,20 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
- 
+
 footer span {
   font-size: .58rem;
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--gray);
 }
- 
+
 .footer-right {
   display: flex;
   align-items: center;
   gap: 32px;
 }
- 
+
 .footer-right a {
   font-size: .58rem;
   letter-spacing: .15em;
@@ -289,9 +293,9 @@ footer span {
   text-decoration: none;
   transition: color .25s;
 }
- 
+
 .footer-right a:hover { color: var(--accent); }
- 
+
 .lb {
   position: fixed;
   inset: 0;
@@ -304,20 +308,20 @@ footer span {
   pointer-events: none;
   transition: opacity .35s, background .35s;
 }
- 
+
 .lb.on {
   opacity: 1;
   pointer-events: all;
   background: rgba(5,5,5,.96);
 }
- 
+
 .lb-wrap {
   transform: scale(.96);
   transition: transform .38s cubic-bezier(.16,1,.3,1);
 }
- 
+
 .lb.on .lb-wrap { transform: scale(1); }
- 
+
 .lb-wrap img {
   display: block;
   max-width: 88vw;
@@ -325,7 +329,7 @@ footer span {
   object-fit: contain;
   box-shadow: 0 32px 100px rgba(0,0,0,.7);
 }
- 
+
 .lb-close {
   position: fixed;
   top: 24px; right: 32px;
@@ -334,9 +338,9 @@ footer span {
   opacity: .45;
   transition: opacity .2s;
 }
- 
+
 .lb-close:hover { opacity: 1; }
- 
+
 .lb-close::before, .lb-close::after {
   content: '';
   position: absolute;
@@ -344,10 +348,10 @@ footer span {
   width: 20px; height: 1px;
   background: var(--cream);
 }
- 
+
 .lb-close::before { transform: translate(-50%,-50%) rotate(45deg); }
 .lb-close::after  { transform: translate(-50%,-50%) rotate(-45deg); }
- 
+
 .lb-prev, .lb-next {
   position: fixed;
   top: 50%;
@@ -360,11 +364,11 @@ footer span {
   align-items: center;
   justify-content: center;
 }
- 
+
 .lb-prev { left: 20px; }
 .lb-next { right: 20px; }
 .lb-prev:hover, .lb-next:hover { opacity: 1; }
- 
+
 .lb-prev::before, .lb-next::before {
   content: '';
   width: 11px; height: 11px;
@@ -372,10 +376,10 @@ footer span {
   border-right: 1px solid var(--cream);
   display: block;
 }
- 
+
 .lb-prev::before { transform: rotate(-135deg); }
 .lb-next::before { transform: rotate(45deg); }
- 
+
 .lb-count {
   position: fixed;
   bottom: 24px; left: 50%;
@@ -385,7 +389,7 @@ footer span {
   color: var(--gray);
   text-transform: uppercase;
 }
- 
+
 @media (max-width: 700px) {
   nav { padding: 18px 20px; }
   .nav-right { gap: 20px; }
@@ -398,11 +402,11 @@ footer span {
   .footer-right { flex-direction: column; align-items: flex-start; gap: 12px; }
   .sep { margin: 0 20px; }
 }
- 
+
 </style>
 </head>
 <body>
- 
+
 <nav>
   <span class="logo" onclick="goHome()">Out.Track Studio</span>
   <ul class="nav-right">
@@ -411,41 +415,43 @@ footer span {
     <li class="dropdown">
       <a href="#" onclick="return false;">Projects</a>
       <div class="drop-menu">
-        <a onclick="goPage('aerial')">Aerial Perspectives</a>
-        <a onclick="goPage('peaks')">Contours of Peaks</a>
-        <a onclick="goPage('india')">Portraits of India</a>
-        <a onclick="goPage('asia')">Roads of Asia</a>
-        <a onclick="goPage('latam')">Nomad in Latin America</a>
-        <a onclick="goPage('africa')">Between Africa &amp; Orient</a>
-        <a onclick="goPage('mountains')">Mountains &amp; Summits</a>
-        <a onclick="goPage('landscapes')">Landscapes &amp; Horizons</a>
-        <a onclick="goPage('urban')">Urban &amp; Cities Shadows</a>
+        <div class="drop-menu-inner">
+          <a onclick="goPage('aerial')">Aerial Perspectives</a>
+          <a onclick="goPage('peaks')">Contours of Peaks</a>
+          <a onclick="goPage('india')">Portraits of India</a>
+          <a onclick="goPage('asia')">Roads of Asia</a>
+          <a onclick="goPage('latam')">Nomad in Latin America</a>
+          <a onclick="goPage('africa')">Between Africa &amp; Orient</a>
+          <a onclick="goPage('mountains')">Mountains &amp; Summits</a>
+          <a onclick="goPage('landscapes')">Landscapes &amp; Horizons</a>
+          <a onclick="goPage('urban')">Urban &amp; Cities Shadows</a>
+        </div>
       </div>
     </li>
   </ul>
 </nav>
- 
+
 <!-- HOME -->
 <div id="home">
- 
+
   <div class="hero">
     <img src="images/photo1.jpg" alt="Out.Track Studio"/>
     <span class="hero-credit">© Out.Track Studio — Paris</span>
   </div>
- 
+
   <section id="about">
     <p class="label">— About</p>
     <p class="about-title">Photographer based in Paris, exploring the tension between stillness and motion, light and shadow.</p>
     <p class="about-body">Out.Track Studio captures the poetry of everyday spaces — urban textures, human presence, fleeting moments. Each image is a quiet document of the world as it passes.</p>
   </section>
- 
+
   <div class="sep"></div>
- 
+
   <section id="portfolio">
     <div class="section-head"><p class="label">— Portfolio</p></div>
     <div class="grid" id="home-grid"></div>
   </section>
- 
+
   <footer>
     <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
     <div class="footer-right">
@@ -453,9 +459,9 @@ footer span {
       <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
     </div>
   </footer>
- 
+
 </div>
- 
+
 <!-- AERIAL PERSPECTIVES -->
 <div id="p-aerial" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -471,7 +477,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- CONTOURS OF PEAKS -->
 <div id="p-peaks" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -487,7 +493,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- PORTRAITS OF INDIA -->
 <div id="p-india" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -503,7 +509,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- ROADS OF ASIA -->
 <div id="p-asia" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -519,7 +525,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- NOMAD IN LATIN AMERICA -->
 <div id="p-latam" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -535,7 +541,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- BETWEEN AFRICA & ORIENT -->
 <div id="p-africa" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -551,7 +557,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- MOUNTAINS & SUMMITS -->
 <div id="p-mountains" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -567,7 +573,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- LANDSCAPES & HORIZONS -->
 <div id="p-landscapes" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -583,8 +589,8 @@ footer span {
     </div>
   </footer>
 </div>
- 
-<!-- URBAN SHADOWS & CITIES -->
+
+<!-- URBAN & CITIES SHADOWS -->
 <div id="p-urban" class="page">
   <button class="back" onclick="goHome()">Retour</button>
   <p class="label">— Projects</p>
@@ -599,7 +605,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="lbClose(event)">
   <div class="lb-wrap"><img id="lb-img" src="" alt=""/></div>
@@ -608,9 +614,8 @@ footer span {
   <div class="lb-next" onclick="lbMove(1)"></div>
   <div class="lb-count" id="lb-count"></div>
 </div>
- 
+
 <script>
-// ── Remplace ici par tes vraies photos ──
 const photos = [
   'images/photo1.jpg',
   'images/photo2.jpg',
@@ -619,8 +624,7 @@ const photos = [
   'images/photo5.jpg',
   'images/photo6.jpg',
 ];
- 
-// ── Photos par projet — remplace par les photos correspondantes ──
+
 const byProject = {
   'g-aerial':     photos,
   'g-peaks':      photos,
@@ -632,24 +636,24 @@ const byProject = {
   'g-landscapes': photos,
   'g-urban':      photos,
 };
- 
+
 function goHome() {
   document.getElementById('home').style.display = 'block';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
   window.scrollTo({top:0, behavior:'smooth'});
 }
- 
+
 function to(id) {
   setTimeout(() => document.getElementById(id)?.scrollIntoView({behavior:'smooth'}), 80);
 }
- 
+
 function goPage(name) {
   document.getElementById('home').style.display = 'none';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
   document.getElementById('p-'+name)?.classList.add('on');
   window.scrollTo({top:0, behavior:'smooth'});
 }
- 
+
 function makeGrid(gridId, imgList) {
   const el = document.getElementById(gridId);
   if (!el) return;
@@ -662,16 +666,16 @@ function makeGrid(gridId, imgList) {
     el.appendChild(cell);
   });
 }
- 
+
 makeGrid('home-grid', Array.from({length:40}, function(_,i){ return photos[i % photos.length]; }));
 Object.keys(byProject).forEach(function(g){ makeGrid(g, byProject[g]); });
- 
+
 let lbGroup = '', lbIdx = 0;
- 
+
 function lbImgs(g) {
   return Array.from(document.querySelectorAll('#'+g+' .cell[data-src]')).map(function(c){ return c.dataset.src; });
 }
- 
+
 function lbOpen(g, i) {
   lbGroup = g; lbIdx = i;
   const imgs = lbImgs(g);
@@ -680,14 +684,14 @@ function lbOpen(g, i) {
   document.getElementById('lb').classList.add('on');
   document.body.style.overflow = 'hidden';
 }
- 
+
 function lbShut() {
   document.getElementById('lb').classList.remove('on');
   document.body.style.overflow = '';
 }
- 
+
 function lbClose(e) { if (e.target.id === 'lb') lbShut(); }
- 
+
 function lbMove(d) {
   const imgs = lbImgs(lbGroup);
   lbIdx = (lbIdx + d + imgs.length) % imgs.length;
@@ -696,7 +700,7 @@ function lbMove(d) {
   setTimeout(function(){ img.src = imgs[lbIdx]; img.style.opacity = '1'; }, 160);
   document.getElementById('lb-count').textContent = (lbIdx+1)+' / '+imgs.length;
 }
- 
+
 document.addEventListener('keydown', function(e) {
   if (!document.getElementById('lb').classList.contains('on')) return;
   if (e.key === 'Escape') lbShut();
@@ -704,6 +708,6 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowLeft') lbMove(-1);
 });
 </script>
- 
+
 </body>
 </html>
