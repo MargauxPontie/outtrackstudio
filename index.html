@@ -245,19 +245,31 @@ nav {
  
 .page-grid .cell { aspect-ratio: 2/3; }
  
-/* Carrés */
-#p-aerial .page-grid { grid-template-columns: repeat(4, 1fr); }
+/* Aerial — paysage, 2 par ligne */
+#p-aerial .page-grid { grid-template-columns: repeat(2, 1fr); }
+#p-aerial .page-grid .cell { aspect-ratio: 3/2; }
+
+/* Contours of Peaks — pleine largeur, 1 par ligne */
+#p-peaks .page-grid { grid-template-columns: 1fr; }
+#p-peaks .page-grid .cell { aspect-ratio: 16/9; }
+
+/* Portraits of India — portrait, 4 par ligne */
+#p-india .page-grid { grid-template-columns: repeat(4, 1fr); }
+#p-india .page-grid .cell { aspect-ratio: 2/3; }
+
+/* Carrés 4 par ligne */
+#p-himalaya .page-grid,
+#p-asia .page-grid,
+#p-latam .page-grid,
+#p-africa .page-grid,
+#p-urban .page-grid { grid-template-columns: repeat(4, 1fr); }
 #p-himalaya .page-grid .cell,
 #p-asia .page-grid .cell,
 #p-latam .page-grid .cell,
 #p-africa .page-grid .cell,
 #p-urban .page-grid .cell { aspect-ratio: 1/1; }
- 
-/* Contours of Peaks — 1 photo par ligne, pleine largeur, format paysage */
-#p-peaks .page-grid { grid-template-columns: 1fr; }
-#p-peaks .page-grid .cell { aspect-ratio: 16/9; }
- 
-/* Mountains & Landscapes — 2 photos par ligne, format paysage */
+
+/* Mountains & Landscapes — paysage, 2 par ligne */
 #p-mountains .page-grid,
 #p-landscapes .page-grid { grid-template-columns: repeat(2, 1fr); }
 #p-mountains .page-grid .cell,
