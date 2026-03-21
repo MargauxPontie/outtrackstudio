@@ -250,7 +250,7 @@ nav {
 /* Aerial — paysage, 2 par ligne */
 #p-aerial .page-grid { grid-template-columns: repeat(2, 1fr); }
 #p-aerial .page-grid .cell { aspect-ratio: 3/2; }
-
+  
 /* Contours of Peaks — pleine largeur, 1 par ligne */
 #p-peaks .page-grid { grid-template-columns: 1fr; }
 #p-peaks .page-grid .cell { aspect-ratio: 16/9; }
@@ -259,17 +259,19 @@ nav {
 #p-india .page-grid { grid-template-columns: repeat(4, 1fr); }
 #p-india .page-grid .cell { aspect-ratio: 2/3; }
 
+/* Urban — paysage, 2 par ligne */
+#p-urban .page-grid { grid-template-columns: repeat(2, 1fr); }
+#p-urban .page-grid .cell { aspect-ratio: 3/2; }
+  
 /* Carrés 4 par ligne */
 #p-himalaya .page-grid,
 #p-asia .page-grid,
 #p-latam .page-grid,
 #p-africa .page-grid,
-#p-urban .page-grid { grid-template-columns: repeat(4, 1fr); }
 #p-himalaya .page-grid .cell,
 #p-asia .page-grid .cell,
 #p-latam .page-grid .cell,
 #p-africa .page-grid .cell,
-#p-urban .page-grid .cell { aspect-ratio: 1/1; }
 
 /* Mountains & Landscapes — paysage, 2 par ligne */
 #p-mountains .page-grid,
@@ -783,7 +785,17 @@ const byProject = {
   'g-africa':     photos,
   'g-mountains':  photos,
   'g-landscapes': photos,
-  'g-urban':      photos,
+  'g-urban': [
+    'images/photo1010.jpg',
+    'images/photo1011.jpg',
+    'images/photo1012.jpg',
+    'images/photo1013.jpg',
+    'images/photo1014.jpg',
+    'images/photo1015.jpg',
+    'images/photo1016.jpg',
+    'images/photo1017.jpg',
+    'images/photo1018.jpg',
+    'images/photo1019.jpg',
 };
 
 function goHome() {
