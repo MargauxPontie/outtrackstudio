@@ -267,11 +267,11 @@ nav {
 #p-himalaya .page-grid,
 #p-asia .page-grid,
 #p-latam .page-grid,
-#p-africa .page-grid,
+#p-africa .page-grid { grid-template-columns: repeat(4, 1fr); }
 #p-himalaya .page-grid .cell,
 #p-asia .page-grid .cell,
 #p-latam .page-grid .cell,
-#p-africa .page-grid .cell,
+#p-africa .page-grid .cell { aspect-ratio: 1/1; }
 
 /* Mountains & Landscapes — paysage, 2 par ligne */
 #p-mountains .page-grid,
@@ -796,6 +796,7 @@ const byProject = {
     'images/photo1017.jpg',
     'images/photo1018.jpg',
     'images/photo1019.jpg',
+  ], 
 };
 
 function goHome() {
