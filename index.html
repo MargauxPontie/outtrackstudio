@@ -6,9 +6,9 @@
 <title>Out.Track Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Syne:wght@300;400&display=swap" rel="stylesheet">
 <style>
- 
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
 :root {
   --black: #0a0a0a;
   --dark: #151515;
@@ -19,9 +19,9 @@
   --white: #ece9e4;
   --accent: #c4aa88;
 }
- 
+
 html { scroll-behavior: smooth; }
- 
+
 body {
   background: var(--black);
   color: var(--cream);
@@ -29,7 +29,7 @@ body {
   font-weight: 300;
   overflow-x: hidden;
 }
- 
+
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -40,7 +40,7 @@ nav {
   padding: 26px 44px;
   background: linear-gradient(rgba(10,10,10,.92), transparent);
 }
- 
+
 .logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.15rem;
@@ -50,14 +50,14 @@ nav {
   color: var(--white);
   cursor: pointer;
 }
- 
+
 .nav-right {
   display: flex;
   align-items: center;
   gap: 36px;
   list-style: none;
 }
- 
+
 .nav-right a {
   font-size: .65rem;
   font-weight: 400;
@@ -68,17 +68,17 @@ nav {
   transition: color .25s;
   cursor: pointer;
 }
- 
+
 .nav-right a:hover { color: var(--accent); }
- 
+
 .dropdown { position: relative; }
- 
+
 .dropdown > a {
   display: flex;
   align-items: center;
   gap: 7px;
 }
- 
+
 .dropdown > a::after {
   content: '';
   width: 5px; height: 5px;
@@ -87,11 +87,11 @@ nav {
   transform: rotate(45deg) translateY(-2px);
   transition: transform .3s;
 }
- 
+
 .dropdown:hover > a::after {
   transform: rotate(-135deg) translateY(-2px);
 }
- 
+
 .drop-menu {
   position: absolute;
   top: 100%;
@@ -103,18 +103,18 @@ nav {
   transform: translateY(-4px);
   transition: opacity .22s, transform .22s;
 }
- 
+
 .dropdown:hover .drop-menu {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
 }
- 
+
 .drop-menu-inner {
   background: rgba(12,12,12,.97);
   border: 1px solid var(--mid);
 }
- 
+
 .drop-menu a {
   display: block;
   padding: 13px 18px;
@@ -123,16 +123,17 @@ nav {
   border-bottom: 1px solid var(--dark);
   transition: color .2s, padding-left .2s;
 }
- 
+
 .drop-menu a:last-child { border-bottom: none; }
 .drop-menu a:hover { color: var(--accent); padding-left: 24px; }
- 
+
 .hero {
   height: 100vh;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
- 
+
 .hero img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -140,9 +141,9 @@ nav {
   transform: scale(1.04);
   animation: zoom 9s ease forwards;
 }
- 
+
 @keyframes zoom { to { transform: scale(1); } }
- 
+
 .hero-credit {
   position: absolute;
   bottom: 40px; left: 44px;
@@ -152,12 +153,12 @@ nav {
   color: var(--gray);
   letter-spacing: .08em;
 }
- 
+
 #about {
   padding: 130px 44px 110px;
   max-width: 860px;
 }
- 
+
 .label {
   font-size: .55rem;
   letter-spacing: .28em;
@@ -165,7 +166,7 @@ nav {
   color: var(--accent);
   margin-bottom: 32px;
 }
- 
+
 .about-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.5rem, 2.4vw, 2.1rem);
@@ -173,7 +174,7 @@ nav {
   line-height: 1.65;
   color: var(--white);
 }
- 
+
 .about-body {
   margin-top: 28px;
   font-size: .78rem;
@@ -182,22 +183,23 @@ nav {
   max-width: 630px;
   letter-spacing: .03em;
 }
- 
+
 .sep {
   width: 1px; height: 70px;
   background: var(--mid);
   margin: 0 44px;
 }
- 
+
 #portfolio { padding: 70px 0 110px; }
 .section-head { padding: 0 44px 52px; }
- 
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3px;
+  width: 100%;
 }
- 
+
 .cell {
   aspect-ratio: 1/1;
   overflow: hidden;
@@ -205,20 +207,20 @@ nav {
   cursor: pointer;
   position: relative;
 }
- 
+
 .cell img {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
   transition: transform .6s ease, filter .4s;
-  filter: brightness(.88);
+  filter: brightness(.88) grayscale(1);
 }
- 
-.cell:hover img { transform: scale(1.06); filter: brightness(1); }
- 
+
+.cell:hover img { transform: scale(1.06); filter: brightness(1) grayscale(0); }
+
 .page { display: none; padding: 110px 44px 80px; min-height: 100vh; }
 .page.on { display: block; }
- 
+
 .page h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 4.5vw, 4rem);
@@ -227,7 +229,7 @@ nav {
   letter-spacing: .04em;
   margin-bottom: 24px;
 }
- 
+
 .page-desc {
   font-size: .78rem;
   line-height: 1.95;
@@ -236,15 +238,15 @@ nav {
   letter-spacing: .03em;
   margin-bottom: 52px;
 }
- 
+
 .page-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
 }
- 
+
 .page-grid .cell { aspect-ratio: 2/3; }
- 
+
 /* Aerial — paysage, 2 par ligne */
 #p-aerial .page-grid { grid-template-columns: repeat(2, 1fr); }
 #p-aerial .page-grid .cell { aspect-ratio: 3/2; }
@@ -274,7 +276,7 @@ nav {
 #p-landscapes .page-grid { grid-template-columns: repeat(2, 1fr); }
 #p-mountains .page-grid .cell,
 #p-landscapes .page-grid .cell { aspect-ratio: 3/2; }
- 
+
 .back {
   display: inline-flex;
   align-items: center;
@@ -290,10 +292,10 @@ nav {
   background: none;
   font-family: 'Syne', sans-serif;
 }
- 
+
 .back::before { content: '←'; font-size: .85rem; }
 .back:hover { color: var(--accent); }
- 
+
 footer {
   padding: 40px 44px;
   border-top: 1px solid var(--dark);
@@ -301,20 +303,20 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
- 
+
 footer span {
   font-size: .58rem;
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--gray);
 }
- 
+
 .footer-right {
   display: flex;
   align-items: center;
   gap: 32px;
 }
- 
+
 .footer-right a {
   font-size: .58rem;
   letter-spacing: .15em;
@@ -323,9 +325,37 @@ footer span {
   text-decoration: none;
   transition: color .25s;
 }
- 
+
 .footer-right a:hover { color: var(--accent); }
- 
+
+/* Inversions et cadrages portfolio */
+#home-grid .cell img[src="images/photo022.jpg"],
+#home-grid .cell img[src="images/photo023.jpg"],
+#p-india .cell img[src="images/photo315.jpg"],
+#p-india .cell img[src="images/photo314.jpg"] {
+  transform: scaleX(-1);
+  filter: brightness(.88) grayscale(1);
+}
+
+#home-grid .cell:hover img[src="images/photo022.jpg"],
+#home-grid .cell:hover img[src="images/photo023.jpg"] {
+  transform: scale(1.06) scaleX(-1);
+  filter: brightness(1) grayscale(0);
+}
+
+#home-grid .cell img[src="images/photo018.jpg"],
+#home-grid .cell img[src="images/photo042.jpg"] {
+  object-position: right center;
+}
+
+#home-grid .cell img[src="images/photo035.jpg"] {
+  object-position: right top;
+}
+
+#home-grid .cell img[src="images/photo016.jpg"] {
+  object-position: left center;
+}
+
 .lb {
   position: fixed;
   inset: 0;
@@ -338,20 +368,20 @@ footer span {
   pointer-events: none;
   transition: opacity .35s, background .35s;
 }
- 
+
 .lb.on {
   opacity: 1;
   pointer-events: all;
   background: rgba(5,5,5,.96);
 }
- 
+
 .lb-wrap {
   transform: scale(.96);
   transition: transform .38s cubic-bezier(.16,1,.3,1);
 }
- 
+
 .lb.on .lb-wrap { transform: scale(1); }
- 
+
 .lb-wrap img {
   display: block;
   max-width: 88vw;
@@ -359,7 +389,7 @@ footer span {
   object-fit: contain;
   box-shadow: 0 32px 100px rgba(0,0,0,.7);
 }
- 
+
 .lb-close {
   position: fixed;
   top: 24px; right: 32px;
@@ -368,9 +398,9 @@ footer span {
   opacity: .45;
   transition: opacity .2s;
 }
- 
+
 .lb-close:hover { opacity: 1; }
- 
+
 .lb-close::before, .lb-close::after {
   content: '';
   position: absolute;
@@ -378,10 +408,10 @@ footer span {
   width: 20px; height: 1px;
   background: var(--cream);
 }
- 
+
 .lb-close::before { transform: translate(-50%,-50%) rotate(45deg); }
 .lb-close::after  { transform: translate(-50%,-50%) rotate(-45deg); }
- 
+
 .lb-prev, .lb-next {
   position: fixed;
   top: 50%;
@@ -394,11 +424,11 @@ footer span {
   align-items: center;
   justify-content: center;
 }
- 
+
 .lb-prev { left: 20px; }
 .lb-next { right: 20px; }
 .lb-prev:hover, .lb-next:hover { opacity: 1; }
- 
+
 .lb-prev::before, .lb-next::before {
   content: '';
   width: 11px; height: 11px;
@@ -406,10 +436,10 @@ footer span {
   border-right: 1px solid var(--cream);
   display: block;
 }
- 
+
 .lb-prev::before { transform: rotate(-135deg); }
 .lb-next::before { transform: rotate(45deg); }
- 
+
 .lb-count {
   position: fixed;
   bottom: 24px; left: 50%;
@@ -419,44 +449,24 @@ footer span {
   color: var(--gray);
   text-transform: uppercase;
 }
- 
-#home-grid .cell img[src="images/photo022.jpg"]
-#home-grid .cell img[src="images/photo023.jpg"]
-#p-india .cell img[src="images/photo315.jpg"],
-#p-india .cell img[src="images/photo314.jpg"] {
-  transform: scaleX(-1);
-}
- 
-#home-grid .cell img[src="images/photo018.jpg"] {
-#home-grid .cell img[src="images/photo042.jpg"] {
-  object-position: right center;
-}
- 
-#home-grid .cell img[src="images/photo035.jpg"] {
-  object-position: right top;
-} 
 
-#home-grid .cell img[src="images/photo016.jpg"] {
-  object-position: left center;
-}
- 
 @media (max-width: 700px) {
   nav { padding: 18px 20px; }
   .nav-right { gap: 20px; }
   #about { padding: 90px 20px 80px; }
   .section-head { padding: 0 20px 36px; }
-  .grid { grid-template-columns: repeat(4, 1fr); }
+  .grid { grid-template-columns: repeat(2, 1fr); }
   .page { padding: 90px 20px 60px; }
   .page-grid { grid-template-columns: repeat(2, 1fr); }
   footer { padding: 28px 20px; flex-direction: column; gap: 16px; align-items: flex-start; }
   .footer-right { flex-direction: column; align-items: flex-start; gap: 12px; }
   .sep { margin: 0 20px; }
 }
- 
+
 </style>
 </head>
 <body>
- 
+
 <nav>
   <span class="logo" onclick="goHome()">Out.Track Studio</span>
   <ul class="nav-right">
@@ -481,29 +491,29 @@ footer span {
     </li>
   </ul>
 </nav>
- 
+
 <!-- HOME -->
 <div id="home">
- 
+
   <div class="hero">
     <img src="images/photo000.jpg" alt="Out.Track Studio"/>
     <span class="hero-credit">© Out.Track Studio — Paris</span>
   </div>
- 
+
   <section id="about">
     <p class="label">— About</p>
     <p class="about-title">See Different. <br>Off the Line | New Horizons.</p>
-    <p class="about-body">Out.Track Studio is a creative space at the intersection of art, photography, perspective and exploration. From the most natural and wild landscapes to urban environments, each project reflects a desire to step beyond limits : Physically, mentally and creatively.<br></p>
-    <p class="about-body" style="font-style: italic; margin-top: 20px; color: var(--accent);">Out.Track Studio est un espace créatif au croisement de l’art, la photographie, la perception et l’exploration. Des territoires reculés aux milieux urbains, chaque projet incarne une volonté de repousser les limites.</p>
+    <p class="about-body">Out.Track Studio is a creative space at the intersection of art, photography, perspective and exploration. From the most natural and wild landscapes to urban environments, each project reflects a desire to step beyond limits : Physically, mentally and creatively.</p>
+    <p class="about-body" style="font-style: italic; margin-top: 20px; color: var(--accent);">Out.Track Studio est un espace créatif au croisement de l'art, la photographie, la perception et l'exploration. Des territoires reculés aux milieux urbains, chaque projet incarne une volonté de repousser les limites.</p>
   </section>
- 
+
   <div class="sep"></div>
- 
+
   <section id="portfolio">
     <div class="section-head"><p class="label">— Portfolio</p></div>
     <div class="grid" id="home-grid"></div>
   </section>
- 
+
   <footer>
     <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
     <div class="footer-right">
@@ -511,16 +521,16 @@ footer span {
       <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
     </div>
   </footer>
- 
+
 </div>
- 
+
 <!-- AERIAL PERSPECTIVES -->
 <div id="p-aerial" class="page">
   <button class="back" onclick="goHome()">Retour</button>
   <p class="label">— Projects</p>
   <h1>Aerial Perspectives</h1>
   <p class="page-desc">Seen from the sky, the world shifts into abstraction. Cities and landscapes become fields of lines, textures and shadows, where structure emerges beyond immediate perception. This series explores the balance between natural forms and human imprints, revealed only through distance.</p>
-  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Vu du ciel, le monde bascule dans l’abstraction. Villes et paysages deviennent des champs de lignes, de textures et d’ombres, où une structure se révèle au-delà de la perception immédiate. Cette série explore l'équilibre entre formes naturelles et empreintes humaines, qui ne se dévoile qu’à distance.</p>
+  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Vu du ciel, le monde bascule dans l'abstraction. Villes et paysages deviennent des champs de lignes, de textures et d'ombres, où une structure se révèle au-delà de la perception immédiate. Cette série explore l'équilibre entre formes naturelles et empreintes humaines, qui ne se dévoile qu'à distance.</p>
   <div class="page-grid" id="g-aerial"></div>
   <footer>
     <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
@@ -530,14 +540,14 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- CONTOURS OF PEAKS -->
 <div id="p-peaks" class="page">
   <button class="back" onclick="goHome()">Retour</button>
   <p class="label">— Projects</p>
   <h1>Contours of Peaks</h1>
   <p class="page-desc">In this series, mountains are no longer anchored to the ground. The towering 8,000 meter peaks of the Himalaya along with the mountains of the Andes, are inverted. Their monumental forms are softened into abstract compositions. By flipping these iconic landscapes, the series transforms breathtaking high-altitude panoramas into a surreal realm, where horizons bend, peaks float, and perspectives dissolve. Each image invites the viewer to reconsider the mountains, not merely as geological giants, but as almost dreamlike sculptures, suspended between reality and imagination.</p>
-  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Dans cette série, les montagnes ne sont plus ancrées dans le sol. Les sommets himalayens de 8 000 mètres et les montagnes des Andes, sont inversés. Leurs formes monumentales sont adoucies en compositions abstraites. En renversant ces paysages emblématiques, la série transforme des panoramas d’altitude saisissants en un univers surréaliste, où l’horizon se plie, les sommets flottent et les perspectives se dissolvent. Chaque image invite le regard à reconsidérer les montagnes, non plus comme des géants géologiques, mais comme des sculptures oniriques, suspendues entre réalité et imagination.</p>
+  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Dans cette série, les montagnes ne sont plus ancrées dans le sol. Les sommets himalayens de 8 000 mètres et les montagnes des Andes, sont inversés. Leurs formes monumentales sont adoucies en compositions abstraites. En renversant ces paysages emblématiques, la série transforme des panoramas d'altitude saisissants en un univers surréaliste, où l'horizon se plie, les sommets flottent et les perspectives se dissolvent. Chaque image invite le regard à reconsidérer les montagnes, non plus comme des géants géologiques, mais comme des sculptures oniriques, suspendues entre réalité et imagination.</p>
   <div class="page-grid" id="g-peaks"></div>
   <footer>
     <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
@@ -547,17 +557,17 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- PORTRAITS OF INDIA -->
 <div id="p-india" class="page">
   <button class="back" onclick="goHome()">Retour</button>
   <p class="label">— Projects</p>
   <h1>Portraits of India</h1>
-  <p class="page-desc">India is often described as a country that unsettles, that leaves a lasting impression on those who travel through it. One is confronted with a constant human density, an unending flow of bodies, gazes, gestures, voices, sounds and colors. This is also a country of extreme contrasts, shaped by deeply diverse social, cultural, religious and spiritual realities. Noise and silence. Dense crowds and inner solitude. Harsh living conditions and the gentleness of certain gazes. The intensity of collective rituals and the intimacy of individual moments. In an environment where everything flows and collides, portraiture becomes a pause, a suspended moment, a silent relationship between two presences : the person photographed and myself. To photograph a face within the crowd is to attempt to create a space of encounter where everything seems destined for anonymity, to reveal a singular presence within the mass. </p>
-  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">L'Inde est souvent décrite comme un pays qui bouleverse, qui marque durablement celles et ceux qui la traversent. On y est confronté à une densité humaine permanente, à un flot continu de corps, de regards, de gestes, de voix, de sons et de couleurs. C’est également un pays de contrastes extrêmes, porteur de réalités sociales, culturelles, religieuses et spirituelles bien différentes. Bruit et silence. Foule compacte et solitude intérieure. Rudesse des conditions de vie et douceur de certains regards. Intensité des rituels collectifs et extrême intimité de certains moments individuels. Dans un environnement où tout circule, où tout se bouscule, le portrait devient un arrêt, une pause, un moment de relation silencieuse entre deux présences : celle de la personne photographiée et la mienne. Photographier un visage dans la foule, c'est tenter de créer un espace de rencontre là où tout semble voué à l'anonymat. C'est faire émerger une singularité dans une masse. </p>
+  <p class="page-desc">India is often described as a country that unsettles, that leaves a lasting impression on those who travel through it. One is confronted with a constant human density, an unending flow of bodies, gazes, gestures, voices, sounds and colors. This is also a country of extreme contrasts, shaped by deeply diverse social, cultural, religious and spiritual realities. Noise and silence. Dense crowds and inner solitude. Harsh living conditions and the gentleness of certain gazes. The intensity of collective rituals and the intimacy of individual moments. In an environment where everything flows and collides, portraiture becomes a pause, a suspended moment, a silent relationship between two presences : the person photographed and myself. To photograph a face within the crowd is to attempt to create a space of encounter where everything seems destined for anonymity, to reveal a singular presence within the mass.</p>
+  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">L'Inde est souvent décrite comme un pays qui bouleverse, qui marque durablement celles et ceux qui la traversent. On y est confronté à une densité humaine permanente, à un flot continu de corps, de regards, de gestes, de voix, de sons et de couleurs. C'est également un pays de contrastes extrêmes, porteur de réalités sociales, culturelles, religieuses et spirituelles bien différentes. Bruit et silence. Foule compacte et solitude intérieure. Rudesse des conditions de vie et douceur de certains regards. Intensité des rituels collectifs et extrême intimité de certains moments individuels. Dans un environnement où tout circule, où tout se bouscule, le portrait devient un arrêt, une pause, un moment de relation silencieuse entre deux présences : celle de la personne photographiée et la mienne. Photographier un visage dans la foule, c'est tenter de créer un espace de rencontre là où tout semble voué à l'anonymat. C'est faire émerger une singularité dans une masse.</p>
   <div class="page-grid" id="g-india"></div>
-  <p class="page-desc"><br>The choice of black and white was a long and almost conflicted decision. India is a country of color : omnipresent, structuring and deeply meaningful. Color runs through clothing, festivals, religious rituals, social markers, cultural and spiritual identities. Certain colors signify status, roles or life stages : marriage, mourning, religious devotion or community belonging. Color is, in many ways, a visual language, often codified. By choosing to present this work in black and white, I chose to suspend that language. This gesture doesn't aim to deny the chromatic richness of India, but to shift the viewer's gaze. Black and white partially erases visible markers of religious, social and cultural identity, removing some of the immediate references that shape interpretation. It also draws attention to the texture of the skin, the lines, the scars, the play of light across features and the depth of a gaze. Where color can sometimes seduce, distract, or exoticize, black and white introduces a form of restraint. <br><br>The portraits presented here don't claim to represent India. They are partial, subjective and situated encounters. Faces of men, women and children, from different generations, religions and social backgrounds. It's impossible to grasp the complexity of a country of over a billion people through a handful of portraits. This project embraces that limitation : it doesn't seek exhaustiveness, but rather the intensity of certain encounters.</p>
-  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Le choix du noir et blanc a été un geste longuement hésité, presque conflictuel en réalité. L'Inde est un pays de couleurs. La couleur y est omniprésente, structurante, signifiante. Elle traverse les vêtements, les nombreuses fêtes, les rituels religieux, les signes sociaux, les appartenances culturelles et spirituelles. Certaines couleurs indiquent des statuts, des rôles, des situations de vie : mariage, veuvage, engagement religieux, appartenance communautaire. La couleur est un langage visuel, souvent codifié finalement. En choisissant de présenter ce travail en noir et blanc, je fais le choix de suspendre ce langage. Ce geste ne vise pas à nier la richesse chromatique de l'Inde, mais à déplacer le regard. Le noir et blanc gomme partiellement les marqueurs visibles d'appartenance religieuse, sociale ou culturelle. Il retire au spectateur certains repères immédiats qui orientent l'interprétation. Il permet de recentrer l'attention sur la texture de la peau, les rides, les cicatrices, la lumière sur les traits, la profondeur d'un regard. Là où la couleur peut parfois séduire, distraire ou exotiser, le noir et blanc impose une forme de dépouillement. <br><br>Les portraits présentés ne prétendent en aucun cas bien sûr représenter l'Inde. Ils sont des rencontres partielles, subjectives et situées. Ce sont des visages d'hommes, de femmes et d'enfants, de générations différentes, de religions et milieux sociaux variés. Il est impossible de saisir la complexité d'un pays de plus d'un milliard d'habitants en quelques portraits. Ce projet assume cette limite : il ne cherche pas l'exhaustivité, mais l'intensité de certaines rencontres.</p>
+  <p class="page-desc" style="margin-top: 52px;">The choice of black and white was a long and almost conflicted decision. India is a country of color : omnipresent, structuring and deeply meaningful. Color runs through clothing, festivals, religious rituals, social markers, cultural and spiritual identities. Certain colors signify status, roles or life stages : marriage, mourning, religious devotion or community belonging. Color is, in many ways, a visual language, often codified. By choosing to present this work in black and white, I chose to suspend that language. This gesture doesn't aim to deny the chromatic richness of India, but to shift the viewer's gaze. Black and white partially erases visible markers of religious, social and cultural identity, removing some of the immediate references that shape interpretation. It also draws attention to the texture of the skin, the lines, the scars, the play of light across features and the depth of a gaze. Where color can sometimes seduce, distract, or exoticize, black and white introduces a form of restraint.<br><br>The portraits presented here don't claim to represent India. They are partial, subjective and situated encounters. Faces of men, women and children, from different generations, religions and social backgrounds. It's impossible to grasp the complexity of a country of over a billion people through a handful of portraits. This project embraces that limitation : it doesn't seek exhaustiveness, but rather the intensity of certain encounters.</p>
+  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Le choix du noir et blanc a été un geste longuement hésité, presque conflictuel en réalité. L'Inde est un pays de couleurs. La couleur y est omniprésente, structurante, signifiante. Elle traverse les vêtements, les nombreuses fêtes, les rituels religieux, les signes sociaux, les appartenances culturelles et spirituelles. Certaines couleurs indiquent des statuts, des rôles, des situations de vie : mariage, veuvage, engagement religieux, appartenance communautaire. La couleur est un langage visuel, souvent codifié finalement. En choisissant de présenter ce travail en noir et blanc, je fais le choix de suspendre ce langage. Ce geste ne vise pas à nier la richesse chromatique de l'Inde, mais à déplacer le regard. Le noir et blanc gomme partiellement les marqueurs visibles d'appartenance religieuse, sociale ou culturelle. Il retire au spectateur certains repères immédiats qui orientent l'interprétation. Il permet de recentrer l'attention sur la texture de la peau, les rides, les cicatrices, la lumière sur les traits, la profondeur d'un regard. Là où la couleur peut parfois séduire, distraire ou exotiser, le noir et blanc impose une forme de dépouillement.<br><br>Les portraits présentés ne prétendent en aucun cas bien sûr représenter l'Inde. Ils sont des rencontres partielles, subjectives et situées. Ce sont des visages d'hommes, de femmes et d'enfants, de générations différentes, de religions et milieux sociaux variés. Il est impossible de saisir la complexité d'un pays de plus d'un milliard d'habitants en quelques portraits. Ce projet assume cette limite : il ne cherche pas l'exhaustivité, mais l'intensité de certaines rencontres.</p>
   <footer>
     <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
     <div class="footer-right">
@@ -566,7 +576,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- ECHOES OF HIMALAYA -->
 <div id="p-himalaya" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -582,7 +592,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- ROADS OF ASIA -->
 <div id="p-asia" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -598,7 +608,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- NOMAD IN LATIN AMERICA -->
 <div id="p-latam" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -614,7 +624,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- BETWEEN AFRICA & ORIENT -->
 <div id="p-africa" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -630,7 +640,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- MOUNTAINS & SUMMITS -->
 <div id="p-mountains" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -646,7 +656,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- LANDSCAPES & HORIZONS -->
 <div id="p-landscapes" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -662,7 +672,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- URBAN & CITIES SHADOWS -->
 <div id="p-urban" class="page">
   <button class="back" onclick="goHome()">Retour</button>
@@ -678,7 +688,7 @@ footer span {
     </div>
   </footer>
 </div>
- 
+
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="lbClose(event)">
   <div class="lb-wrap"><img id="lb-img" src="" alt=""/></div>
@@ -687,9 +697,8 @@ footer span {
   <div class="lb-next" onclick="lbMove(1)"></div>
   <div class="lb-count" id="lb-count"></div>
 </div>
- 
+
 <script>
-// Photos portfolio
 const photos = [
   'images/photo010.jpg',
   'images/photo011.jpg',
@@ -728,8 +737,7 @@ const photos = [
   'images/photo080.jpg',
   'images/photo077.jpg',
 ];
- 
-// Photos par projet — remplace les tableaux vides par tes vraies photos
+
 const byProject = {
   'g-aerial': [
     'images/photo110.jpg',
@@ -780,53 +788,82 @@ const byProject = {
     'images/photo204.jpg',
   ],
   'g-india': [
-   'images/photo302.jpg',
-   'images/photo306.jpg',
-   'images/photo314.jpg',
-   'images/photo315.jpg',
-   'images/photo304.jpg',
-   'images/photo305.jpg',
-   'images/photo312.jpg',
-   'images/photo310.jpg',
-   'images/photo320.jpg',
-   'images/photo329.jpg',
-   'images/photo325.jpg',
-   'images/photo326.jpg',
-   'images/photo360.jpg',
-   'images/photo330.jpg',
-   'images/photo331.jpg',
-   'images/photo332.jpg',
-   'images/photo361.jpg',
-   'images/photo362.jpg',
-   'images/photo363.jpg',
-   'images/photo365.jpg',
+    'images/photo302.jpg',
+    'images/photo306.jpg',
+    'images/photo314.jpg',
+    'images/photo315.jpg',
+    'images/photo304.jpg',
+    'images/photo305.jpg',
+    'images/photo312.jpg',
+    'images/photo310.jpg',
+    'images/photo320.jpg',
+    'images/photo329.jpg',
+    'images/photo325.jpg',
+    'images/photo326.jpg',
+    'images/photo360.jpg',
+    'images/photo330.jpg',
+    'images/photo331.jpg',
+    'images/photo332.jpg',
+    'images/photo361.jpg',
+    'images/photo362.jpg',
+    'images/photo363.jpg',
+    'images/photo365.jpg',
   ],
   'g-himalaya':   photos,
   'g-asia':       photos,
   'g-latam':      photos,
   'g-africa':     photos,
-  'g-mountains':  photos,
+  'g-mountains':  [
+    'images/photo010.jpg',
+    'images/photo011.jpg',
+    'images/photo012.jpg',
+    'images/photo013.jpg',
+    'images/photo014.jpg',
+    'images/photo015.jpg',
+    'images/photo016.jpg',
+    'images/photo017.jpg',
+    'images/photo018.jpg',
+    'images/photo019.jpg',
+    'images/photo020.jpg',
+    'images/photo021.jpg',
+    'images/photo022.jpg',
+    'images/photo023.jpg',
+    'images/photo024.jpg',
+    'images/photo025.jpg',
+    'images/photo026.jpg',
+    'images/photo027.jpg',
+    'images/photo028.jpg',
+    'images/photo029.jpg',
+    'images/photo030.jpg',
+    'images/photo031.jpg',
+    'images/photo032.jpg',
+    'images/photo033.jpg',
+    'images/photo034.jpg',
+    'images/photo035.jpg',
+    'images/photo036.jpg',
+    'images/photo037.jpg',
+  ],
   'g-landscapes': photos,
   'g-urban':      photos,
 };
- 
+
 function goHome() {
   document.getElementById('home').style.display = 'block';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
   window.scrollTo({top:0, behavior:'smooth'});
 }
- 
+
 function to(id) {
   setTimeout(() => document.getElementById(id)?.scrollIntoView({behavior:'smooth'}), 80);
 }
- 
+
 function goPage(name) {
   document.getElementById('home').style.display = 'none';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
   document.getElementById('p-'+name)?.classList.add('on');
   window.scrollTo({top:0, behavior:'smooth'});
 }
- 
+
 function makeGrid(gridId, imgList) {
   const el = document.getElementById(gridId);
   if (!el) return;
@@ -839,19 +876,16 @@ function makeGrid(gridId, imgList) {
     el.appendChild(cell);
   });
 }
- 
-// Génère le portfolio
+
 makeGrid('home-grid', photos);
- 
-// Génère toutes les pages projets
 Object.keys(byProject).forEach(function(g) { makeGrid(g, byProject[g]); });
- 
+
 let lbGroup = '', lbIdx = 0;
- 
+
 function lbImgs(g) {
   return Array.from(document.querySelectorAll('#'+g+' .cell[data-src]')).map(function(c){ return c.dataset.src; });
 }
- 
+
 function lbOpen(g, i) {
   lbGroup = g; lbIdx = i;
   const imgs = lbImgs(g);
@@ -860,14 +894,14 @@ function lbOpen(g, i) {
   document.getElementById('lb').classList.add('on');
   document.body.style.overflow = 'hidden';
 }
- 
+
 function lbShut() {
   document.getElementById('lb').classList.remove('on');
   document.body.style.overflow = '';
 }
- 
+
 function lbClose(e) { if (e.target.id === 'lb') lbShut(); }
- 
+
 function lbMove(d) {
   const imgs = lbImgs(lbGroup);
   lbIdx = (lbIdx + d + imgs.length) % imgs.length;
@@ -876,7 +910,7 @@ function lbMove(d) {
   setTimeout(function(){ img.src = imgs[lbIdx]; img.style.opacity = '1'; }, 160);
   document.getElementById('lb-count').textContent = (lbIdx+1)+' / '+imgs.length;
 }
- 
+
 document.addEventListener('keydown', function(e) {
   if (!document.getElementById('lb').classList.contains('on')) return;
   if (e.key === 'Escape') lbShut();
@@ -884,6 +918,6 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowLeft') lbMove(-1);
 });
 </script>
- 
+
 </body>
 </html>
