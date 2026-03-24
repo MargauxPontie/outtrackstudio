@@ -265,11 +265,13 @@ nav {
   
 /* Carrés 4 par ligne */
 #p-himalaya .page-grid,
-#p-asia .page-grid,
+#p-asia #g-asia-1,
+#p-asia #g-asia-2,
 #p-latam .page-grid,
 #p-africa .page-grid { grid-template-columns: repeat(4, 1fr); }
 #p-himalaya .page-grid .cell,
-#p-asia .page-grid .cell,
+#p-asia #g-asia-1 .cell,
+#p-asia #g-asia-2 .cell,
 #p-latam .page-grid .cell,
 #p-africa .page-grid .cell { aspect-ratio: 1/1; }
 
@@ -344,7 +346,7 @@ footer span {
 #home-grid .cell img[src="images/photo042.jpg"],
 #p-himalaya .cell img[src="images/photo444.jpg"],
 #p-himalaya .cell img[src="images/photo408.jpg"],
-#p-asia .cell img[src="images/photo502.jpg"] {
+#p-asia-1 .cell img[src="images/photo502.jpg"] {
   object-position: right center;
 }
 
@@ -353,24 +355,24 @@ footer span {
   object-position: right top;
 }
 
-#p-asia .cell img[src="images/photo574.jpg"],
-#p-asia .cell img[src="images/photo562.jpg"],
-#p-asia .cell img[src="images/photo547.jpg"],
+#p-asia-2 .cell img[src="images/photo574.jpg"],
+#p-asia-2 .cell img[src="images/photo562.jpg"],
+#p-asia-1 .cell img[src="images/photo547.jpg"],
 #p-himalaya .cell img[src="images/photo414.jpg"],
 #p-himalaya .cell img[src="images/photo422.jpg"],
 #p-himalaya .cell img[src="images/photo446.jpg"] {
   object-position: center top;
 }
 
-#p-asia .cell img[src="images/photo570.jpg"],
-#p-asia .cell img[src="images/photo551.jpg"],
-#p-asia .cell img[src="images/photo552.jpg"],
-#p-asia .cell img[src="images/photo527.jpg"] {
+#p-asia-2 .cell img[src="images/photo570.jpg"],
+#p-asia-2 .cell img[src="images/photo551.jpg"],
+#p-asia-2 .cell img[src="images/photo552.jpg"],
+#p-asia-1 .cell img[src="images/photo527.jpg"] {
   object-position: center bottom;
 }
   
-#p-asia .cell img[src="images/photo519.jpg"],
-#p-asia .cell img[src="images/photo529.jpg"],
+#p-asia-1 .cell img[src="images/photo519.jpg"],
+#p-asia-1 .cell img[src="images/photo529.jpg"],
 #p-himalaya .cell img[src="images/photo427.jpg"],
 #home-grid .cell img[src="images/photo016.jpg"] {
   object-position: left center;
@@ -638,7 +640,9 @@ footer span {
   <p class="label">— Projects</p>
   <h1>Roads of Asia</h1>
   <p class="page-desc">Dust roads, mountain passes and coastal highways across Southeast and Central Asia. A series built from movement — the road as both subject and method, every frame taken in transit.</p>
-  <div class="page-grid" id="g-asia"></div>
+  <div class="page-grid" id="g-asia-1"></div>
+  <p class="page-desc" style="margin-top: 60px;">Ton deuxième texte ici.</p>
+  <div class="page-grid" id="g-asia-2"></div>
   <div style="height: 40px;"></div>
   <footer>
     <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
@@ -869,7 +873,7 @@ const byProject = {
   'images/photo448.jpg',
   'images/photo450.jpg',
 ],
-  'g-asia': [
+  'g-asia-1': [
   'images/photo501.jpg',
   'images/photo500.jpg',
   'images/photo502.jpg',
@@ -909,7 +913,9 @@ const byProject = {
   'images/photo537.jpg',
   'images/photo538.jpg',
   'images/photo539.jpg',
-  'images/photo540.jpg',
+  'images/photo540.jpg'
+],      
+  'g-asia-2': [
   'images/photo541.jpg',
   'images/photo542.jpg',
   'images/photo543.jpg',
