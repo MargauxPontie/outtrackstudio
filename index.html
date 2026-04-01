@@ -332,6 +332,22 @@ footer span {
 
 .footer-right a:hover { color: var(--accent); }
 
+/* N&B */
+  
+#p-urban .cell img[src="images/photo1062.jpg"],
+#p-urban .cell img[src="images/photo1065.jpg"],
+#p-urban .cell img[src="images/photo1060.jpg"],
+#p-urban .cell img[src="images/photo1061.jpg"] {
+  filter: grayscale(1) brightness(.88);
+}
+
+#p-urban .cell:has(img[src="images/photo1062.jpg"]):hover img,
+#p-urban .cell:has(img[src="images/photo1065.jpg"]):hover img,
+#p-urban .cell:has(img[src="images/photo1060.jpg"]):hover img,
+#p-urban .cell:has(img[src="images/photo1061.jpg"]):hover img {
+  filter: grayscale(1) brightness(1);
+}
+
 /* Inversions */
 #home-grid .cell img[src="images/photo022.jpg"],
 #home-grid .cell img[src="images/photo023.jpg"],
