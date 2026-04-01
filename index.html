@@ -414,13 +414,6 @@ footer span {
 #home-grid .cell img[src="images/photo016.jpg"] {
   object-position: left center;
 }
-
-#p-urban .cell img[src="images/photo1060.jpg"],
-#p-urban .cell img[src="images/photo1061.jpg"],
-#p-urban .cell img[src="images/photo1062.jpg"],  
-#p-urban .cell img[src="images/photo1065.jpg"] {
-  filter: grayscale(1) brightness(.88);
-}
   
 .lb {
   position: fixed;
@@ -1206,15 +1199,25 @@ function lbImgs(g) {
   return Array.from(document.querySelectorAll('#'+g+' .cell[data-src]')).map(function(c){ return c.dataset.src; });
 }
 
+const bwPhotos = [
+  'images/photo1062.jpg',
+  'images/photo1065.jpg',
+  'images/photo1060.jpg',
+  'images/photo1061.jpg',
+];
+  
 function lbOpen(g, i) {
   lbGroup = g; lbIdx = i;
   const imgs = lbImgs(g);
-  document.getElementById('lb-img').src = imgs[i];
+  const src = imgs[i];
+  const lbImg = document.getElementById('lb-img');
+  lbImg.src = src;
+  lbImg.style.filter = bwPhotos.includes(src) ? 'grayscale(1)' : '';
   document.getElementById('lb-count').textContent = (i+1)+' / '+imgs.length;
   document.getElementById('lb').classList.add('on');
   document.body.style.overflow = 'hidden';
 }
-
+  
 function lbShut() {
   document.getElementById('lb').classList.remove('on');
   document.body.style.overflow = '';
@@ -1227,7 +1230,7 @@ function lbMove(d) {
   lbIdx = (lbIdx + d + imgs.length) % imgs.length;
   const img = document.getElementById('lb-img');
   img.style.opacity = '0';
-  setTimeout(function(){ img.src = imgs[lbIdx]; img.style.opacity = '1'; }, 160);
+  setTimeout(function(){ img.src = imgs[lbIdx]; img.style.filter = bwPhotos.includes(imgs[lbIdx]) ? 'grayscale(1)' : ''; img.style.opacity = '1'; }, 160);
   document.getElementById('lb-count').textContent = (lbIdx+1)+' / '+imgs.length;
 }
 
