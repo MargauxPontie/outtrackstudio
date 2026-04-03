@@ -280,12 +280,25 @@ nav {
 #p-latam .page-grid .cell,
 #p-africa .page-grid .cell { aspect-ratio: 1/1; }
 
-/* Mountains & Landscapes — paysage, 2 par ligne */
-#p-mountains .page-grid,
+/* Mountains & Landscapes */
+
+#p-mountains #g-mountains-1 { grid-template-columns: repeat(2, 1fr); }
+#p-mountains #g-mountains-1 .cell { aspect-ratio: 3/2; }
+
+#p-mountains #g-mountains-2 { grid-template-columns: repeat(4, 1fr); }
+#p-mountains #g-mountains-2 .cell { aspect-ratio: 2/3; }
+
+#p-mountains #g-mountains-2 .cell img {
+  filter: grayscale(1) brightness(.88);
+}
+#p-mountains #g-mountains-2 .cell:hover img {
+  filter: grayscale(1) brightness(1);
+}
+
 #p-landscapes .page-grid { grid-template-columns: repeat(2, 1fr); }
-#p-mountains .page-grid .cell,
 #p-landscapes .page-grid .cell { aspect-ratio: 3/2; }
 
+  
 .back {
   display: inline-flex;
   align-items: center;
@@ -649,8 +662,8 @@ footer span {
   <h1>Portraits of India</h1>
   <p class="page-desc">India is often described as a country that unsettles, that leaves a lasting impression on those who travel through it. One is confronted with a constant human density, an unending flow of bodies, gazes, gestures, voices, sounds and colors. This is also a country of extreme contrasts, shaped by deeply diverse social, cultural, religious and spiritual realities. Noise and silence. Dense crowds and inner solitude. Harsh living conditions and the gentleness of certain gazes. The intensity of collective rituals and the intimacy of individual moments. In an environment where everything flows and collides, portraiture becomes a pause, a suspended moment, a silent relationship between two presences : the person photographed and myself. To photograph a face within the crowd is to attempt to create a space of encounter where everything seems destined for anonymity, to reveal a singular presence within the mass. </p>
   <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">L'Inde est souvent décrite comme un pays qui bouleverse, qui marque durablement celles et ceux qui la traversent. On y est confronté à une densité humaine permanente, à un flot continu de corps, de regards, de gestes, de voix, de sons et de couleurs. C'est également un pays de contrastes extrêmes, porteur de réalités sociales, culturelles, religieuses et spirituelles bien différentes. Bruit et silence. Foule compacte et solitude intérieure. Rudesse des conditions de vie et douceur de certains regards. Intensité des rituels collectifs et extrême intimité de certains moments individuels. Dans un environnement où tout circule, où tout se bouscule, le portrait devient un arrêt, une pause, un moment de relation silencieuse entre deux présences : celle de la personne photographiée et la mienne. Photographier un visage dans la foule, c'est tenter de créer un espace de rencontre là où tout semble voué à l'anonymat. C'est faire émerger une singularité dans une masse. </p>
-  <div class="page-grid" id="g-india"></div>
-  <p class="page-desc"><br><br>The choice of black and white was a long and almost conflicted decision. India is a country of color : omnipresent, structuring and deeply meaningful. Color runs through clothing, festivals, religious rituals, social markers, cultural and spiritual identities. Certain colors signify status, roles or life stages : marriage, mourning, religious devotion or community belonging. Color is, in many ways, a visual language, often codified. By choosing to present this work in black and white, I chose to suspend that language. This gesture doesn't aim to deny the chromatic richness of India, but to shift the viewer's gaze. Black and white partially erases visible markers of religious, social and cultural identity, removing some of the immediate references that shape interpretation. It also draws attention to the texture of the skin, the lines, the scars, the play of light across features and the depth of a gaze. Where color can sometimes seduce, distract, or exoticize, black and white introduces a form of restraint. <br><br>The portraits presented here don't claim to represent India. They are partial, subjective and situated encounters. Faces of men, women and children, from different generations, religions and social backgrounds. It's impossible to grasp the complexity of a country of over a billion people through a handful of portraits. This project embraces that limitation : it doesn't seek exhaustiveness, but rather the intensity of certain encounters.</p>
+  <div class="page-grid" id="g-india"></div><br><br>
+  <p class="page-desc">The choice of black and white was a long and almost conflicted decision. India is a country of color : omnipresent, structuring and deeply meaningful. Color runs through clothing, festivals, religious rituals, social markers, cultural and spiritual identities. Certain colors signify status, roles or life stages : marriage, mourning, religious devotion or community belonging. Color is, in many ways, a visual language, often codified. By choosing to present this work in black and white, I chose to suspend that language. This gesture doesn't aim to deny the chromatic richness of India, but to shift the viewer's gaze. Black and white partially erases visible markers of religious, social and cultural identity, removing some of the immediate references that shape interpretation. It also draws attention to the texture of the skin, the lines, the scars, the play of light across features and the depth of a gaze. Where color can sometimes seduce, distract, or exoticize, black and white introduces a form of restraint. <br><br>The portraits presented here don't claim to represent India. They are partial, subjective and situated encounters. Faces of men, women and children, from different generations, religions and social backgrounds. It's impossible to grasp the complexity of a country of over a billion people through a handful of portraits. This project embraces that limitation : it doesn't seek exhaustiveness, but rather the intensity of certain encounters.</p>
   <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Le choix du noir et blanc a été un geste longuement hésité, presque conflictuel en réalité. L'Inde est un pays de couleurs. La couleur y est omniprésente, structurante, signifiante. Elle traverse les vêtements, les nombreuses fêtes, les rituels religieux, les signes sociaux, les appartenances culturelles et spirituelles. Certaines couleurs indiquent des statuts, des rôles, des situations de vie : mariage, veuvage, engagement religieux, appartenance communautaire. La couleur est un langage visuel, souvent codifié finalement. En choisissant de présenter ce travail en noir et blanc, je fais le choix de suspendre ce langage. Ce geste ne vise pas à nier la richesse chromatique de l'Inde, mais à déplacer le regard. Le noir et blanc gomme partiellement les marqueurs visibles d'appartenance religieuse, sociale ou culturelle. Il retire au spectateur certains repères immédiats qui orientent l'interprétation. Il permet de recentrer l'attention sur la texture de la peau, les rides, les cicatrices, la lumière sur les traits, la profondeur d'un regard. Là où la couleur peut parfois séduire, distraire ou exotiser, le noir et blanc impose une forme de dépouillement. <br><br>Les portraits présentés ne prétendent en aucun cas bien sûr représenter l'Inde. Ils sont des rencontres partielles, subjectives et situées. Ce sont des visages d'hommes, de femmes et d'enfants, de générations différentes, de religions et milieux sociaux variés. Il est impossible de saisir la complexité d'un pays de plus d'un milliard d'habitants en quelques portraits. Ce projet assume cette limite : il ne cherche pas l'exhaustivité, mais l'intensité de certaines rencontres.</p>
   <div style="width:100%; margin: 40px 0;">
     <img src="images/photo390.jpg" style="width:100%; display:block; filter:grayscale(1) brightness(.85) contrast(1.3);"/>
@@ -693,8 +706,8 @@ footer span {
   <h1>Roads of Asia</h1>
   <p class="page-desc">This work traces a journey of several months across Southeast Asia : Myanmar, Thailand, Vietnam, Laos, Cambodia and China ; a trip shaped by the diversity of landscapes and cultures. Between movement and contemplation, this territory reveals itself as deeply contrasted, both fascinating and disorienting. Places of worship and ancestral temples, rice fields evolving with the seasons, sunsets over rivers, encounters with wildlife in both natural and urban environments, and scenes of daily life shaped by religious rituals… These images capture fleeting moments and suspended instances of a world in constant motion, offering glimpses into a different way of seeing and inhabiting reality.</p>
   <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ce travail retrace un itinéraire de plusieurs mois au travers l’Asie du Sud-Est : Birmanie, Thaïlande, Vietnam, Laos, Cambodge et Chine ; un voyage marqué par la diversité des paysages et des cultures. Entre agitation et contemplation, ce territoire s’est avéré profondément contrasté, aussi fascinant que dépaysant. Lieux de culte et temples ancestraux, rizières se transformant au fil des saisons, couchers de soleil sur les fleuves, rencontres animales dans des espaces naturels comme en milieux urbains, ou encore scènes de vie ancrées dans un quotidien rythmé par les rites religieux… Ces images captent des instants fugaces et moments suspendus d’un monde en perpétuel mouvement, autant d’immersions dans une autre façon de voir et d’habiter le réel.</p>
-  <div class="page-grid" id="g-asia-1"></div>
-  <p class="page-desc" style="margin-top: 60px;">In the continuation of the travel, India and Nepal reveal a different intensity : more raw, and even more contrasted. From high-altitude trails where rhododendrons bloom to the calm and tropical south, and through the lively streets of Pokhara and Kathmandu, Nepal’s landscapes oscillate between softness and verticality… In India, from cities like Delhi or Mumbai to the beaches of Goa, from Rajasthan to Punjab, Uttar Pradesh and Himachal Pradesh, each region unfolds with its own distinct character. Reality becomes denser, more vivid and more intense. Crowds, festivals, rituals, silences, etc. The images emerge from this fragile balance between turmoil and contemplation, between saturation and emptiness, between collective effervescence and moments of withdrawal. There, everything feels more immediate, more intense. It's like a world where atmospheres overlap, and where each scene becomes another reality both striking and deeply human.</p>
+  <div class="page-grid" id="g-asia-1"></div><br><br>
+  <p class="page-desc">In the continuation of the travel, India and Nepal reveal a different intensity : more raw, and even more contrasted. From high-altitude trails where rhododendrons bloom to the calm and tropical south, and through the lively streets of Pokhara and Kathmandu, Nepal’s landscapes oscillate between softness and verticality… In India, from cities like Delhi or Mumbai to the beaches of Goa, from Rajasthan to Punjab, Uttar Pradesh and Himachal Pradesh, each region unfolds with its own distinct character. Reality becomes denser, more vivid and more intense. Crowds, festivals, rituals, silences, etc. The images emerge from this fragile balance between turmoil and contemplation, between saturation and emptiness, between collective effervescence and moments of withdrawal. There, everything feels more immediate, more intense. It's like a world where atmospheres overlap, and where each scene becomes another reality both striking and deeply human.</p>
   <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Dans le prolongement du voyage, l’Inde et le Népal dévoilent une autre intensité : plus brute, et encore plus contrastée. Des sentiers d’altitude où fleurissent les rhododendrons au sud calme et tropical, jusqu'aux ruelles animées des villes de Pokhara et Katmandou, les paysages népalais oscillent entre douceur et verticalité… En Inde, de villes comme Delhi ou Mumbai aux plages de Goa, de la région du Rajasthan à celles du Punjab, de l’Uttar Pradesh et de l’Himachal Pradesh, les territoires se succèdent sans jamais se ressembler. Le réel se densifie, se colore et s’intensifie. Foules, festivals, rituels, silences, etc. Les images naissent de cet équilibre fragile entre tumulte et recueillement, entre saturation et vide, entre effervescence collective et moments de retrait. Là-bas, tout semble plus dense, plus immédiat. C'est comme un monde où les atmosphères se superposent, et où chaque scène devient une autre réalité à la fois saisissante et profondément humaine.</p>
   <div class="page-grid" id="g-asia-2"></div><br><br>
   <p class="page-desc">Asia is a continent of remarkable spiritual richness, where a multitude of religions and philosophies have coexisted for thousands of years. Indeed, Buddhism, Hinduism, Sikhism, Jainism, Shintoism, Taoism, Confucianism, Islam, as well as Christianity, Judaism, and various local religions in certain regions, intertwine and profoundly shape cultures, landscapes, and ways of life. This religious diversity reflects a shared universal quest : to understand humanity’s place in the world and to establish a connection with the sacred.</p>
@@ -716,13 +729,13 @@ footer span {
   <button class="back" onclick="goHome()">Retour</button>
   <p class="label">— Projects</p>
   <h1>Nomad in Latin America</h1>
-  <p class="page-desc" style="margin-top: 60px;">This photographic project documents a 500 days backpacking journey across Latin America. Over the course of the trip, it also evolved into an inner journey. Between high-altitude ascents, demanding treks, kite surfing, surfing, yoga, scuba diving, immersion in wild environments, and countless « first times », both body and mind were constantly pushed beyond what they believed to be their limits. This journey became a school of adaptation, humility, and surrender, lived in contact with deeply rooted cultures, sometimes harsh territories, and a radically different relationship to time and to life itself. Latin America reveals itself here in all its richness and contrasts : a land of intensity and human warmth, with extraordinary landscapes and still relatively untouched places. Through the many experiences lived along the way, these images tell as much a story of exploration of the world as they do of personal transformation and growth.</p>
+  <p class="page-desc">This photographic project documents a 500 days backpacking journey across Latin America. Over the course of the trip, it also evolved into an inner journey. Between high-altitude ascents, demanding treks, kite surfing, surfing, yoga, scuba diving, immersion in wild environments, and countless « first times », both body and mind were constantly pushed beyond what they believed to be their limits. This journey became a school of adaptation, humility, and surrender, lived in contact with deeply rooted cultures, sometimes harsh territories, and a radically different relationship to time and to life itself. Latin America reveals itself here in all its richness and contrasts : a land of intensity and human warmth, with extraordinary landscapes and still relatively untouched places. Through the many experiences lived along the way, these images tell as much a story of exploration of the world as they do of personal transformation and growth.</p>
   <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ce projet photographique retrace une traversée en backpacking de l’Amérique Latine en 500 jours. Au fil du voyage, ce projet s'est aussi transformé en une aventure intérieure. Entre ascensions en haute altitude, treks engagés, kite-surf, surf, yoga, plongée sous-marine, immersion dans des environnements sauvages et un grand nombre de « 1eres fois », le corps et l’esprit ont constamment été confrontés à ce qu'ils pensaient être leurs limites. Ce voyage a été une école de l’adaptation, de l’humilité et du lâcher-prise, au contact de cultures profondément ancrées, de territoires parfois rudes, et d’un rapport au temps et au vivant radicalement différent. L’Amérique Latine s’y révèle dans toute sa richesse et ses contrastes : une terre d’intensité et de chaleur humaine aux paysages extraordinaires et encore relativement peu touristiques. Au travers des nombreuses expériences vécues lors de ce voyage, ces images racontent autant une exploration du monde qu’un cheminement et une évolution personnelle.</p>
-  <div class="page-grid" id="g-latam"></div>
-  <p class="page-desc" style="margin-top: 60px;">From the Carnival of Rio de Janeiro, the beaches of Brazil, the Iguazu Falls, tango nights and evenings in Buenos Aires, the feeling of being at the end of the world in Ushuaia, the Perito Moreno Glacier, the iconic Fitz Roy, Cerro Torre and the Torres del Paine of Patagonia, the journey along the Andes following Ruta 40 and the Carretera Austral, Santiago, Valparaíso, Argentine and Chilean wines, Salta and the deserts around Tolar Grande, the Salar de Uyuni, Sajama National Park, the vibrancy of La Paz, ascents of 6000-meter peaks in Bolivia, Lake Titicaca, Cusco, Machu Picchu and the Sacred Valley of the Incas, Huaraz and numerous climbs in the Cordillera Blanca, the Huayhuash trek with its vast condors, the many herds of llamas and alpacas in Peru, volunteering in a sanctuary for animals rescued from poaching in Ecuador, immersion in the Amazon rainforest, the volcanoes of Cotopaxi and Chimborazo, hammerhead sharks and manta rays in the Galápagos Islands, the colonial villages and paradisiacal beaches of Colombia, a cargo boat journey to reach the remote Chocó region, a sailboat crossing to Central America, the San Blas Islands and the Panama Canal, the wildlife and flora of Costa Rica, learning to surf in Nicaragua, hitchhiking across Honduras and El Salvador, a New Year’s Eve in the beautiful city of Antigua with views of the Fuego volcano erupting, the Mayan and Aztec archaeological sites of Mexico, baby turtles in the Oaxaca region, festivities in Chiapas, and a total solar eclipse in Baja California, among many other moments. This chapter of my life has been shaped by memories and lessons that will stay with me.</p>
+  <div class="page-grid" id="g-latam"></div><br><br>
+  <p class="page-desc">From the Carnival of Rio de Janeiro, the beaches of Brazil, the Iguazu Falls, tango nights and evenings in Buenos Aires, the feeling of being at the end of the world in Ushuaia, the Perito Moreno Glacier, the iconic Fitz Roy, Cerro Torre and the Torres del Paine of Patagonia, the journey along the Andes following Ruta 40 and the Carretera Austral, Santiago, Valparaíso, Argentine and Chilean wines, Salta and the deserts around Tolar Grande, the Salar de Uyuni, Sajama National Park, the vibrancy of La Paz, ascents of 6000-meter peaks in Bolivia, Lake Titicaca, Cusco, Machu Picchu and the Sacred Valley of the Incas, Huaraz and numerous climbs in the Cordillera Blanca, the Huayhuash trek with its vast condors, the many herds of llamas and alpacas in Peru, volunteering in a sanctuary for animals rescued from poaching in Ecuador, immersion in the Amazon rainforest, the volcanoes of Cotopaxi and Chimborazo, hammerhead sharks and manta rays in the Galápagos Islands, the colonial villages and paradisiacal beaches of Colombia, a cargo boat journey to reach the remote Chocó region, a sailboat crossing to Central America, the San Blas Islands and the Panama Canal, the wildlife and flora of Costa Rica, learning to surf in Nicaragua, hitchhiking across Honduras and El Salvador, a New Year’s Eve in the beautiful city of Antigua with views of the Fuego volcano erupting, the Mayan and Aztec archaeological sites of Mexico, baby turtles in the Oaxaca region, festivities in Chiapas, and a total solar eclipse in Baja California, among many other moments. This chapter of my life has been shaped by memories and lessons that will stay with me.</p>
   <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Le Carnaval de Rio de Janeiro, les Plages Brésiliennes, les Chutes d’Iguazu, le Tango et les soirées de Buenos Aires, le sentiment de bout du monde d’Ushuaïa, le Glacier du Perito Moreno, le fameux Fitz Roy, le Cerro Torre et les Torres del Paine de Patagonie, la remontée des Andes en longeant la Ruta 40 et la Carretera Australe, Santiago, Valparaiso, les Vins Argentins & Chiliens, Salta et les déserts aux alentours de Tolar Grande, le Salar d’Uyuni, le Parc Sajama, l’effervescence de La Paz, l’ascension de sommets de 6000 m en Bolivie, le Lac Titicaca, Cusco, le Machu Picchu et la vallée sacrée des Incas, Huaraz et un grand nombre d’ascensions dans les montagnes de la Cordillera Blanca, le Trek Huayhuash avec ses immenses Condors, les nombreux troupeaux de lamas et d’alpagas du Pérou, un volontariat dans un refuge d’animaux rescapés du braconnage en Équateur, une immersion dans la forêt amazonienne, les volcans du Cotopaxi et du Chimborazo, les Requins Marteaux et les Raies Mantas des îles des Galápagos, les villages coloniaux et les plages paradisiaques de Colombie, une traversée sur un bateau cargo pour atteindre la région isolée du Chocó, une traversée sur un voilier pour rejoindre l’Amérique Centrale, les îles San Blas et le Canal de Panama, la faune et la flore du Costa Rica, l’apprentissage du surf au Nicaragua, la traversée en autostop de l’Honduras et du Salvador, un Nouvel An dans la belle ville d’Antigua avec la vue sur une éruption du Volcan Fuego au Guatemala, les sites Mayas et Aztèques du Mexique, des Bébés Tortues dans la région de Oaxaca, les festivités dans la région du Chiapas, une Éclipse Totale en Baja California, etc. Beaucoup de souvenirs et d'apprentissages qui continueront de m’accompagner bien au-delà de ce voyage.</p>
   <div style="width:100%; margin: 40px 0; aspect-ratio: 16/9; overflow: hidden;">
-  <img src="images/photo027.jpg" style="width:100%; height:100%; display:block; object-fit: cover; object-position: center 70%;"/>
+    <img src="images/photo027.jpg" style="width:100%; height:100%; display:block; object-fit: cover; object-position: center 70%;"/>
   </div>
   <div style="width:100%; margin: 40px 0;">
     <img src="images/photo681.jpg" style="width:100%; display:block;"/>
@@ -758,8 +771,15 @@ footer span {
   <button class="back" onclick="goHome()">Retour</button>
   <p class="label">— Projects</p>
   <h1>Mountains &amp; Summits</h1>
+  <div style="width:100%; margin: 40px 0;">
+    <img src="images/photo850.jpg" style="width:100%; display:block;"/>
+  </div>
   <p class="page-desc">High altitude photography at its most elemental — ice, rock, wind and silence. A tribute to the vertical world, where light changes in minutes and the horizon stretches to infinity.</p>
-  <div class="page-grid" id="g-mountains"></div>
+  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">XX</p>
+  <div class="page-grid" id="g-mountains-1"></div><br><br>
+  <p class="page-desc">Ton deuxième texte ici si souhaité.</p>
+  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">XX</p>
+  <div class="page-grid" id="g-mountains-2"></div>
   <div style="height: 40px;"></div>
  <footer>
     <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
@@ -1140,7 +1160,50 @@ const byProject = {
     'images/photo680.jpg'
   ],
   'g-africa':     photos,
-  'g-mountains':  photos,
+  'g-mountains-1': [
+  'images/photo800.jpg',
+  'images/photo801.jpg',
+  'images/photo802.jpg',
+  'images/photo803.jpg',
+  'images/photo804.jpg',
+  'images/photo805.jpg',
+  'images/photo806.jpg',
+  'images/photo807.jpg',
+  'images/photo808.jpg',
+  'images/photo809.jpg',
+  'images/photo810.jpg',
+  'images/photo811.jpg',
+  'images/photo812.jpg',
+  'images/photo813.jpg',
+  'images/photo814.jpg',
+  'images/photo815.jpg',
+  'images/photo816.jpg',
+  'images/photo817.jpg',
+  'images/photo818.jpg',
+  'images/photo819.jpg',
+  'images/photo820.jpg',
+  'images/photo821.jpg',
+  'images/photo822.jpg',
+  'images/photo823.jpg',
+  'images/photo824.jpg',
+  'images/photo825.jpg',
+  'images/photo826.jpg',
+  'images/photo827.jpg',
+  'images/photo828.jpg',
+  'images/photo829.jpg',
+  'images/photo830.jpg',
+  'images/photo831.jpg',
+  ],
+  'g-mountains-2': [
+  'images/photo840.jpg',
+  'images/photo841.jpg',
+  'images/photo842.jpg',
+  'images/photo843.jpg',
+  'images/photo844.jpg',
+  'images/photo845.jpg',
+  'images/photo846.jpg',
+  'images/photo847.jpg',
+  ],
   'g-landscapes': photos,
   'g-urban': [
     'images/photo1062.jpg',
@@ -1218,6 +1281,14 @@ const bwPhotos = [
   'images/photo1065.jpg',
   'images/photo1060.jpg',
   'images/photo1061.jpg',
+  'images/photo840.jpg',
+  'images/photo841.jpg',
+  'images/photo842.jpg',
+  'images/photo843.jpg',
+  'images/photo844.jpg',
+  'images/photo845.jpg',
+  'images/photo846.jpg',
+  'images/photo847.jpg',
 ];
   
 function lbOpen(g, i) {
