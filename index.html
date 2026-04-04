@@ -288,13 +288,6 @@ nav {
 #p-mountains #g-mountains-2 { grid-template-columns: repeat(4, 1fr); }
 #p-mountains #g-mountains-2 .cell { aspect-ratio: 2/3; }
 
-#p-mountains #g-mountains-2 .cell img {
-  filter: grayscale(1) brightness(.88);
-}
-#p-mountains #g-mountains-2 .cell:hover img {
-  filter: grayscale(1) brightness(1);
-}
-
 #p-landscapes .page-grid { grid-template-columns: repeat(2, 1fr); }
 #p-landscapes .page-grid .cell { aspect-ratio: 3/2; }
 
@@ -365,6 +358,75 @@ footer span {
 #p-urban .cell:has(img[src="images/photo1061.jpg"]):hover img {
   filter: grayscale(1) brightness(1);
 }
+
+/* Mountains-1 N&B au repos, couleur au survol */
+#p-mountains #g-mountains-1 .cell img[src="images/photo804.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo805.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo808.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo807.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo806.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo809.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo801.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo814.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo810.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo811.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo812.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo813.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo816.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo817.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo822.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo823.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo824.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo825.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo826.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo827.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo828.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo829.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo830.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo831.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo835.jpg"],
+#p-mountains #g-mountains-1 .cell img[src="images/photo820.jpg"] {
+  filter: grayscale(1) brightness(.88);
+}
+
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo804.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo805.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo808.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo807.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo806.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo809.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo801.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo814.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo810.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo811.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo812.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo813.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo816.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo817.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo822.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo823.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo824.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo825.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo826.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo827.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo828.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo829.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo830.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo831.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo835.jpg"]):hover img,
+#p-mountains #g-mountains-1 .cell:has(img[src="images/photo820.jpg"]):hover img {
+  filter: brightness(1);
+}
+
+/* Mountains-2 N&B au repos, couleur au survol */
+#p-mountains #g-mountains-2 .cell img {
+  filter: grayscale(1) brightness(.88);
+}
+
+#p-mountains #g-mountains-2 .cell:hover img {
+  filter: brightness(1);
+}
+  
 
 /* Inversions */
 #home-grid .cell img[src="images/photo022.jpg"],
@@ -799,7 +861,7 @@ footer span {
   <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">En montagne, le corps est constamment engagé, et les conditions changent rapidement, imposant ainsi une vigilance permanente. Ce travail ne cherche pas la performance, mais capture un état, un équilibre fragile au cœur de l’altitude. L’alpinisme et l’ascension de sommets enneigés s’inscrivent dans cette recherche, entre engagement, précision et exposition. Ne restent que le souffle, le mouvement et de grands espaces naturels. La montagne agit comme un filtre, réduisant le réel à l’essentiel. Ces images traduisent cet état, entre solitude, intensité et perception transformée.</p>
   <div class="page-grid" id="g-mountains-1"></div><br><br>
   <p class="page-desc">These images come from ascents carried out in different mountain ranges, between the French Alps and the Andes across Bolivia and Peru. From Mont Blanc (4,809 m) to Mont Pelvoux (3,946 m), and up to the high-altitude peaks of South America : Huayna Potosí (6,088 m), Volcán Acotango (6,052 m), Volcán Uturuncu (6,020 m), Volcán Misti (5,822 m), Nevado Pisco (5,752 m), Nevado Vallunaraju (5,686 m), Nevado Ishinca (5,530 m), Nevado Yanapaccha (5,460 m), among others. Each ascent is part of a progression through varied and demanding environments. These landscapes, shaped by ice, snow, rock, and altitude, define both the physical experience and the way the landscape is perceived.</p>
-  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ces images sont issues d’ascensions réalisées dans différents massifs, entre les Alpes Françaises et les Andes entre la Bolivie et le Pérou. Du Mont-Blanc (4 809 m) au Mont Pelvoux (3 946 m), jusqu’aux sommets d’altitude sud-américains : Huayna Potosí (6 088 m), Volcán Acotango (6 052 m), Volcán Uturuncu (6 020 m), Volcán Misti (5 822 m), Nevado Pisco (5 752 m), Nevado Vallunaraju (5 686 m), Nevado Ishinca (5 530 m), Nevado Yanapaccha (5 460 m), etc. Chacune de ces ascensions s’inscrit dans une progression à travers des environnements variés et exigeants. Ces territoires, entre glace, neige, roche et altitude, façonnent autant l’expérience physique que le regard porté sur le paysage.</p>
+  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ces images sont issues d’ascensions réalisées dans différents massifs, entre les Alpes Françaises et les Andes de la Bolivie au Pérou. Du Mont-Blanc (4 809 m) au Mont Pelvoux (3 946 m), jusqu’aux sommets d’altitude sud-américains : Huayna Potosí (6 088 m), Volcán Acotango (6 052 m), Volcán Uturuncu (6 020 m), Volcán Misti (5 822 m), Nevado Pisco (5 752 m), Nevado Vallunaraju (5 686 m), Nevado Ishinca (5 530 m), Nevado Yanapaccha (5 460 m), etc. Chacune de ces ascensions s’inscrit dans une progression à travers des environnements variés et exigeants. Ces territoires, entre glace, neige, roche et altitude, façonnent autant l’expérience physique que le regard porté sur le paysage.</p>
   <div class="page-grid" id="g-mountains-2"></div>
   <div style="width:100%; margin: 40px 0;">
     <img src="images/photo821.jpg" style="width:100%; display:block; filter:grayscale(1) brightness(.85) contrast(1.3);"/>
