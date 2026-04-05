@@ -257,8 +257,9 @@ nav {
 #p-aerial .page-grid .cell { aspect-ratio: 3/2; }
   
 /* Contours of Peaks — pleine largeur, 1 par ligne */
-#p-peaks .page-grid { grid-template-columns: 1fr; }
-#p-peaks .page-grid .cell { aspect-ratio: 16/8; }
+#p-peaks .page-grid { grid-template-columns: 1fr; gap: 32px; }
+#p-peaks .page-grid .cell { aspect-ratio: 16 / 9 !important; }
+#p-peaks .page-grid .cell img { object-fit: cover; object-position: center center; }
 
 /* Portraits of India — portrait, 4 par ligne */
 #p-india .page-grid { grid-template-columns: repeat(4, 1fr); }
@@ -483,6 +484,7 @@ footer span {
 #p-asia #g-asia-2 .cell img[src="images/photo562.jpg"],
 #p-asia #g-asia-2 .cell img[src="images/photo564.jpg"],
 #p-asia #g-asia-2 .cell img[src="images/photo547.jpg"],
+#p-peaks .cell img[src="images/photo201.jpg"],
 #p-himalaya .cell img[src="images/photo414.jpg"],
 #p-himalaya .cell img[src="images/photo422.jpg"],
 #p-himalaya .cell img[src="images/photo446.jpg"],
