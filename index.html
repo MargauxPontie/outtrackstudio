@@ -257,8 +257,8 @@ nav {
 #p-aerial .page-grid .cell { aspect-ratio: 3/2; }
   
 /* Contours of Peaks — pleine largeur, 1 par ligne */
-#p-peaks .page-grid { grid-template-columns: 1fr; gap: 32px; }
-#p-peaks .page-grid .cell { aspect-ratio: 16 / 9 !important; }
+#p-peaks .page-grid { grid-template-columns: 1fr; }
+#p-peaks .page-grid .cell { aspect-ratio: 16/9; }
 #p-peaks .page-grid .cell img { object-fit: cover; object-position: center center; }
 
 /* Portraits of India — portrait, 4 par ligne */
@@ -702,10 +702,9 @@ footer span {
     <div class="grid" id="home-grid"></div>
   </section>
 
-  <div style="padding: 60px 44px 40px; max-width: 860px;">
+  <div>
   <p class="about-body">Prints are available in various formats.<br>For any inquiries or pricing requests, please contact me by email.</p>
   <p class="about-body" style="font-style: italic; margin-top: 20px; color: var(--accent);">Tirages disponibles en différents formats.<br>Pour toute demande d'infos ou devis, merci de me contacter par email.</p>
-  <p class="about-body">Contact :<br><a href="mailto:margaux.pontie@gmail.com"; style="color: var(--light); text-decoration: none;">margaux.pontie@gmail.com</a></p>
   </div>
   
   <footer>
@@ -743,6 +742,11 @@ footer span {
   <h1>Contours of Peaks</h1>
   <p class="page-desc">In this series, mountains are no longer anchored to the ground. The towering 8,000 meter peaks of the Himalaya along with the mountains of the Andes, are inverted. Their monumental forms are softened into abstract compositions. By flipping these iconic landscapes, the series transforms breathtaking high-altitude panoramas into a surreal realm, where horizons bend, peaks float, and perspectives dissolve. Each image invites the viewer to reconsider the mountains, not merely as geological giants, but as almost dreamlike sculptures, suspended between reality and imagination.</p>
   <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Dans cette série, les montagnes ne sont plus ancrées dans le sol. Les sommets himalayens de 8 000 mètres et les montagnes des Andes, sont inversés. Leurs formes monumentales sont adoucies en compositions abstraites. En renversant ces paysages emblématiques, la série transforme des panoramas d'altitude saisissants en un univers surréaliste, où l'horizon se plie, les sommets flottent et les perspectives se dissolvent. Chaque image invite le regard à reconsidérer les montagnes, non plus comme des géants géologiques, mais comme des sculptures oniriques, suspendues entre réalité et imagination.</p>
+  <div style="width:100%; margin: 40px 0; aspect-ratio: 16/9; overflow: hidden;">
+    <img src="images/photo201.jpg" style="width:100%; height:100%; display:block; object-fit: cover; object-position: center 70%;"/>
+  </div>
+  <p class="page-desc">These inverted landscapes blur familiar reference points and invite a new way of seeing. Freed from reality, the mountains become almost painterly compositions, where lines, textures, masses, and colors take precedence over topography. The inversion transforms these landforms into free-floating shapes, detached from gravity, turning the landscapes into something more conceptual and mental.</p>
+  <p class="page-desc" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ces paysages renversés brouillent les repères et invitent à une perception nouvelle. Libérées du réel, les montagnes deviennent des compositions presque picturales, où les lignes, les textures, les masses et les couleurs, prennent le dessus sur la topographie. L’inversion transforme ces reliefs en formes libres, détachées de toute gravité, et les paysages deviennent davantage conceptuels et mentaux. </p>
   <div class="page-grid" id="g-peaks"></div>
   <div style="height: 40px;"></div>
   <footer>
@@ -1009,13 +1013,11 @@ const byProject = {
     'images/photo160.jpg'
   ],
   'g-peaks': [
-    'images/photo201.jpg',
     'images/photo206.jpg',
     'images/photo202.jpg',
     'images/photo204.jpg',
     'images/photo205.jpg',
     'images/photo207.jpg',
-    'images/photo203.jpg',
     'images/photo208.jpg'
   ],
   'g-india': [
