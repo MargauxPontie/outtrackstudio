@@ -162,9 +162,10 @@ nav {
   }
   nav.home-nav .nav-left-links {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    flex-direction: row; 
+    align-items: center;
+    gap: 20px; 
+    margin-top: 5px;
   }
   nav.home-nav .nav-right {
     flex-direction: column;
@@ -173,7 +174,7 @@ nav {
     margin-top: 0;
   }
   nav.home-nav .nav-home-only {
-    display: none; /* hidden from nav-right on mobile home, shown via nav-left-links */
+    display: none; 
   }
 
   /* Project nav: only Projects visible */
@@ -769,7 +770,7 @@ footer span {
     padding: 0 16px;
     width: 100%;
   }
-  #home-grid .cell { aspect-ratio: 4/3; }
+  #home-grid .cell { aspect-ratio: 1/1; }
 
   .page { padding: 90px 20px 40px; }
   .page-grid { grid-template-columns: repeat(2, 1fr); }
