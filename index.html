@@ -371,9 +371,9 @@ nav {
 #p-aerial .page-grid { grid-template-columns: repeat(2, 1fr); }
 #p-aerial .page-grid .cell { aspect-ratio: 3/2; }
 
-/* ── Contours of Peaks : banderoles légèrement plus larges sur desktop ── */
+/* ── Contours of Peaks : banderoles 16/7 sur desktop ── */
 #p-peaks .page-grid { grid-template-columns: 1fr; }
-#p-peaks .page-grid .cell { aspect-ratio: 16/5; }
+#p-peaks .page-grid .cell { aspect-ratio: 16/7; }
 #p-peaks .page-grid .cell img { object-fit: cover; object-position: center center; }
 
 #p-india .page-grid { grid-template-columns: repeat(4, 1fr); }
@@ -767,45 +767,48 @@ footer span {
   nav { padding: 18px 20px; }
   .nav-right { gap: 20px; }
 
-  /* ── About : texte plus grand ── */
+  /* ── About : textes légèrement réduits ── */
   #about { padding: 90px 20px 50px; }
   #about .about-body {
-    font-size: 0.95rem;
-    line-height: 1.65;
+    font-size: 0.82rem;
+    line-height: 1.6;
     margin-top: 14px;
   }
 
   #prints { padding: 0 20px 60px; }  
   .section-head { padding: 0 20px 28px; }
 
-  /* ── Accueil : 1 photo par ligne avec marges latérales ── */
+  /* ── Accueil : grille desktop masquée, grille mobile affichée ── */
   #home-grid {
+    display: none;
+  }
+  #home-grid-mobile {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 8px;
     padding: 0 16px;
     width: 100%;
   }
-  #home-grid .cell { aspect-ratio: 1/1; }
+  #home-grid-mobile .cell { aspect-ratio: 1/1; }
 
   /* ── Pages projets : padding réduit, marges latérales conservées ── */
   .page { padding: 90px 20px 40px; }
 
-  /* ── Textes des pages projets plus grands ── */
+  /* ── Textes des pages projets : légèrement réduits et centrés ── */
   .page-desc {
-    font-size: 0.95rem;
-    line-height: 1.65;
+    font-size: 0.82rem;
+    line-height: 1.6;
     max-width: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    text-align: center;
   }
-
-  .page-grid { grid-template-columns: repeat(2, 1fr); }
 
   footer { padding: 28px 20px; flex-direction: column; gap: 16px; align-items: flex-start; }
   .footer-right { flex-direction: column; align-items: flex-start; gap: 12px; }
   .sep { margin: 0 20px; }
   .page > footer { margin-left: -20px; margin-right: -20px; }
 
-  /* Titres et textes des pages projets : centrés + police plus grande */
+  /* Titres et label des pages projets : centrés */
   .page h1 { text-align: center; font-size: clamp(1.8rem, 7vw, 2.6rem); }
   .page .label { text-align: center; display: block; }
   .back { display: block; text-align: left; }
@@ -824,50 +827,62 @@ footer span {
     width: 100%;
   }
 
-  /* Aerial mobile : 2 par ligne */
-  #p-aerial .page-grid { grid-template-columns: repeat(2, 1fr); }
-  #p-aerial .page-grid .cell { aspect-ratio: 4/3; }
-
-  /* Himalaya, Asia, LatAm, Africa, Landscapes mobile : 2 par ligne */
-  #p-himalaya #g-himalaya,
-  #p-asia #g-asia-1,
-  #p-asia #g-asia-2,
-  #p-latam #g-latam,
-  #p-africa #g-africa,
-  #p-landscapes #g-landscapes {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  #p-himalaya .page-grid .cell,
-  #p-asia #g-asia-1 .cell,
-  #p-asia #g-asia-2 .cell,
-  #p-latam .page-grid .cell,
-  #p-africa .page-grid .cell,
-  #p-landscapes .page-grid .cell { aspect-ratio: 1/1; }
-
-  /* India : 2 portraits par ligne */
-  #p-india .page-grid { grid-template-columns: repeat(2, 1fr); }
-
-  /* Peaks mobile : format moins extrême */
-  #p-peaks .page-grid .cell { aspect-ratio: 16/6; }
-
   /* ── Blocs photos mobiles spécifiques ── */
-  /* Ces grilles sont masquées sur desktop et visibles sur mobile */
   .mobile-grid { display: grid !important; }
   .desktop-only { display: none !important; }
 
-  /* Mountains g-mountains-2 mobile : carrousel, 1 photo visible */
-  #g-mountains-2 {
-    display: block;
+  /* Aerial mobile : 2 par ligne, 4/3 */
+  #p-aerial .mobile-grid { grid-template-columns: repeat(2, 1fr); }
+  #p-aerial .mobile-grid .cell { aspect-ratio: 4/3; }
+
+  /* Himalaya, Asia-1, Asia-2, LatAm mobile : 2 par ligne, carrés */
+  #p-himalaya .mobile-grid,
+  #p-asia #g-asia-1-mobile,
+  #p-asia #g-asia-2-mobile,
+  #p-latam .mobile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  #p-himalaya .mobile-grid .cell,
+  #p-asia #g-asia-1-mobile .cell,
+  #p-asia #g-asia-2-mobile .cell,
+  #p-latam .mobile-grid .cell { aspect-ratio: 1/1; }
+
+  /* Africa, Landscapes mobile : 2 par ligne, carrés */
+  #p-africa .mobile-grid,
+  #p-landscapes .mobile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  #p-africa .mobile-grid .cell,
+  #p-landscapes .mobile-grid .cell { aspect-ratio: 1/1; }
+
+  /* India mobile : 2 portraits par ligne */
+  #p-india .mobile-grid { grid-template-columns: repeat(2, 1fr); }
+  #p-india .mobile-grid .cell { aspect-ratio: 2/3; }
+
+  /* Peaks mobile : format moins extrême */
+  #p-peaks .mobile-grid .cell { aspect-ratio: 16/6; }
+
+  /* Mountains-1 mobile : IDENTIQUE au desktop (2 colonnes, 3/2) */
+  #p-mountains #g-mountains-1-mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+  #p-mountains #g-mountains-1-mobile .cell { aspect-ratio: 3/2; }
+
+  /* Urban mobile : IDENTIQUE au desktop (2 colonnes, 3/2) */
+  #p-urban .mobile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+  #p-urban .mobile-grid .cell { aspect-ratio: 3/2; }
+
+  /* Carrousel mountains-2 mobile */
+  #g-mountains-2-mobile {
+    display: block !important;
     position: relative;
     overflow: hidden;
-  }
-  #g-mountains-2 .cell {
-    display: none;
-    aspect-ratio: 2/3;
-    width: 100%;
-  }
-  #g-mountains-2 .cell.carousel-active {
-    display: block;
   }
 }
 
@@ -885,6 +900,83 @@ footer span {
   Par défaut, les blocs mobile-grid sont masqués sur desktop :
 */
 .mobile-grid { display: none; }
+
+/* ─── N&B overrides sur les grilles mobiles ─── */
+/* Urban mobile */
+#p-urban #g-urban-mobile .cell img[src="images/photo1062.jpg"],
+#p-urban #g-urban-mobile .cell img[src="images/photo1065.jpg"],
+#p-urban #g-urban-mobile .cell img[src="images/photo1060.jpg"],
+#p-urban #g-urban-mobile .cell img[src="images/photo1061.jpg"] {
+  filter: grayscale(1) brightness(.88);
+}
+#p-urban #g-urban-mobile .cell:has(img[src="images/photo1062.jpg"]):hover img,
+#p-urban #g-urban-mobile .cell:has(img[src="images/photo1065.jpg"]):hover img,
+#p-urban #g-urban-mobile .cell:has(img[src="images/photo1060.jpg"]):hover img,
+#p-urban #g-urban-mobile .cell:has(img[src="images/photo1061.jpg"]):hover img {
+  filter: grayscale(1) brightness(1);
+}
+
+/* Mountains-1 mobile : mêmes filtres N&B que le desktop */
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo804.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo805.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo808.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo807.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo806.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo809.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo801.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo814.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo810.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo811.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo812.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo813.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo816.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo817.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo822.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo823.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo824.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo825.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo826.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo827.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo828.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo829.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo830.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo831.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo835.jpg"],
+#p-mountains #g-mountains-1-mobile .cell img[src="images/photo820.jpg"] {
+  filter: grayscale(1) brightness(1.1);
+}
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo804.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo805.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo808.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo807.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo806.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo809.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo801.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo814.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo810.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo811.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo812.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo813.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo816.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo817.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo822.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo823.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo824.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo825.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo826.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo827.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo828.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo829.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo830.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo831.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo835.jpg"]):hover img,
+#p-mountains #g-mountains-1-mobile .cell:has(img[src="images/photo820.jpg"]):hover img {
+  filter: brightness(1.05);
+}
+/* Specific brightness overrides for mountains-1-mobile */
+#p-mountains #g-mountains-1-mobile img[src="images/photo814.jpg"] { filter: brightness(0.72); }
+#p-mountains #g-mountains-1-mobile img[src="images/photo811.jpg"] { filter: brightness(0.86); }
+#p-mountains #g-mountains-1-mobile img[src="images/photo808.jpg"] { filter: brightness(0.70); }
 
 </style>
 </head>
@@ -937,7 +1029,10 @@ footer span {
 
   <section id="portfolio">
     <div class="section-head"><p class="label">— Portfolio</p></div>
+    <!-- Grille desktop accueil -->
     <div class="grid" id="home-grid"></div>
+    <!-- Grille mobile accueil — réordonnez les photos ici pour mobile -->
+    <div id="home-grid-mobile"></div>
   </section>
 
   <section id="prints">
@@ -1254,6 +1349,12 @@ const byProject = {
 };
 
 /* ─────────────────────────────────────────────────────────────────────
+   LISTE PHOTOS MOBILE — PAGE D'ACCUEIL
+   Même ordre que "photos" par défaut. Réorganisez librement pour mobile.
+───────────────────────────────────────────────────────────────────── */
+const photosMobile = [...photos];
+
+/* ─────────────────────────────────────────────────────────────────────
    LISTES PHOTOS MOBILES
    Par défaut, les grilles mobiles utilisent le même ordre que les grilles
    desktop. Pour réorganiser l'ordre sur mobile, modifiez simplement ces
@@ -1271,6 +1372,7 @@ const byProjectMobile = {
   'g-africa-mobile':      [...byProject['g-africa']],
   'g-landscapes-mobile':  [...byProject['g-landscapes']],
   'g-mountains-1-mobile': [...byProject['g-mountains-1']],
+  'g-urban-mobile':       [...byProject['g-urban']],
   /* g-mountains-2-mobile est géré séparément par le carrousel */
 };
 
@@ -1408,6 +1510,7 @@ function makeGrid(gridId, imgList) {
 }
 
 makeGrid('home-grid', photos);
+makeGrid('home-grid-mobile', photosMobile);
 
 /* Grilles desktop */
 Object.keys(byProject).forEach(function(g) { makeGrid(g, byProject[g]); });
