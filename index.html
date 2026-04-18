@@ -798,7 +798,7 @@ footer span {
     display: none;
   }
   #home-grid-mobile {
-    display: grid;
+    display: grid !important;
     grid-template-columns: 1fr;
     gap: 8px;
     padding: 0 16px;
@@ -914,7 +914,7 @@ footer span {
 
   Par défaut, les blocs mobile-grid sont masqués sur desktop :
 */
-  
+.mobile-grid { display: none; }
 #home-grid-mobile { display: none; }
 
 /* ─── N&B overrides sur les grilles mobiles ─── */
