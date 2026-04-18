@@ -541,7 +541,6 @@ footer span {
 #p-aerial .cell img[src="images/photo133.jpg"],
 #p-india .cell img[src="images/photo315.jpg"],
 #p-india .cell img[src="images/photo314.jpg"],
-#p-india .cell img[src="images/photo361.jpg"]
 #p-asia #g-asia-1 .cell img[src="images/photo533.jpg"],
 #p-asia #g-asia-1 .cell img[src="images/photo539.jpg"],
 #p-asia #g-asia-1 .cell img[src="images/photo540.jpg"],
@@ -551,6 +550,10 @@ footer span {
 #p-africa .cell img[src="images/photo717.jpg"],
 #p-africa .cell img[src="images/photo712.jpg"],
 #p-africa .cell img[src="images/photo728.jpg"] {
+  transform: scaleX(-1);
+}
+
+#p-india #g-india .cell img[src="images/photo361.jpg"] {
   transform: scaleX(-1);
 }
 
@@ -1369,7 +1372,18 @@ const byProject = {
    LISTE PHOTOS MOBILE — PAGE D'ACCUEIL
    Même ordre que "photos" par défaut. Réorganisez librement pour mobile.
 ───────────────────────────────────────────────────────────────────── */
-const photosMobile = [...photos];
+const photosMobile = [
+  'images/photo010.jpg','images/photo011.jpg','images/photo014.jpg','images/photo015.jpg',
+  'images/photo016.jpg','images/photo017.jpg','images/photo048.jpg','images/photo046.jpg',
+  'images/photo047.jpg','images/photo012.jpg',
+  'images/photo030.jpg','images/photo031.jpg','images/photo025.jpg','images/photo055.jpg',
+  'images/photo033.jpg','images/photo029.jpg','images/photo032.jpg',
+  'images/photo028.jpg','images/photo043.jpg','images/photo058.jpg',
+  'images/photo040.jpg','images/photo041.jpg','images/photo042.jpg','images/photo045.jpg',
+  'images/photo044.jpg','images/photo018.jpg','images/photo019.jpg',
+  'images/photo059.jpg','images/photo051.jpg','images/photo039.jpg','images/photo038.jpg',
+  'images/photo076.jpg','images/photo075.jpg','images/photo080.jpg','images/photo077.jpg'
+];
 
 /* ─────────────────────────────────────────────────────────────────────
    LISTES PHOTOS MOBILES
