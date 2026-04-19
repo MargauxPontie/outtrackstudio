@@ -998,6 +998,98 @@ footer span {
 #p-mountains #g-mountains-1-mobile img[src="images/photo811.jpg"] { filter: brightness(0.86); }
 #p-mountains #g-mountains-1-mobile img[src="images/photo808.jpg"] { filter: brightness(0.70); }
 
+/* ─── MOBILE FULLSCREEN MENU ─── */
+@media (max-width: 700px) {
+  .mobile-fullmenu {
+    position: fixed;
+    inset: 0;
+    z-index: 800;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition: opacity .35s ease, transform .35s ease;
+  }
+
+  .mobile-fullmenu.on {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  .mobile-fullmenu-close {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity .2s;
+  }
+  .mobile-fullmenu-close:hover { opacity: 1; }
+  .mobile-fullmenu-close::before,
+  .mobile-fullmenu-close::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 20px; height: 1px;
+    background: var(--cream);
+  }
+  .mobile-fullmenu-close::before { transform: translate(-50%,-50%) rotate(45deg); }
+  .mobile-fullmenu-close::after  { transform: translate(-50%,-50%) rotate(-45deg); }
+
+  .mobile-fullmenu nav-label {
+    display: block;
+    font-size: .48rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 44px;
+  }
+
+  .mobile-fullmenu ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+  }
+
+  .mobile-fullmenu ul li {
+    margin: 0;
+  }
+
+  .mobile-fullmenu ul li a {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+    font-weight: 300;
+    letter-spacing: .06em;
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: color .2s;
+    line-height: 1.2;
+  }
+
+  .mobile-fullmenu ul li a:active,
+  .mobile-fullmenu ul li a:hover { color: var(--accent); }
+
+  .mobile-fullmenu-footer {
+    position: absolute;
+    bottom: 28px;
+    font-size: .48rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-align: center;
+  }
+}
+  
 </style>
 </head>
 <body>
@@ -1011,23 +1103,23 @@ footer span {
   <ul class="nav-right">
     <li class="nav-home-only"><a onclick="goHome(); to('about')">About</a></li>
     <li class="nav-home-only"><a onclick="goHome(); to('portfolio')">Portfolio</a></li>
-    <li class="dropdown nav-projects-only">
-      <a href="#" onclick="toggleDropdown(event)">Projects</a>
-      <div class="drop-menu">
-        <div class="drop-menu-inner">
-          <a onclick="goPage('aerial')">Aerial Perspectives</a>
-          <a onclick="goPage('peaks')">Contours of Peaks</a>
-          <a onclick="goPage('india')">Portraits of India</a>
-          <a onclick="goPage('himalaya')">Echoes of Himalaya</a>
-          <a onclick="goPage('asia')">Roads across Asia</a>
-          <a onclick="goPage('latam')">Nomad in LatinAmerica</a>
-          <a onclick="goPage('africa')">Light of the Orient</a>
-          <a onclick="goPage('landscapes')">Arctic Horizons</a>
-          <a onclick="goPage('mountains')">Mountains &amp; Summits</a>
-          <a onclick="goPage('urban')">Urban &amp; Cities Shadows</a>
-        </div>
-      </div>
-    </li>
+  <li class="dropdown nav-projects-only">
+  <a href="#" onclick="handleProjectsClick(event)">Projects</a>
+  <div class="drop-menu">
+    <div class="drop-menu-inner">
+      <a onclick="goPage('aerial')">Aerial Perspectives</a>
+      <a onclick="goPage('peaks')">Contours of Peaks</a>
+      <a onclick="goPage('india')">Portraits of India</a>
+      <a onclick="goPage('himalaya')">Echoes of Himalaya</a>
+      <a onclick="goPage('asia')">Roads across Asia</a>
+      <a onclick="goPage('latam')">Nomad in LatinAmerica</a>
+      <a onclick="goPage('africa')">Light of the Orient</a>
+      <a onclick="goPage('landscapes')">Arctic Horizons</a>
+      <a onclick="goPage('mountains')">Mountains &amp; Summits</a>
+      <a onclick="goPage('urban')">Urban &amp; Cities Shadows</a>
+    </div>
+  </div>
+  </li>
   </ul>
 </nav>
 
@@ -1049,9 +1141,7 @@ footer span {
 
   <section id="portfolio">
     <div class="section-head"><p class="label">— Portfolio</p></div>
-    <!-- Grille desktop accueil -->
     <div class="grid" id="home-grid"></div>
-    <!-- Grille mobile accueil — réordonnez les photos ici pour mobile -->
     <div id="home-grid-mobile"></div>
   </section>
 
@@ -1330,6 +1420,24 @@ footer span {
   </footer>
 </div>
 
+<!-- MOBILE FULLSCREEN MENU -->
+<div class="mobile-fullmenu" id="mobile-fullmenu">
+  <div class="mobile-fullmenu-close" onclick="closeMobileMenu()"></div>
+  <ul>
+    <li><a onclick="closeMobileMenu(); goPage('aerial')">Aerial Perspectives</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('peaks')">Contours of Peaks</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('india')">Portraits of India</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('himalaya')">Echoes of Himalaya</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('asia')">Roads across Asia</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('latam')">Nomad in LatinAmerica</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('africa')">Light of the Orient</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('landscapes')">Arctic Horizons</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('mountains')">Mountains &amp; Summits</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('urban')">Urban &amp; Cities Shadows</a></li>
+  </ul>
+  <div class="mobile-fullmenu-footer">— Projects —</div>
+</div>
+  
 <!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="lbClose(event)">
   <div class="lb-wrap"><img id="lb-img" src="" alt=""/></div>
@@ -1672,6 +1780,21 @@ document.querySelectorAll('.drop-menu a').forEach(function(link) {
   setTimeout(initCarousel, 100);
 })();
 
+  function handleProjectsClick(e) {
+  if (window.innerWidth <= 700) {
+    e.preventDefault();
+    e.stopPropagation();
+    document.getElementById('mobile-fullmenu').classList.add('on');
+    document.body.style.overflow = 'hidden';
+  } else {
+    toggleDropdown(e);
+  }
+}
+
+function closeMobileMenu() {
+  document.getElementById('mobile-fullmenu').classList.remove('on');
+  document.body.style.overflow = '';
+}
 </script>
 
 </body>
