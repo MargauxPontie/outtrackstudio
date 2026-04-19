@@ -1007,8 +1007,9 @@ footer span {
   background: var(--black);
   min-height: 100vh;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding: 80px 36px 60px;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-12px);
@@ -1029,12 +1030,12 @@ footer span {
 
 .mobile-fullmenu-close {
   position: absolute;
-  top: 22px;
-  right: 24px;
+  top: 24px;
+  left: 20px;
   width: 36px;
   height: 36px;
   cursor: pointer;
-  opacity: .5;
+  opacity: .7;
   transition: opacity .2s;
 }
 .mobile-fullmenu-close:hover { opacity: 1; }
@@ -1043,7 +1044,7 @@ footer span {
   content: '';
   position: absolute;
   top: 50%; left: 50%;
-  width: 20px; height: 1px;
+  width: 22px; height: 1px;
   background: var(--cream);
 }
 .mobile-fullmenu-close::before { transform: translate(-50%,-50%) rotate(45deg); }
@@ -1051,22 +1052,23 @@ footer span {
 
 .mobile-fullmenu ul {
   list-style: none;
-  text-align: center;
+  text-align: left;
   padding: 0;
+  margin: 0;
 }
 
 .mobile-fullmenu ul li a {
   display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+  font-size: clamp(2rem, 8vw, 2.8rem);
   font-weight: 300;
-  letter-spacing: .06em;
+  letter-spacing: .03em;
   color: var(--white);
   text-decoration: none;
-  padding: 10px 0;
+  padding: 8px 0;
   cursor: pointer;
   transition: color .2s;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .mobile-fullmenu ul li a:active { color: var(--accent); }
@@ -1074,11 +1076,11 @@ footer span {
 .mobile-fullmenu-footer {
   position: absolute;
   bottom: 28px;
+  left: 36px;
   font-size: .48rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--gray);
-  text-align: center;
 }
   
 </style>
