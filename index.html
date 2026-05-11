@@ -340,9 +340,6 @@ nav {
 
 /* ─────────────────────────────────────────────────────────────────────
    GRILLES PROJETS — marges latérales uniformes (desktop ET mobile)
-   Toutes les grilles qui débordaient avec margin négatif sont ramenées
-   dans le flux normal. On utilise padding sur .page au lieu de margin
-   négatif sur les grilles.
 ───────────────────────────────────────────────────────────────────── */
 #g-aerial,
 #g-himalaya,
@@ -352,7 +349,6 @@ nav {
 #g-africa,
 #g-landscapes {
   gap: 10px;
-  /* Suppression des marges négatives : les grilles restent dans le padding de .page */
   margin-left: 0;
   margin-right: 0;
   width: 100%;
@@ -865,27 +861,27 @@ footer span {
   #p-aerial .mobile-grid { grid-template-columns: repeat(2, 1fr); }
   #p-aerial .mobile-grid .cell { aspect-ratio: 4/3; }
 
-  /* Himalaya, Asia-1, Asia-2, LatAm mobile : 2 par ligne, carrés */
+  /* ── FIX 4 : Himalaya, Asia-1, Asia-2, LatAm mobile : 2 par ligne, carrés, gap plus large ── */
   #p-himalaya .mobile-grid,
   #p-asia #g-asia-1-mobile,
   #p-asia #g-asia-2-mobile,
   #p-latam .mobile-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 20px; /* ← augmenté (était 8px) */
   }
   #p-himalaya .mobile-grid .cell,
   #p-asia #g-asia-1-mobile .cell,
   #p-asia #g-asia-2-mobile .cell,
   #p-latam .mobile-grid .cell { aspect-ratio: 1/1; }
 
-  /* Africa, Landscapes mobile : 2 par ligne, carrés */
+  /* ── FIX 3 : Africa et Landscapes mobile : 1 photo par ligne ── */
   #p-africa .mobile-grid,
   #p-landscapes .mobile-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr; /* ← une seule colonne (était repeat(2,1fr)) */
     gap: 8px;
   }
   #p-africa .mobile-grid .cell,
-  #p-landscapes .mobile-grid .cell { aspect-ratio: 1/1; }
+  #p-landscapes .mobile-grid .cell { aspect-ratio: 4/3; /* ← format paysage pour une colonne */ }
 
   /* India mobile : 2 portraits par ligne */
   #p-india .mobile-grid { grid-template-columns: repeat(2, 1fr); }
@@ -917,18 +913,6 @@ footer span {
 }
 
 /* ─── BLOCS PHOTOS MOBILES (masqués sur desktop) ─── */
-/*
-  Pour chaque projet, un bloc alternatif mobile peut être ajouté dans le HTML
-  avec la classe "mobile-grid". Il sera masqué sur desktop et visible sur mobile.
-  Le bloc desktop correspondant doit avoir la classe "desktop-only" pour être
-  masqué sur mobile.
-
-  Usage :
-    <div class="page-grid desktop-only" id="g-himalaya"> ... </div>
-    <div class="page-grid mobile-grid" id="g-himalaya-mobile"> ... </div>
-
-  Par défaut, les blocs mobile-grid sont masqués sur desktop :
-*/
 .mobile-grid { display: none; }
 #home-grid-mobile { display: none; }
 
@@ -1168,7 +1152,7 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Vu du ciel, le monde bascule dans l'abstraction. Villes et paysages deviennent des champs de lignes, de textures et d'ombres, où une structure se révèle au-delà de la perception immédiate. Cette série explore l'équilibre entre formes naturelles et empreintes humaines, qui ne se dévoile qu'à distance.</p>
   <!-- Desktop grid -->
   <div class="page-grid desktop-only" id="g-aerial"></div>
-  <!-- Mobile grid — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid -->
   <div class="page-grid mobile-grid" id="g-aerial-mobile"></div>
   <div style="height: 40px;"></div>
   <footer>
@@ -1194,7 +1178,7 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ces paysages renversés brouillent les repères et invitent à une perception nouvelle. Libérées du réel, les montagnes deviennent des compositions presque picturales, où les lignes, les textures et les couleurs, prennent le dessus sur la topographie. L'inversion transforme ces reliefs en formes libres, détachées de toute gravité, et les paysages deviennent davantage conceptuels et mentaux. </p>
   <!-- Desktop grid -->
   <div class="page-grid desktop-only" id="g-peaks"></div>
-  <!-- Mobile grid — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid -->
   <div class="page-grid mobile-grid" id="g-peaks-mobile"></div>
   <div style="height: 40px;"></div>
   <footer>
@@ -1215,7 +1199,7 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">L'Inde est souvent décrite comme un pays qui bouleverse, qui marque durablement celles et ceux qui la traversent. On y est confronté à une densité humaine permanente, à un flot continu de corps, de regards, de gestes, de voix, de sons et de couleurs. C'est également un pays de contrastes extrêmes, porteur de réalités sociales, culturelles, religieuses et spirituelles bien différentes. Bruit et silence. Foule compacte et solitude intérieure. Rudesse des conditions de vie et douceur de certains regards. Intensité des rituels collectifs et extrême intimité de certains moments individuels. Dans un environnement où tout circule, où tout se bouscule, le portrait devient un arrêt, une pause, un moment de relation silencieuse entre deux présences : celle de la personne photographiée et la mienne. Photographier un visage dans la foule, c'est tenter de créer un espace de rencontre là où tout semble voué à l'anonymat. C'est faire émerger une singularité dans une masse. </p>
   <!-- Desktop grid -->
   <div class="page-grid desktop-only" id="g-india"></div>
-  <!-- Mobile grid — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid -->
   <div class="page-grid mobile-grid" id="g-india-mobile"></div>
   <br><br>
   <p class="page-desc">The choice of black and white was a long and almost conflicted decision. India is a country of color : omnipresent, structuring and deeply meaningful. Color runs through clothing, festivals, religious rituals, social markers, cultural and spiritual identities. Certain colors signify status, roles or life stages : marriage, mourning, religious devotion or community belonging. Color is, in many ways, a visual language, often codified. By choosing to present this work in black and white, I chose to suspend that language. This gesture doesn't aim to deny the chromatic richness of India, but to shift the viewer's gaze. Black and white partially erases visible markers of religious, social and cultural identity, removing some of the immediate references that shape interpretation. It also draws attention to the texture of the skin, the lines, the scars, the play of light across features and the depth of a gaze. Where color can sometimes seduce, distract, or exoticize, black and white introduces a form of restraint. <br><br>The portraits presented here don't claim to represent India. They are partial, subjective and situated encounters. Faces of men, women and children, from different generations, religions and social backgrounds. It's impossible to grasp the complexity of a country of over a billion people through a handful of portraits. This project embraces that limitation : it doesn't seek exhaustiveness, but rather the intensity of certain encounters.</p>
@@ -1241,7 +1225,7 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Dans l'immensité de l'Himalaya, les repères s'estompent peu à peu, tout comme les frontières entre terre et ciel. Les distances s'étirent, le temps ralentit, et le corps trouve un nouveau rythme, guidé par l'effort, les drapeaux colorés et les moulins de prières boudhistes. Du Népal au Tibet, cette série est issue de longues marches au milieu de montagnes aussi sacrées qu'extraordinaires, au travers du Grand tour des Annapurnas, du Trek des hauts cols de l'Everest, et de la Kora du Mont Kailash. Entre horizons infinis et instants intimes, les images captent un monde où la présence humaine paraît à la fois fragile et ancrée. Plus qu'un déplacement, c'est une exploration de la perception, où chaque pas, chaque souffle, invite au dialogue intérieur. Dans ces paysages extrêmes, où l'altitude intensifie chaque sensation, le corps devient une mesure de la chaine de montagne, appelant humilité et contemplation.</p>
   <!-- Desktop grid -->
   <div class="page-grid desktop-only" id="g-himalaya"></div>
-  <!-- Mobile grid — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid -->
   <div class="page-grid mobile-grid" id="g-himalaya-mobile"></div>
   <br><br>
   <p class="page-desc">Tibet, often referred to as the « Roof of the World », is far more than a vast high-altitude plateau surrounded by the highest peaks of the Himalayan range. It is a land of spirituality, ancient traditions and breathtaking landscapes. This unique territory, deeply shaped by Buddhism as well as other spiritual influences, is defined by the strength of its people, the richness of its culture, and the depth of its religious practices. <br><br>It is here that the concept of « Shambhala » (བདེ་འབྱུང་) was born : a « source of happiness » or « place of peace ». In tradition, it exists at the intersection of myth, spirituality and cosmology. Shambhala is described as a pure realm, invisible to the ordinary eye, accessible only to those who have reached a high level of spiritual awareness. It is portrayed as a mythical and timeless kingdom, free from suffering, where its inhabitants live in peace, compassion and knowledge. For some, Shambhala is believed to be a real place, hidden in the Tibetan mountains around Mount Kailash (6 638 m). For others, it represents an inner realm, a state of consciousness and spiritual purity that anyone can reach through meditation...</p>
@@ -1267,14 +1251,14 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ce travail retrace un itinéraire de plusieurs mois au travers l'Asie du Sud-Est : Birmanie, Thaïlande, Vietnam, Laos, Cambodge et Chine ; un voyage marqué par la diversité des paysages et des cultures. Entre agitation et contemplation, ce territoire s'est avéré profondément contrasté, aussi fascinant que dépaysant. Lieux de culte et temples ancestraux, rizières se transformant au fil des saisons, couchers de soleil sur les fleuves, rencontres animales dans des espaces naturels comme en milieux urbains, ou encore scènes de vie ancrées dans un quotidien rythmé par les rites religieux… Ces images captent des instants fugaces et moments suspendus d'un monde en perpétuel mouvement, autant d'immersions dans une autre façon de voir et d'habiter le réel.</p>
   <!-- Desktop grid Asia 1 -->
   <div class="page-grid desktop-only" id="g-asia-1"></div>
-  <!-- Mobile grid Asia 1 — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid Asia 1 -->
   <div class="page-grid mobile-grid" id="g-asia-1-mobile"></div>
   <br><br>
   <p class="page-desc">In the continuation of the travel, India and Nepal reveal a different intensity : more raw, and even more contrasted. From high-altitude trails where rhododendrons bloom to the calm and tropical south, and through the lively streets of Pokhara and Kathmandu, Nepal's landscapes oscillate between softness and verticality… In India, from cities like Delhi or Mumbai to the beaches of Goa, from Rajasthan to Punjab, Uttar Pradesh and Himachal Pradesh, each region unfolds with its own distinct character. Reality becomes denser, more vivid and more intense. Crowds, festivals, rituals, silences, etc. The images emerge from this fragile balance between turmoil and contemplation, between saturation and emptiness, between collective effervescence and moments of withdrawal. There, everything feels more immediate, more intense. It's like a world where atmospheres overlap, and where each scene becomes another reality both striking and deeply human.</p>
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Dans le prolongement du voyage, l'Inde et le Népal dévoilent une autre intensité : plus brute, et encore plus contrastée. Des sentiers d'altitude où fleurissent les rhododendrons au sud calme et tropical, jusqu'aux ruelles animées des villes de Pokhara et Katmandou, les paysages népalais oscillent entre douceur et verticalité… En Inde, de villes comme Delhi ou Mumbai aux plages de Goa, de la région du Rajasthan à celles du Punjab, de l'Uttar Pradesh et de l'Himachal Pradesh, les territoires se succèdent sans jamais se ressembler. Le réel se densifie, se colore et s'intensifie. Foules, festivals, rituels, silences, etc. Les images naissent de cet équilibre fragile entre tumulte et recueillement, entre saturation et vide, entre effervescence collective et moments de retrait. Là-bas, tout semble plus dense, plus immédiat. C'est comme un monde où les atmosphères se superposent, et où chaque scène devient une autre réalité à la fois saisissante et profondément humaine.</p>
   <!-- Desktop grid Asia 2 -->
   <div class="page-grid desktop-only" id="g-asia-2"></div>
-  <!-- Mobile grid Asia 2 — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid Asia 2 -->
   <div class="page-grid mobile-grid" id="g-asia-2-mobile"></div>
   <br><br>
   <p class="page-desc">Asia is a continent of remarkable spiritual richness, where a multitude of religions and philosophies have coexisted for thousands of years. Indeed, Buddhism, Hinduism, Sikhism, Jainism, Shintoism, Taoism, Confucianism, Islam, as well as Christianity, Judaism, and various local religions in certain regions, intertwine and profoundly shape cultures, landscapes, and ways of life. This religious diversity reflects a shared universal quest : to understand humanity's place in the world and to establish a connection with the sacred.</p>
@@ -1300,7 +1284,7 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ce projet photographique retrace une traversée en backpacking de l'Amérique Latine en 500 jours. Au fil du voyage, ce projet s'est aussi transformé en une aventure intérieure. Entre ascensions en haute altitude, treks engagés, kite-surf, surf, yoga, plongée sous-marine, immersion dans des environnements sauvages et un grand nombre de « 1eres fois », le corps et l'esprit ont constamment été confrontés à ce qu'ils pensaient être leurs limites. Ce voyage a été une école de l'adaptation, de l'humilité et du lâcher-prise, au contact de cultures profondément ancrées, de territoires parfois rudes, et d'un rapport au temps et au vivant radicalement différent. L'Amérique Latine s'y révèle dans toute sa richesse et ses contrastes : une terre d'intensité et de chaleur humaine aux paysages extraordinaires et encore relativement peu touristiques. Au travers des nombreuses expériences vécues lors de ce voyage, ces images racontent autant une exploration du monde qu'un cheminement et une évolution personnelle.</p>
   <!-- Desktop grid -->
   <div class="page-grid desktop-only" id="g-latam"></div>
-  <!-- Mobile grid — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid -->
   <div class="page-grid mobile-grid" id="g-latam-mobile"></div>
   <br><br>
   <p class="page-desc">From the Carnival of Rio de Janeiro, the beaches of Brazil, the Iguazu Falls, tango nights and evenings in Buenos Aires, the feeling of being at the end of the world in Ushuaia, the Perito Moreno Glacier, the iconic Fitz Roy, Cerro Torre and the Torres del Paine of Patagonia, the journey along the Andes following Ruta 40 and the Carretera Austral, Santiago, Valparaíso, Argentine and Chilean wines, Salta and the deserts around Tolar Grande, the Salar de Uyuni, Sajama National Park, the vibrancy of La Paz, ascents of 6000-meter peaks in Bolivia, Lake Titicaca, Cusco, Machu Picchu and the Sacred Valley of the Incas, Huaraz and numerous climbs in the Cordillera Blanca, the Huayhuash trek with its vast condors, the many herds of llamas and alpacas in Peru, volunteering in a sanctuary for animals rescued from poaching in Ecuador, immersion in the Amazon rainforest, the volcanoes of Cotopaxi and Chimborazo, hammerhead sharks and manta rays in the Galápagos Islands, the colonial villages and paradisiacal beaches of Colombia, a cargo boat journey to reach the remote Chocó region, a sailboat crossing to Central America, the San Blas Islands and the Panama Canal, the wildlife and flora of Costa Rica, learning to surf in Nicaragua, hitchhiking across Honduras and El Salvador, a New Year's Eve in the beautiful city of Antigua with views of the Fuego volcano erupting, the Mayan and Aztec archaeological sites of Mexico, baby turtles in the Oaxaca region, festivities in Chiapas, and a total solar eclipse in Baja California, among many other moments. This chapter of my life has been shaped by a lot of memories and lessons.</p>
@@ -1329,7 +1313,7 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ce travail est né de plusieurs voyages au travers de la Jordanie, du Maroc, l'Egypte et la Turquie. De la Cité de Petra et du Désert du Wadi Rum au Sahara, des diverses médinas marocaines aux rues du Caire, aux Pyramides de Gizeh, aux formations rocheuses de la Cappadoce et aux marchés d'Istanbul... La lumière y impose son rythme, sculptant les formes et métamorphosant les couleurs à chacun des instants de la journée et au fil des saisons. Changeante, parfois douce, parfois brûlante, elle accompagne toutes les scènes de vie des villes, villages et déserts d'Orient.</p>
   <!-- Desktop grid -->
   <div class="page-grid desktop-only" id="g-africa"></div>
-  <!-- Mobile grid — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid -->
   <div class="page-grid mobile-grid" id="g-africa-mobile"></div>
   <div style="height: 40px;"></div>
   <footer>
@@ -1350,7 +1334,7 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Réalisées dans les territoires arctiques, en Islande et vers la ville reculée de Tromsø au nord de la Norvège, ces images explorent de grands espaces de contrastes, où la nature et le froid se confrontent. Entre glace, eau et ciel, les horizons s'étirent à perte de vue, sculptés par les différents éléments et façonnés par un climat en constante mutation. Les étendues gelées, les reliefs mouvants et les paysages en transformation permanente composent un monde silencieux, presque immobile. Une beauté brute s'y révèle, simple et puissante, dans un univers à la fois : rude et profondément fascinant.</p>
   <!-- Desktop grid -->
   <div class="page-grid desktop-only" id="g-landscapes"></div>
-  <!-- Mobile grid — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid -->
   <div class="page-grid mobile-grid" id="g-landscapes-mobile"></div>
   <div style="height: 40px;"></div>
   <footer>
@@ -1367,6 +1351,13 @@ footer span {
   <button class="back" onclick="goHome()">Back</button>
   <p class="label">— Projects</p>
   <h1>Mountains &amp; Summits</h1>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FIX 1 & 2 — Ordre desktop vs mobile pour la section inférieure
+       DESKTOP : bloc g-mountains-2 → puis photo 821
+       MOBILE  : photo 821 → puis carrousel g-mountains-2-mobile
+  ═══════════════════════════════════════════════════════════════ -->
+
   <div style="width:100%; margin: 40px 0; aspect-ratio: 16/8; overflow: hidden;">
     <img src="images/photo850.jpg" style="width:100%; height:100%; display:block; object-fit: cover; object-position: center 70%;"/>
   </div>
@@ -1374,20 +1365,30 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">En montagne, le corps est constamment engagé, et les conditions changent rapidement, imposant ainsi une vigilance permanente. Ce travail ne cherche pas la performance, mais capture un état, un équilibre fragile au cœur de l'altitude. L'alpinisme et l'ascension de sommets enneigés s'inscrivent dans cette recherche, entre engagement, précision et exposition. Ne restent que le souffle, le mouvement et de grands espaces naturels. La montagne agit comme un filtre, réduisant le réel à l'essentiel. Ces images traduisent cet état, entre solitude, intensité et perception transformée.</p>
   <!-- Desktop grid mountains 1 -->
   <div class="page-grid desktop-only" id="g-mountains-1"></div>
-  <!-- Mobile grid mountains 1 — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid mountains 1 -->
   <div class="page-grid mobile-grid" id="g-mountains-1-mobile"></div>
   <br><br>
   <p class="page-desc">These images come from ascents carried out in different mountain ranges, between the French Alps and the Andes across Bolivia and Peru. From Mont Blanc (4,809 m) to Mont Pelvoux (3,946 m), and up to the high-altitude peaks of South America : Huayna Potosí (6,088 m), Volcán Acotango (6,052 m), Volcán Uturuncu (6,020 m), Volcán Misti (5,822 m), Nevado Pisco (5,752 m), Nevado Vallunaraju (5,686 m), Nevado Ishinca (5,530 m), Nevado Yanapaccha (5,460 m), among others. Each ascent is part of a progression through varied and demanding environments. These landscapes, shaped by ice, snow, rock, and altitude, define both the physical experience and the way the landscape is perceived.</p>
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Ces images sont issues d'ascensions réalisées dans différents massifs, entre les Alpes Françaises et les Andes de la Bolivie au Pérou. Du Mont-Blanc (4 809 m) au Mont Pelvoux (3 946 m), jusqu'aux sommets d'altitude sud-américains : Huayna Potosí (6 088 m), Volcán Acotango (6 052 m), Volcán Uturuncu (6 020 m), Volcán Misti (5 822 m), Nevado Pisco (5 752 m), Nevado Vallunaraju (5 686 m), Nevado Ishinca (5 530 m), Nevado Yanapaccha (5 460 m), etc. Chacune de ces ascensions s'inscrit dans une progression à travers des environnements variés et exigeants. Ces territoires, entre glace, neige, roche et altitude, façonnent autant l'expérience physique que le regard porté sur le paysage.</p>
-  <!-- Carrousel desktop : grille 4 colonnes -->
+
+  <!-- ─── DESKTOP ONLY : grille 4 colonnes AVANT photo 821 ─── -->
   <div class="page-grid desktop-only" id="g-mountains-2"></div>
-  <!-- Carrousel mobile : 1 photo à la fois, affiché APRÈS la photo solo -->
+
+  <!-- ─── DESKTOP ONLY : photo 821 APRÈS le bloc ─── -->
+  <div class="desktop-only" style="width:100%; margin: 40px 0;">
+    <img src="images/photo821.jpg" style="width:100%; display:block; filter:grayscale(1) brightness(1) contrast(1.3);"/>
+  </div>
+
+  <!-- ─── MOBILE ONLY : photo 821 AVANT le carrousel ─── -->
+  <div class="mobile-grid" style="display:none; width:100%; margin: 30px 0;">
+    <img src="images/photo821.jpg" style="width:100%; display:block; filter:grayscale(1) brightness(1) contrast(1.3);"/>
+  </div>
+
+  <!-- ─── MOBILE ONLY : carrousel APRÈS photo 821 ─── -->
   <div id="g-mountains-2-mobile" class="mobile-grid" style="position:relative; overflow:hidden;">
     <!-- Les cellules sont injectées par JS -->
   </div>
-  <div style="width:100%; margin: 40px 0;">
-    <img src="images/photo821.jpg" style="width:100%; display:block; filter:grayscale(1) brightness(1) contrast(1.3);"/>
-  </div>
+
   <footer>
     <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
     <div class="footer-right">
@@ -1406,7 +1407,7 @@ footer span {
   <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">En noir et blanc, la ville révèle un autre langage. Dépouillée de ses couleurs, elle devient un jeu de lumières, de contrastes et de géométries. De New-York, Paris à Berlin, jusqu'à Moscou, cette série capte des fragments d'espaces urbains : entre mouvement et immobilité, présence et absence. À travers des explorations, parfois en urbex, elle s'aventure dans les interstices de la ville, révélant des lieux laissés en suspens entre oubli et transformation.</p>
   <!-- Desktop grid -->
   <div class="page-grid desktop-only" id="g-urban"></div>
-  <!-- Mobile grid — réordonnez les photos ici pour mobile -->
+  <!-- Mobile grid -->
   <div class="page-grid mobile-grid" id="g-urban-mobile"></div>
   <div style="height: 40px;"></div>
   <footer>
@@ -1470,14 +1471,11 @@ const byProject = {
   'g-africa': ['images/photo702.jpg','images/photo711.jpg','images/photo703.jpg','images/photo704.jpg','images/photo705.jpg','images/photo706.jpg','images/photo707.jpg','images/photo708.jpg','images/photo709.jpg','images/photo710.jpg','images/photo712.jpg','images/photo701.jpg','images/photo713.jpg','images/photo714.jpg','images/photo715.jpg','images/photo716.jpg','images/photo717.jpg','images/photo719.jpg','images/photo718.jpg','images/photo720.jpg','images/photo721.jpg','images/photo722.jpg','images/photo723.jpg','images/photo724.jpg','images/photo730.jpg','images/photo729.jpg','images/photo726.jpg','images/photo725.jpg','images/photo733.jpg','images/photo734.jpg','images/photo735.jpg','images/photo736.jpg','images/photo742.jpg','images/photo743.jpg','images/photo744.jpg','images/photo740.jpg','images/photo741.jpg','images/photo739.jpg','images/photo737.jpg','images/photo738.jpg','images/photo746.jpg','images/photo731.jpg','images/photo747.jpg','images/photo748.jpg','images/photo728.jpg','images/photo727.jpg','images/photo745.jpg','images/photo732.jpg'],
   'g-landscapes': ['images/photo901.jpg','images/photo902.jpg','images/photo903.jpg','images/photo904.jpg','images/photo905.jpg','images/photo906.jpg','images/photo907.jpg','images/photo908.jpg','images/photo909.jpg','images/photo910.jpg','images/photo911.jpg','images/photo912.jpg','images/photo913.jpg','images/photo914.jpg','images/photo915.jpg','images/photo916.jpg','images/photo920.jpg','images/photo919.jpg','images/photo918.jpg','images/photo917.jpg'],
   'g-mountains-1': ['images/photo804.jpg','images/photo805.jpg','images/photo808.jpg','images/photo807.jpg','images/photo806.jpg','images/photo809.jpg','images/photo801.jpg','images/photo814.jpg','images/photo810.jpg','images/photo811.jpg','images/photo812.jpg','images/photo813.jpg','images/photo816.jpg','images/photo817.jpg','images/photo822.jpg','images/photo823.jpg','images/photo824.jpg','images/photo825.jpg','images/photo826.jpg','images/photo827.jpg','images/photo828.jpg','images/photo829.jpg','images/photo830.jpg','images/photo831.jpg','images/photo835.jpg','images/photo820.jpg','images/photo845.jpg','images/photo818.jpg'],
+  /* FIX 2 — photo840 est présente ici → s'affiche correctement sur desktop */
   'g-mountains-2': ['images/photo840.jpg','images/photo803.jpg','images/photo842.jpg','images/photo843.jpg','images/photo844.jpg','images/photo841.jpg','images/photo846.jpg','images/photo847.jpg'],
   'g-urban': ['images/photo1062.jpg','images/photo1065.jpg','images/photo1060.jpg','images/photo1061.jpg','images/photo1010.jpg','images/photo1052.jpg','images/photo1011.jpg','images/photo1054.jpg','images/photo1050.jpg','images/photo1049.jpg','images/photo1030.jpg','images/photo1045.jpg','images/photo1047.jpg','images/photo1048.jpg','images/photo1015.jpg','images/photo1017.jpg','images/photo1046.jpg','images/photo1016.jpg','images/photo1033.jpg','images/photo1013.jpg','images/photo1041.jpg','images/photo1014.jpg','images/photo1031.jpg','images/photo1012.jpg','images/photo1034.jpg','images/photo1040.jpg','images/photo1019.jpg','images/photo1018.jpg']
 };
 
-/* ─────────────────────────────────────────────────────────────────────
-   LISTE PHOTOS MOBILE — PAGE D'ACCUEIL
-   Même ordre que "photos" par défaut. Réorganisez librement pour mobile.
-───────────────────────────────────────────────────────────────────── */
 const photosMobile = [
   'images/photo010.jpg','images/photo011.jpg','images/photo014.jpg','images/photo015.jpg',
   'images/photo016.jpg','images/photo017.jpg','images/photo048.jpg','images/photo046.jpg',
@@ -1490,13 +1488,6 @@ const photosMobile = [
   'images/photo075.jpg','images/photo080.jpg','images/photo077.jpg'
 ];
 
-/* ─────────────────────────────────────────────────────────────────────
-   LISTES PHOTOS MOBILES
-   Par défaut, les grilles mobiles utilisent le même ordre que les grilles
-   desktop. Pour réorganiser l'ordre sur mobile, modifiez simplement ces
-   tableaux — ils sont indépendants de byProject.
-   Les IDs correspondent aux grilles "-mobile" dans le HTML.
-───────────────────────────────────────────────────────────────────── */
 const byProjectMobile = {
   'g-aerial-mobile':      [...byProject['g-aerial']],
   'g-peaks-mobile':       [...byProject['g-peaks']],
@@ -1509,21 +1500,13 @@ const byProjectMobile = {
   'g-landscapes-mobile':  ['images/photo910.jpg','images/photo912.jpg','images/photo901.jpg','images/photo902.jpg','images/photo903.jpg','images/photo904.jpg','images/photo907.jpg','images/photo908.jpg','images/photo913.jpg','images/photo914.jpg','images/photo915.jpg','images/photo916.jpg','images/photo920.jpg','images/photo919.jpg','images/photo918.jpg','images/photo917.jpg'],
   'g-mountains-1-mobile': [...byProject['g-mountains-1']],
   'g-urban-mobile':       [...byProject['g-urban']],
-  /* g-mountains-2-mobile est géré séparément par le carrousel */
 };
 
-/* ─── DYNAMIC FONT SIZE (landscape only) ─────────────────────────
-   Reference sentence: the French italic about text.
-   Target: exactly 2 lines.
-   We binary-search the font size between 10px and 20px.
-   The measurement container mirrors .about-body / .page-desc width
-   (max-width 630px, same letter-spacing, same font, same line-height).
-──────────────────────────────────────────────────────────────────── */
+/* ─── DYNAMIC FONT SIZE ──────────────────────────────────────── */
 const REF_TEXT = "Out.Track Studio est un espace créatif au croisement de l'art, la photographie, la perception et l'exploration. Des territoires reculés aux milieux urbains, chaque projet incarne une volonté de repousser les limites.";
 
 function calcBodyFontSize() {
   if (window.innerWidth <= 700 || window.innerHeight > window.innerWidth) return null;
-
   const probe = document.createElement('div');
   probe.style.cssText = [
     'position:absolute','visibility:hidden','pointer-events:none',
@@ -1533,12 +1516,9 @@ function calcBodyFontSize() {
     'top:-9999px','left:0'
   ].join(';');
   document.body.appendChild(probe);
-
-  // Available width is viewport minus page padding (44px each side)
   const availW = Math.min(630, window.innerWidth - 88);
   probe.style.width = availW + 'px';
   probe.style.maxWidth = availW + 'px';
-
   let lo = 10, hi = 20, best = 13;
   for (let i = 0; i < 20; i++) {
     const mid = (lo + hi) / 2;
@@ -1550,7 +1530,6 @@ function calcBodyFontSize() {
     else { hi = mid; }
     if (hi - lo < 0.05) break;
   }
-
   document.body.removeChild(probe);
   return best;
 }
@@ -1564,7 +1543,6 @@ function applyBodyFontSize() {
   if (fs) document.documentElement.style.setProperty('--body-fs', fs + 'px');
 }
 
-/* Run after fonts load, and on resize */
 document.fonts.ready.then(applyBodyFontSize);
 window.addEventListener('resize', applyBodyFontSize);
 
@@ -1581,13 +1559,11 @@ function setNavState(isProject) {
   }
 }
 
-/* Dropdown toggle — works on both mobile (tap) and desktop (click) */
 function toggleDropdown(e) {
   e.preventDefault();
   e.stopPropagation();
   const dd = e.target.closest('.dropdown');
   const isOpen = dd.classList.contains('open');
-  // Close all first
   document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
   if (!isOpen) {
     dd.classList.add('open');
@@ -1618,17 +1594,17 @@ function goPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
   document.getElementById('p-'+name)?.classList.add('on');
   setNavState(true);
-  // Force close all dropdowns
-  document.querySelectorAll('.dropdown').forEach(d => {
-    d.classList.remove('open');
-  });
-  // Also force the drop-menu closed in case hover CSS is still active
+  document.querySelectorAll('.dropdown').forEach(d => { d.classList.remove('open'); });
   document.querySelectorAll('.drop-menu').forEach(m => {
     m.style.opacity = '0';
     m.style.pointerEvents = 'none';
     setTimeout(() => { m.style.opacity = ''; m.style.pointerEvents = ''; }, 400);
   });
   window.scrollTo({top:0, behavior:'smooth'});
+  /* FIX 2 — Re-initialise le carrousel à chaque ouverture de la page Mountains */
+  if (name === 'mountains') {
+    setTimeout(initCarousel, 50);
+  }
 }
 
 /* ─── GRIDS ─────────────────────────────────────────────────── */
@@ -1702,7 +1678,6 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowLeft') lbMove(-1);
 });
 
-/* ─── MOBILE DROPDOWN CLOSE ON LINK CLICK ───────────────────── */
 document.querySelectorAll('.drop-menu a').forEach(function(link) {
   link.addEventListener('click', function() {
     document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
@@ -1710,74 +1685,81 @@ document.querySelectorAll('.drop-menu a').forEach(function(link) {
 });
 
 /* ─── CARROUSEL G-MOUNTAINS-2 (mobile only) ──────────────────────
-   Le carrousel s'affiche dans #g-mountains-2-mobile (placé APRÈS
-   la photo solo photo821.jpg dans le HTML).
-   Durée par slide : 10 secondes.
+   FIX 2 : initCarousel est désormais appelé depuis goPage('mountains')
+   pour garantir l'initialisation correcte même si la page Mountains
+   n'était pas visible au chargement.
+   FIX 1 : sur mobile, le carrousel apparaît APRÈS photo821 (ordre HTML).
+   Sur desktop, la grille g-mountains-2 apparaît AVANT photo821 (ordre HTML).
 ───────────────────────────────────────────────────────────────── */
-(function() {
-  function isMobile() { return window.innerWidth <= 700; }
+var carouselTimer = null;
+var carouselIdx = 0;
+var carouselSrcs = ['images/photo840.jpg','images/photo844.jpg','images/photo803.jpg','images/photo843.jpg'];
 
-  var carouselTimer = null;
-  var carouselIdx = 0;
-  var carouselSrcs = ['images/photo840.jpg','images/photo844.jpg','images/photo803.jpg','images/photo843.jpg'];
+function isMobile() { return window.innerWidth <= 700; }
 
-  function buildMobileCarousel() {
-    var container = document.getElementById('g-mountains-2-mobile');
-    if (!container) return;
-    container.innerHTML = '';
-    carouselSrcs.forEach(function(src, i) {
-      var cell = document.createElement('div');
-      cell.className = 'cell' + (i === 0 ? ' carousel-active' : '');
-      cell.dataset.src = src;
-      cell.style.cssText = 'display:none; aspect-ratio:2/3; width:100%;';
-      cell.innerHTML = '<img src="' + src + '" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) brightness(1.1);"/>';
-      cell.addEventListener('click', function() { lbOpen('g-mountains-2', i); });
-      container.appendChild(cell);
+function buildMobileCarousel() {
+  var container = document.getElementById('g-mountains-2-mobile');
+  if (!container) return;
+  container.innerHTML = '';
+  carouselSrcs.forEach(function(src, i) {
+    var cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.src = src;
+    cell.style.cssText = 'display:none; aspect-ratio:2/3; width:100%;';
+    cell.innerHTML = '<img src="' + src + '" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) brightness(1.1);"/>';
+    /* Le lightbox pointe vers g-mountains-2 (desktop) pour la cohérence des index */
+    cell.addEventListener('click', function() { lbOpen('g-mountains-2', i); });
+    container.appendChild(cell);
+  });
+}
+
+function initCarousel() {
+  var desktopGrid = document.getElementById('g-mountains-2');
+  var mobileContainer = document.getElementById('g-mountains-2-mobile');
+  /* FIX 1 : bloc photo821 mobile = premier élément .mobile-grid sans id dans p-mountains */
+  var mobilePhoto821 = document.querySelector('#p-mountains .mobile-grid:not([id])');
+  if (!desktopGrid || !mobileContainer) return;
+
+  if (isMobile()) {
+    /* Masquer la grille desktop */
+    desktopGrid.style.display = 'none';
+    /* Afficher photo 821 mobile */
+    if (mobilePhoto821) mobilePhoto821.style.display = 'block';
+    /* Afficher le carrousel */
+    mobileContainer.style.display = 'block';
+
+    if (!mobileContainer.children.length) buildMobileCarousel();
+
+    var cells = Array.from(mobileContainer.querySelectorAll('.cell'));
+    if (!cells.length) return;
+
+    carouselIdx = 0;
+    cells.forEach(function(c, i) {
+      c.style.display = i === 0 ? 'block' : 'none';
     });
-  }
 
-  function initCarousel() {
-    var desktopGrid = document.getElementById('g-mountains-2');
-    var mobileContainer = document.getElementById('g-mountains-2-mobile');
-    if (!desktopGrid || !mobileContainer) return;
-
-    if (isMobile()) {
-      /* Masquer la grille desktop, afficher le carrousel mobile */
-      desktopGrid.style.display = 'none';
-      mobileContainer.style.display = 'block';
-
-      if (!mobileContainer.children.length) buildMobileCarousel();
-
-      var cells = Array.from(mobileContainer.querySelectorAll('.cell'));
-      if (!cells.length) return;
-
-      /* Afficher uniquement la slide active */
+    clearInterval(carouselTimer);
+    carouselTimer = setInterval(function() {
+      carouselIdx = (carouselIdx + 1) % cells.length;
       cells.forEach(function(c, i) {
         c.style.display = i === carouselIdx ? 'block' : 'none';
       });
+    }, 10000);
 
-      clearInterval(carouselTimer);
-      carouselTimer = setInterval(function() {
-        carouselIdx = (carouselIdx + 1) % cells.length;
-        cells.forEach(function(c, i) {
-          c.style.display = i === carouselIdx ? 'block' : 'none';
-        });
-      }, 10000); /* 10 secondes */
-
-    } else {
-      /* Desktop : afficher la grille normale, masquer le carrousel mobile */
-      desktopGrid.style.display = '';
-      mobileContainer.style.display = 'none';
-      clearInterval(carouselTimer);
-    }
+  } else {
+    /* Desktop : afficher la grille normale, masquer les éléments mobiles */
+    desktopGrid.style.display = '';
+    if (mobilePhoto821) mobilePhoto821.style.display = 'none';
+    mobileContainer.style.display = 'none';
+    clearInterval(carouselTimer);
   }
+}
 
-  window.addEventListener('resize', initCarousel);
-  /* Run after grids are built */
-  setTimeout(initCarousel, 100);
-})();
+window.addEventListener('resize', initCarousel);
+/* Initialisation au chargement — après que les grilles soient construites */
+setTimeout(initCarousel, 150);
 
-  function handleProjectsClick(e) {
+function handleProjectsClick(e) {
   if (window.innerWidth <= 700) {
     e.preventDefault();
     e.stopPropagation();
