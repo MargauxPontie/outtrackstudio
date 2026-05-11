@@ -904,17 +904,30 @@ footer span {
   }
   #p-urban .mobile-grid .cell { aspect-ratio: 3/2; }
 
-  /* Carrousel mountains-2 mobile */
+  /* ── Carrousel mountains-2 mobile : visible uniquement via media query ── */
   #g-mountains-2-mobile {
     display: block !important;
     position: relative;
     overflow: hidden;
   }
+
+  /* Les slides du carrousel : masquées par défaut, visibles quand .carousel-active */
+  #g-mountains-2-mobile .carousel-slide { display: none !important; }
+  #g-mountains-2-mobile .carousel-slide.carousel-active { display: block !important; }
+
+  /* Photo 821 mobile : visible */
+  #p-mountains .mountains-photo821-mobile { display: block !important; }
 }
 
 /* ─── BLOCS PHOTOS MOBILES (masqués sur desktop) ─── */
 .mobile-grid { display: none; }
 #home-grid-mobile { display: none; }
+
+/* Photo 821 mobile : masquée sur desktop */
+#p-mountains .mountains-photo821-mobile { display: none; }
+
+/* Slides du carrousel : masquées sur desktop (le conteneur lui-même est .mobile-grid) */
+#g-mountains-2-mobile .carousel-slide { display: none; }
 
 /* ─── N&B overrides sur les grilles mobiles ─── */
 /* Urban mobile */
@@ -1380,7 +1393,7 @@ footer span {
   </div>
 
   <!-- ─── MOBILE ONLY : photo 821 AVANT le carrousel ─── -->
-  <div class="mobile-grid" style="display:none; width:100%; margin: 30px 0;">
+  <div class="mobile-grid mountains-photo821-mobile" style="width:100%; margin: 30px 0;">
     <img src="images/photo821.jpg" style="width:100%; display:block; filter:grayscale(1) brightness(1) contrast(1.3);"/>
   </div>
 
@@ -1601,10 +1614,6 @@ function goPage(name) {
     setTimeout(() => { m.style.opacity = ''; m.style.pointerEvents = ''; }, 400);
   });
   window.scrollTo({top:0, behavior:'smooth'});
-  /* FIX 2 — Re-initialise le carrousel à chaque ouverture de la page Mountains */
-  if (name === 'mountains') {
-    setTimeout(initCarousel, 50);
-  }
 }
 
 /* ─── GRIDS ─────────────────────────────────────────────────── */
@@ -1685,79 +1694,50 @@ document.querySelectorAll('.drop-menu a').forEach(function(link) {
 });
 
 /* ─── CARROUSEL G-MOUNTAINS-2 (mobile only) ──────────────────────
-   FIX 2 : initCarousel est désormais appelé depuis goPage('mountains')
-   pour garantir l'initialisation correcte même si la page Mountains
-   n'était pas visible au chargement.
-   FIX 1 : sur mobile, le carrousel apparaît APRÈS photo821 (ordre HTML).
-   Sur desktop, la grille g-mountains-2 apparaît AVANT photo821 (ordre HTML).
+   Principe : le JS ne touche JAMAIS à style.display.
+   La visibilité desktop/mobile est 100% gérée par les media queries CSS.
+   Le JS gère uniquement la rotation des slides via les classes
+   .carousel-slide et .carousel-active.
 ───────────────────────────────────────────────────────────────── */
 var carouselTimer = null;
-var carouselIdx = 0;
-var carouselSrcs = ['images/photo840.jpg','images/photo844.jpg','images/photo803.jpg','images/photo843.jpg'];
-
-function isMobile() { return window.innerWidth <= 700; }
+var carouselIdx   = 0;
+var carouselBuilt = false;
+var carouselSrcs  = ['images/photo840.jpg','images/photo844.jpg','images/photo803.jpg','images/photo843.jpg'];
 
 function buildMobileCarousel() {
+  if (carouselBuilt) return;
+  carouselBuilt = true;
   var container = document.getElementById('g-mountains-2-mobile');
   if (!container) return;
   container.innerHTML = '';
   carouselSrcs.forEach(function(src, i) {
     var cell = document.createElement('div');
-    cell.className = 'cell';
+    /* carousel-slide : masqué par défaut via CSS ; carousel-active : visible */
+    cell.className = 'cell carousel-slide' + (i === 0 ? ' carousel-active' : '');
     cell.dataset.src = src;
-    cell.style.cssText = 'display:none; aspect-ratio:2/3; width:100%;';
-    cell.innerHTML = '<img src="' + src + '" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) brightness(1.1);"/>';
-    /* Le lightbox pointe vers g-mountains-2 (desktop) pour la cohérence des index */
-    cell.addEventListener('click', function() { lbOpen('g-mountains-2', i); });
+    cell.style.cssText = 'aspect-ratio:2/3; width:100%;';
+    cell.innerHTML = '<img src="' + src + '" alt="" loading="lazy" '
+      + 'style="width:100%;height:100%;object-fit:cover;display:block;'
+      + 'filter:grayscale(1) brightness(1.1);"/>';
+    /* Lightbox pointe vers g-mountains-2 pour cohérence des index */
+    cell.addEventListener('click', (function(idx){ return function(){ lbOpen('g-mountains-2', idx); }; })(i));
     container.appendChild(cell);
   });
+
+  /* Lance le timer de rotation */
+  clearInterval(carouselTimer);
+  carouselTimer = setInterval(function() {
+    var slides = document.querySelectorAll('#g-mountains-2-mobile .carousel-slide');
+    if (!slides.length) return;
+    slides[carouselIdx].classList.remove('carousel-active');
+    carouselIdx = (carouselIdx + 1) % slides.length;
+    slides[carouselIdx].classList.add('carousel-active');
+  }, 10000);
 }
 
-function initCarousel() {
-  var desktopGrid = document.getElementById('g-mountains-2');
-  var mobileContainer = document.getElementById('g-mountains-2-mobile');
-  /* FIX 1 : bloc photo821 mobile = premier élément .mobile-grid sans id dans p-mountains */
-  var mobilePhoto821 = document.querySelector('#p-mountains .mobile-grid:not([id])');
-  if (!desktopGrid || !mobileContainer) return;
-
-  if (isMobile()) {
-    /* Masquer la grille desktop */
-    desktopGrid.style.display = 'none';
-    /* Afficher photo 821 mobile */
-    if (mobilePhoto821) mobilePhoto821.style.display = 'block';
-    /* Afficher le carrousel */
-    mobileContainer.style.display = 'block';
-
-    if (!mobileContainer.children.length) buildMobileCarousel();
-
-    var cells = Array.from(mobileContainer.querySelectorAll('.cell'));
-    if (!cells.length) return;
-
-    carouselIdx = 0;
-    cells.forEach(function(c, i) {
-      c.style.display = i === 0 ? 'block' : 'none';
-    });
-
-    clearInterval(carouselTimer);
-    carouselTimer = setInterval(function() {
-      carouselIdx = (carouselIdx + 1) % cells.length;
-      cells.forEach(function(c, i) {
-        c.style.display = i === carouselIdx ? 'block' : 'none';
-      });
-    }, 10000);
-
-  } else {
-    /* Desktop : afficher la grille normale, masquer les éléments mobiles */
-    desktopGrid.style.display = '';
-    if (mobilePhoto821) mobilePhoto821.style.display = 'none';
-    mobileContainer.style.display = 'none';
-    clearInterval(carouselTimer);
-  }
-}
-
-window.addEventListener('resize', initCarousel);
-/* Initialisation au chargement — après que les grilles soient construites */
-setTimeout(initCarousel, 150);
+/* Construit le carrousel une seule fois, dès le chargement.
+   Aucune manipulation de display — les media queries font le reste. */
+setTimeout(buildMobileCarousel, 150);
 
 function handleProjectsClick(e) {
   if (window.innerWidth <= 700) {
