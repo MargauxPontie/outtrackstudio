@@ -881,16 +881,28 @@ footer span {
   /* ── FIX 4 : Himalaya, Asia-1, Asia-2, LatAm mobile : 2 par ligne, carrés, gap plus large ── */
   #p-himalaya .mobile-grid,
   #p-asia #g-asia-1-mobile,
-  #p-asia #g-asia-2-mobile,
-  #p-latam .mobile-grid {
+  #p-asia #g-asia-2-mobile {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px; /* ← augmenté (était 8px) */
   }
   #p-himalaya .mobile-grid .cell,
   #p-asia #g-asia-1-mobile .cell,
-  #p-asia #g-asia-2-mobile .cell,
-  #p-latam .mobile-grid .cell { aspect-ratio: 1/1; }
+  #p-asia #g-asia-2-mobile .cell { aspect-ratio: 1/1; }
 
+  #p-latam .mobile-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  padding: 0;
+  margin-left: -20px;
+  margin-right: -20px;
+  width: calc(100% + 40px);
+  }
+  #p-latam .mobile-grid .cell { aspect-ratio: unset; }
+  #p-latam .mobile-grid .cell img { 
+  height: auto;
+  position: relative;
+  }
+  
   /* ── FIX 3 : Africa et Landscapes mobile : 1 photo par ligne ── */
   #p-africa .mobile-grid,
   #p-landscapes .mobile-grid {
