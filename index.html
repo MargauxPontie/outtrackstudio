@@ -262,6 +262,10 @@ nav {
   animation: zoom 9s ease forwards;
 }
 
+#p-mountains .page-hero img {
+  filter: grayscale(1) brightness(.85);
+}
+
 .page-hero-title {
   position: absolute;
   inset: 0;
@@ -275,7 +279,7 @@ nav {
 
 .page-hero-title h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-size: clamp(2rem, 2.8vw, 3.2rem);
   font-weight: 700;
   color: var(--white);
   letter-spacing: .12em;
@@ -942,9 +946,19 @@ img[src="images/photo405.jpg"] {
 
   #p-mountains .mountains-photo821-mobile { display: block !important; }
 
+  #p-peaks .page-hero {
+    height: auto;
+  }
+
   #p-peaks .page-hero img {
-    transform: rotate(90deg) scale(1.8);
+    width: auto;
+    height: 100vw;
+    display: block;
+    margin: 0 auto;
+    transform: rotate(90deg);
     transform-origin: center center;
+    animation: none;
+    object-fit: unset;
   }
 
   #p-mountains .page-hero img {
@@ -1033,11 +1047,6 @@ img[src="images/photo405.jpg"] {
 #p-mountains #g-mountains-1-mobile img[src="images/photo814.jpg"] { filter: brightness(0.72); }
 #p-mountains #g-mountains-1-mobile img[src="images/photo811.jpg"] { filter: brightness(0.86); }
 #p-mountains #g-mountains-1-mobile img[src="images/photo808.jpg"] { filter: brightness(0.70); }
-
-  #p-peaks .page-hero img {
-    transform: rotate(90deg) scale(1.8);
-    transform-origin: center center;
-  }
 
 /* ─── MOBILE FULLSCREEN MENU ─── */
 .mobile-fullmenu {
