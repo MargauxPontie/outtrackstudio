@@ -263,7 +263,7 @@ nav {
 }
 
 #p-mountains .page-hero img {
-  filter: grayscale(1) brightness(.85);
+  filter: grayscale(1) brightness(.60);
 }
 
 .page-hero-title {
@@ -950,13 +950,16 @@ img[src="images/photo405.jpg"] {
     height: 100vh;
   }
 
-  #p-peaks .page-hero img {
+  #p-peaks .page-hero img.desktop-only {
+    display: none;
+  }
+
+  #p-peaks .page-hero img.mobile-grid {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: rotate(-90deg);
-    transform-origin: center center;
-    animation: none;
+    animation: zoom 9s ease forwards;
   }
 
   #p-mountains .page-hero img {
@@ -1222,7 +1225,8 @@ img[src="images/photo405.jpg"] {
 <!-- CONTOURS OF PEAKS -->
 <div id="p-peaks" class="page">
   <div class="page-hero">
-    <img src="images/photo000.jpg" alt="Contours of Peaks"/>
+    <img class="desktop-only" src="images/photo000.jpg" alt="Contours of Peaks"/>
+    <img class="mobile-grid" src="images/photo000.jpg" alt="Contours of Peaks"/>
     <div class="page-hero-title"><h1>Contours of Peaks</h1></div>
   </div>
   <div class="page-content">
