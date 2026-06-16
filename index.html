@@ -468,6 +468,25 @@ footer span {
   color: var(--gray);
 }
 
+.footer-copyright {
+  font-size: .48rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .25s;
+}
+
+.footer-copyright:hover { color: var(--accent); }
+
+.footer-copyright-static {
+  font-size: .48rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
 .footer-right {
   display: flex;
   align-items: center;
@@ -484,6 +503,10 @@ footer span {
 }
 
 .footer-right a:hover { color: var(--accent); }
+
+.footer-icon-link {
+  display: none;
+}
 
 </style>
 <style>
@@ -841,6 +864,60 @@ footer span {
   padding: 0 44px 110px;
 }
 
+.prints-frame {
+  border: 1px solid var(--mid);
+  padding: 40px 56px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+  .prints-frame {
+    padding: 26px 22px;
+    max-width: 100%;
+  }
+}
+
+/* ─── LEGAL NOTICE ─── */
+#p-legal .page-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 160px 44px 0;
+}
+
+#p-legal .legal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--white);
+  letter-spacing: .04em;
+  margin-bottom: 46px;
+}
+
+#p-legal .page-desc {
+  text-align: left;
+  max-width: 700px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.legal-head {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 32px 0 10px;
+}
+
+@media (max-width: 700px) {
+  #p-legal .page-content {
+    padding: 110px 20px 40px;
+  }
+  #p-legal .legal-title {
+    text-align: center;
+  }
+}
+
 /* ─── RESPONSIVE MOBILE ─── */
 @media (max-width: 700px) {
   nav { padding: 18px 20px; }
@@ -851,6 +928,11 @@ footer span {
     font-size: 0.82rem;
     line-height: 1.6;
     margin-top: 14px;
+  }
+
+  #prints .about-body {
+    font-size: 0.82rem;
+    line-height: 1.6;
   }
 
   #prints { padding: 0 20px 60px; }  
@@ -876,8 +958,11 @@ footer span {
     text-align: center;
   }
 
-  footer { padding: 28px 20px; flex-direction: column; gap: 16px; align-items: flex-start; }
-  .footer-right { flex-direction: column; align-items: flex-start; gap: 12px; }
+  footer { padding: 28px 20px; flex-direction: column; gap: 14px; align-items: center; text-align: center; }
+  .footer-copyright, .footer-copyright-static { order: 2; max-width: 280px; }
+  .footer-right { order: 1; flex-direction: row; align-items: center; justify-content: center; gap: 28px; }
+  .footer-text-link { display: none; }
+  .footer-icon-link { display: inline-flex; align-items: center; justify-content: center; padding: 4px; }
   .sep { margin: 0 20px; }
   .page-content > footer { margin-left: -20px; margin-right: -20px; }
 
@@ -1191,15 +1276,19 @@ footer span {
   </section>
 
   <section id="prints">
-  <p class="about-body" style="font-size: .65rem;">Prints are available in various formats.<br>For any inquiries or pricing requests, contact me by email.</p>
-  <p class="about-body fr-only" style="font-style: italic; margin-top: 20px; color: var(--accent);font-size: .65rem;">Tirages disponibles en différents formats.<br>Pour toute demande d'infos ou devis, contactez-moi par email.</p>
+  <div class="prints-frame">
+  <p class="about-body" style="text-align: center; margin-left: auto; margin-right: auto;">Prints are available in various formats.<br>For any inquiries or pricing requests, contact me by email.</p>
+  <p class="about-body fr-only" style="font-style: italic; margin-top: 20px; color: var(--accent); text-align: center; margin-left: auto; margin-right: auto;">Tirages disponibles en différents formats.<br>Pour toute demande d'infos ou devis, contactez-moi par email.</p>
+  </div>
   </section>
   
   <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
 
@@ -1219,10 +1308,12 @@ footer span {
     <div class="page-grid mobile-grid" id="g-aerial-mobile"></div>
     <div style="height: 40px;"></div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1243,10 +1334,12 @@ footer span {
     <div class="page-grid mobile-grid" id="g-peaks-mobile"></div>
     <div style="height: 40px;"></div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1272,10 +1365,12 @@ footer span {
       <img src="images/photo390.jpg" style="width:100%; display:block; filter:grayscale(1) brightness(.85) contrast(1.3);"/>
     </div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1300,10 +1395,12 @@ footer span {
       <img src="images/photo590.jpg" style="width:100%; display:block;"/>
     </div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1333,10 +1430,12 @@ footer span {
       <img src="images/photo529.jpg" style="width:100%; display:block;"/>
     </div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1361,10 +1460,12 @@ footer span {
       <img src="images/photo681.jpg" style="width:100%; display:block;"/>
     </div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1384,10 +1485,12 @@ footer span {
     <div class="page-grid mobile-grid" id="g-africa-mobile"></div>
     <div style="height: 40px;"></div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1408,10 +1511,12 @@ footer span {
     <div class="page-grid mobile-grid" id="g-landscapes-mobile"></div>
     <div style="height: 40px;"></div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1441,10 +1546,12 @@ footer span {
     </div>
     <div id="g-mountains-2-mobile" class="mobile-grid" style="position:relative; overflow:hidden;"></div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
   </div>
@@ -1464,12 +1571,56 @@ footer span {
     <div class="page-grid mobile-grid" id="g-urban-mobile"></div>
     <div style="height: 40px;"></div>
         <footer>
-    <span>© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+    <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
     <div class="footer-right">
-      <a href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
-      <a href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+      <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+      <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+      <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
     </div>
   </footer>
+  </div>
+</div>
+
+<!-- LEGAL NOTICE -->
+<div id="p-legal" class="page">
+  <div class="page-content">
+    <p class="label">— Legal Notice</p>
+    <h1 class="legal-title">Legal Notice</h1>
+
+    <p class="legal-head">1. Website Editor</p>
+    <p class="page-desc">This website (outtrackstudio.com) is published by Margaux Pontie, in an individual and non-professional capacity, as a personal photography portfolio. For any question, you can contact me at margaux.pontie@gmail.com</p>
+    <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">Ce site (outtrackstudio.com) est publié par Margaux Pontie, à titre personnel et non professionnel, en tant que portfolio photographique. Pour toute question, vous pouvez me contacter à margaux.pontie@gmail.com</p>
+
+    <p class="legal-head">2. Hosting</p>
+    <p class="page-desc">This website is hosted by [hosting provider name], [hosting provider address].</p>
+    <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">Ce site est hébergé par [nom de l'hébergeur], [adresse de l'hébergeur].</p>
+
+    <p class="legal-head">3. Intellectual Property</p>
+    <p class="page-desc">All photographs, texts and visual content published on this website are the exclusive property of Margaux Pontie / Out.Track Studio. Any reproduction, distribution, modification or use of these elements, in whole or in part, without prior written consent, is strictly prohibited.</p>
+    <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">L'ensemble des photographies, textes et éléments visuels présents sur ce site sont la propriété exclusive de Margaux Pontie / Out.Track Studio. Toute reproduction, distribution, modification ou utilisation de ces éléments, en tout ou partie, sans autorisation écrite préalable, est strictement interdite.</p>
+
+    <p class="legal-head">4. Personal Data</p>
+    <p class="page-desc">This website does not collect any personal data, other than what is voluntarily shared through direct contact by email. No data is sold or transferred to any third party. For any request regarding your personal data, you can contact me at margaux.pontie@gmail.com</p>
+    <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">Ce site ne collecte aucune donnée personnelle, hormis celles transmises volontairement par email. Aucune donnée n'est vendue ni transmise à des tiers. Pour toute demande relative à vos données personnelles, vous pouvez me contacter à margaux.pontie@gmail.com</p>
+
+    <p class="legal-head">5. Liability</p>
+    <p class="page-desc">Despite the care taken in maintaining this website, Margaux Pontie cannot be held responsible for any errors, omissions or technical interruptions, nor for any damage resulting from the use of this website.</p>
+    <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">Malgré le soin apporté à ce site, Margaux Pontie ne peut être tenue responsable des erreurs, omissions ou interruptions techniques, ni des dommages résultant de l'utilisation de ce site.</p>
+
+    <p class="legal-head">6. Applicable Law</p>
+    <p class="page-desc">This legal notice is governed by French law. Any dispute relating to the use of this website falls under the jurisdiction of the French courts.</p>
+    <p class="page-desc fr-only" style="font-style: italic; color: var(--accent); margin-bottom: 60px;">Les présentes mentions légales sont régies par le droit français. Tout litige relatif à l'utilisation de ce site relève de la compétence des tribunaux français.</p>
+
+    <footer>
+      <span class="footer-copyright-static">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</span>
+      <div class="footer-right">
+        <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+        <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+        <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+        <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
+      </div>
+    </footer>
   </div>
 </div>
 
@@ -1500,7 +1651,7 @@ footer span {
   <div class="lb-count" id="lb-count"></div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const photos = [
   'images/photo010.jpg','images/photo011.jpg','images/photo014.jpg','images/photo015.jpg',
   'images/photo016.jpg','images/photo017.jpg','images/photo048.jpg','images/photo046.jpg',
