@@ -134,6 +134,8 @@ nav {
 .drop-menu a:last-child { border-bottom: none; }
 .drop-menu a:hover { color: var(--accent); padding-left: 24px; }
 
+.projects-trigger-icon { display: none; }
+
 /* ─── PORTRAIT MOBILE NAV ─── */
 @media (max-width: 700px) {
   nav {
@@ -198,6 +200,28 @@ nav {
   nav.project-nav .nav-right {
     flex-direction: column;
     align-items: flex-end;
+  }
+
+  nav.project-nav .projects-trigger-text {
+    display: none;
+  }
+
+  nav.project-nav .projects-trigger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(236, 233, 228, 0.4);
+  }
+
+  nav.project-nav .projects-trigger-icon span {
+    display: block;
+    width: 14px;
+    height: 1px;
+    background: var(--cream);
   }
 
   .dropdown .drop-menu {
@@ -901,11 +925,21 @@ footer span {
   margin-right: 0;
 }
 
+#p-legal .page-desc.fr-only {
+  margin-top: -20px;
+}
+
+#p-legal .page-content > footer {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
 .legal-head {
   font-size: .62rem;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--light);
   margin: 32px 0 10px;
 }
 
@@ -915,6 +949,13 @@ footer span {
   }
   #p-legal .legal-title {
     text-align: center;
+  }
+  #p-legal .page-desc {
+    font-size: 0.68rem;
+    line-height: 1.5;
+  }
+  #p-legal .legal-head {
+    font-size: 0.56rem;
   }
 }
 
@@ -931,8 +972,8 @@ footer span {
   }
 
   #prints .about-body {
-    font-size: 0.82rem;
-    line-height: 1.6;
+    font-size: 0.70rem;
+    line-height: 1.5;
   }
 
   #prints { padding: 0 20px 60px; }  
@@ -1234,7 +1275,10 @@ footer span {
     <li class="nav-home-only"><a onclick="goHome(); to('about')">About</a></li>
     <li class="nav-home-only"><a onclick="goHome(); to('portfolio')">Highlights</a></li>
   <li class="dropdown nav-projects-only">
-  <a href="#" onclick="handleProjectsClick(event)">Projects</a>
+  <a href="#" onclick="handleProjectsClick(event)" class="projects-trigger">
+    <span class="projects-trigger-text">Projects</span>
+    <span class="projects-trigger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+  </a>
   <div class="drop-menu">
     <div class="drop-menu-inner">
       <a onclick="goPage('aerial')">Aerial Perspectives</a>
@@ -1586,23 +1630,18 @@ footer span {
 <div id="p-legal" class="page">
   <div class="page-content">
     <p class="label">— Legal Notice</p>
-
     <p class="legal-head">1. Website Editor</p>
-    <p class="page-desc">This website (outtrackstudio.com) is published by Margaux Pontie, in an individual and non-professional capacity, as a personal photography portfolio. For any question, you can contact me by email : margaux.pontie@gmail.com</p>
-    <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">Ce site (outtrackstudio.com) est publié par Margaux Pontie, à titre personnel et non professionnel, en tant que portfolio photographique. Pour toute question, vous pouvez me contacter par email : margaux.pontie@gmail.com</p>
-
+    <p class="page-desc">This website (outtrackstudio.com) is published by Margaux Pontie, in an individual and non-professional capacity, as a personal photography portfolio. For any question, you can contact me by email : margaux.pontie@gmail.com.</p>
+    <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">Ce site (outtrackstudio.com) est publié par Margaux Pontie, à titre personnel et non professionnel, en tant que portfolio photographique. Pour toute question, vous pouvez me contacter par email : margaux.pontie@gmail.com.</p>
     <p class="legal-head">2. Hosting</p>
     <p class="page-desc">This website is hosted by OVHcloud.</p>
     <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">Ce site est hébergé par OVHcloud.</p>
-
     <p class="legal-head">3. Intellectual Property</p>
     <p class="page-desc">All photographs, texts and visual content published on this website are the exclusive property of Margaux Pontie / Out.Track Studio. Any reproduction, distribution, modification or use of these elements, in whole or in part, without prior written consent, is strictly prohibited.</p>
     <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">L'ensemble des photographies, textes et éléments visuels présents sur ce site sont la propriété exclusive de Margaux Pontie / Out.Track Studio. Toute reproduction, distribution, modification ou utilisation de ces éléments, en tout ou partie, sans autorisation écrite préalable, est strictement interdite.</p>
-
     <p class="legal-head">4. Personal Data</p>
     <p class="page-desc">This website does not collect any personal data, other than what is voluntarily shared through direct contact by email. No data is sold or transferred to any third party.</p>
     <p class="page-desc fr-only" style="font-style: italic; color: var(--accent);">Ce site ne collecte aucune donnée personnelle, hormis celles transmises volontairement par email. Aucune donnée n'est vendue ni transmise à des tiers.</p>
-
     <p class="legal-head">5. Applicable Law</p>
     <p class="page-desc">This legal notice is governed by French law. Any dispute relating to the use of this website falls under the jurisdiction of the French courts.</p>
     <p class="page-desc fr-only" style="font-style: italic; color: var(--accent); margin-bottom: 60px;">Les présentes mentions légales sont régies par le droit français. Tout litige relatif à l'utilisation de ce site relève de la compétence des tribunaux français.</p>
