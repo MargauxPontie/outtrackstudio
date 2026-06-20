@@ -1295,13 +1295,13 @@ footer span {
   <div class="drop-menu">
     <div class="drop-menu-inner">
       <a onclick="goPage('aerial')">Aerial Perspectives</a>
-      <a onclick="goPage('peaks')">Contours of Peaks</a>
-      <a onclick="goPage('india')">Portraits of India</a>
-      <a onclick="goPage('himalaya')">Echoes of Himalaya</a>
-      <a onclick="goPage('asia')">Roads across Asia</a>
       <a onclick="goPage('latam')">Nomad in LatinAmerica</a>
-      <a onclick="goPage('africa')">Light of the Orient</a>
+      <a onclick="goPage('asia')">Unseen Roads of Asia</a>
+      <a onclick="goPage('himalaya')">Echoes of Himalaya</a>
+      <a onclick="goPage('india')">Portraits of India</a>
+      <a onclick="goPage('africa')">Orient Lights</a>
       <a onclick="goPage('landscapes')">Arctic Horizons</a>
+      <a onclick="goPage('peaks')">Contours of Peaks</a>
       <a onclick="goPage('mountains')">Mountains &amp; Summits</a>
       <a onclick="goPage('urban')">Urban &amp; Cities Shadows</a>
     </div>
@@ -1466,8 +1466,8 @@ footer span {
 <!-- ROADS ACROSS ASIA -->
 <div id="p-asia" class="page">
   <div class="page-hero">
-    <img src="images/photo599.jpg" alt="Roads across Asia"/>
-    <div class="page-hero-title"><h1>Roads across Asia</h1></div>
+    <img src="images/photo599.jpg" alt="Unseen Roads of Asia"/>
+    <div class="page-hero-title"><h1>Unseen Roads of Asia</h1></div>
   </div>
   <div class="page-content">
     <p class="label">— Projects</p>
@@ -1483,7 +1483,13 @@ footer span {
     <br><br>
     <p class="page-desc">Asia is a continent of remarkable spiritual richness, where a multitude of religions and philosophies have coexisted for thousands of years. Indeed, Buddhism, Hinduism, Sikhism, Jainism, Shintoism, Taoism, Confucianism, Islam, as well as Christianity, Judaism, and various local religions in certain regions, intertwine and profoundly shape cultures, landscapes, and ways of life. This religious diversity reflects a shared universal quest : to understand humanity's place in the world and to establish a connection with the sacred.</p>
     <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">L'Asie est un continent d'une grande richesse spirituelle, où coexistent depuis des millénaires une multitude de religions et de philosophies. En effet, le bouddhisme, l'hindouisme, le sikhisme, le jaïnisme, le shintoïsme, le taoïsme, le confucianisme, l'islam, mais aussi le christianisme, le judaïsme et diverses religions locales dans certaines régions, s'y entremêlent et façonnent profondément les cultures, les paysages et les modes de vie. Cette diversité religieuse témoigne d'une même quête universelle : comprendre la place de l'homme dans le monde et établir un lien avec le sacré.</p>
-    <div style="width:100%; margin: 40px 0;">
+    <div class="desktop-only" style="width:100%; margin: 40px 0; display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+      <img src="images/photo576.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"/>
+      <img src="images/photo574.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"/>
+      <img src="images/photo572.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"/>
+      <img src="images/photo553.jpg" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"/>
+    </div>
+    <div class="mobile-grid" style="width:100%; margin: 40px 0;">
       <img src="images/photo529.jpg" style="width:100%; display:block;"/>
     </div>
         <footer>
@@ -1531,8 +1537,8 @@ footer span {
 <!-- LIGHT OF THE ORIENT -->
 <div id="p-africa" class="page">
   <div class="page-hero">
-    <img src="images/photo712.jpg" alt="Light of the Orient"/>
-    <div class="page-hero-title"><h1>Light of the Orient</h1></div>
+    <img src="images/photo712.jpg" alt="Orient Lights"/>
+    <div class="page-hero-title"><h1>Orient Lights</h1></div>
   </div>
   <div class="page-content">
     <p class="label">— Projects</p>
@@ -1676,13 +1682,13 @@ footer span {
   <div class="mobile-fullmenu-close" onclick="closeMobileMenu()"></div>
   <ul>
     <li><a onclick="closeMobileMenu(); goPage('aerial')">Aerial Perspectives</a></li>
-    <li><a onclick="closeMobileMenu(); goPage('peaks')">Contours of Peaks</a></li>
-    <li><a onclick="closeMobileMenu(); goPage('india')">Portraits of India</a></li>
-    <li><a onclick="closeMobileMenu(); goPage('himalaya')">Echoes of Himalaya</a></li>
-    <li><a onclick="closeMobileMenu(); goPage('asia')">Roads across Asia</a></li>
     <li><a onclick="closeMobileMenu(); goPage('latam')">Nomad in LatinAmerica</a></li>
-    <li><a onclick="closeMobileMenu(); goPage('africa')">Light of the Orient</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('asia')">Unseen Roads of Asia</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('himalaya')">Echoes of Himalaya</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('india')">Portraits of India</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('africa')">Orient Lights</a></li>
     <li><a onclick="closeMobileMenu(); goPage('landscapes')">Arctic Horizons</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('peaks')">Contours of Peaks</a></li>
     <li><a onclick="closeMobileMenu(); goPage('mountains')">Mountains &amp; Summits</a></li>
     <li><a onclick="closeMobileMenu(); goPage('urban')">Urban &amp; Cities Shadows</a></li>
   </ul>
@@ -1714,7 +1720,7 @@ const photos = [
 
 const byProject = {
   'g-aerial': ['images/photo110.jpg','images/photo111.jpg','images/photo100.jpg','images/photo101.jpg','images/photo104.jpg','images/photo102.jpg','images/photo170.jpg','images/photo130.jpg','images/photo114.jpg','images/photo131.jpg','images/photo135.jpg','images/photo133.jpg','images/photo140.jpg','images/photo142.jpg','images/photo150.jpg','images/photo151.jpg','images/photo134.jpg','images/photo115.jpg','images/photo155.jpg','images/photo121.jpg','images/photo125.jpg','images/photo124.jpg','images/photo159.jpg','images/photo160.jpg','images/photo120.jpg','images/photo132.jpg'],
-  'g-peaks': ['images/photo206.jpg','images/photo202.jpg','images/photo205.jpg','images/photo207.jpg'],
+  'g-peaks': ['images/photo206.jpg','images/photo202.jpg','images/photo207.jpg'],
   'g-india': ['images/photo302.jpg','images/photo306.jpg','images/photo362.jpg','images/photo361.jpg','images/photo304.jpg','images/photo305.jpg','images/photo312.jpg','images/photo310.jpg','images/photo320.jpg','images/photo329.jpg','images/photo325.jpg','images/photo326.jpg','images/photo360.jpg','images/photo330.jpg','images/photo331.jpg','images/photo332.jpg','images/photo363.jpg','images/photo365.jpg','images/photo314.jpg','images/photo315.jpg'],
   'g-himalaya': ['images/photo402.jpg','images/photo490.jpg','images/photo445.jpg','images/photo404.jpg','images/photo406.jpg','images/photo407.jpg','images/photo403.jpg','images/photo408.jpg','images/photo412.jpg','images/photo410.jpg','images/photo413.jpg','images/photo414.jpg','images/photo415.jpg','images/photo416.jpg','images/photo442.jpg','images/photo440.jpg','images/photo423.jpg','images/photo422.jpg','images/photo417.jpg','images/photo418.jpg','images/photo409.jpg','images/photo444.jpg','images/photo438.jpg','images/photo439.jpg','images/photo436.jpg','images/photo437.jpg','images/photo424.jpg','images/photo425.jpg','images/photo427.jpg','images/photo420.jpg','images/photo426.jpg','images/photo419.jpg','images/photo428.jpg','images/photo429.jpg','images/photo430.jpg','images/photo435.jpg','images/photo446.jpg','images/photo447.jpg','images/photo448.jpg','images/photo450.jpg'],
   'g-asia-1': ['images/photo500.jpg','images/photo501.jpg','images/photo511.jpg','images/photo531.jpg','images/photo503.jpg','images/photo502.jpg','images/photo536.jpg','images/photo535.jpg','images/photo504.jpg','images/photo505.jpg','images/photo506.jpg','images/photo507.jpg','images/photo508.jpg','images/photo509.jpg','images/photo510.jpg','images/photo512.jpg','images/photo517.jpg','images/photo518.jpg','images/photo519.jpg','images/photo520.jpg','images/photo513.jpg','images/photo514.jpg','images/photo515.jpg','images/photo524.jpg','images/photo522.jpg','images/photo523.jpg','images/photo521.jpg','images/photo516.jpg','images/photo532.jpg','images/photo530.jpg','images/photo525.jpg','images/photo526.jpg','images/photo534.jpg','images/photo528.jpg','images/photo539.jpg','images/photo540.jpg','images/photo527.jpg','images/photo533.jpg','images/photo538.jpg','images/photo537.jpg'],
@@ -1741,7 +1747,7 @@ const photosMobile = [
 
 const byProjectMobile = {
   'g-aerial-mobile':      [...byProject['g-aerial']],
-  'g-peaks-mobile':       ['images/photo206.jpg','images/photo202.jpg','images/photo205.jpg','images/photo207.jpg'],
+  'g-peaks-mobile':       ['images/photo206.jpg','images/photo202.jpg','images/photo207.jpg'],
   'g-india-mobile':       ['images/photo302.jpg','images/photo306.jpg','images/photo304.jpg','images/photo305.jpg','images/photo312.jpg','images/photo310.jpg','images/photo320.jpg','images/photo329.jpg','images/photo325.jpg','images/photo326.jpg','images/photo360.jpg','images/photo330.jpg','images/photo331.jpg','images/photo332.jpg','images/photo363.jpg','images/photo315.jpg'],
   'g-himalaya-mobile':    ['images/photo402.jpg','images/photo490.jpg','images/photo445.jpg','images/photo404.jpg','images/photo406.jpg','images/photo407.jpg','images/photo403.jpg','images/photo408.jpg','images/photo412.jpg','images/photo410.jpg','images/photo413.jpg','images/photo414.jpg','images/photo415.jpg','images/photo416.jpg','images/photo442.jpg','images/photo440.jpg','images/photo417.jpg','images/photo418.jpg','images/photo423.jpg','images/photo422.jpg','images/photo409.jpg','images/photo444.jpg','images/photo439.jpg','images/photo438.jpg','images/photo436.jpg','images/photo437.jpg','images/photo424.jpg','images/photo425.jpg','images/photo419.jpg','images/photo426.jpg','images/photo427.jpg','images/photo420.jpg','images/photo428.jpg','images/photo429.jpg','images/photo430.jpg','images/photo435.jpg','images/photo446.jpg','images/photo447.jpg','images/photo448.jpg','images/photo450.jpg'],
   'g-asia-1-mobile':      ['images/photo501.jpg','images/photo500.jpg','images/photo511.jpg','images/photo531.jpg','images/photo503.jpg','images/photo502.jpg','images/photo536.jpg','images/photo535.jpg','images/photo504.jpg','images/photo505.jpg','images/photo506.jpg','images/photo507.jpg','images/photo508.jpg','images/photo512.jpg','images/photo509.jpg','images/photo510.jpg','images/photo518.jpg','images/photo519.jpg','images/photo520.jpg','images/photo515.jpg','images/photo514.jpg','images/photo513.jpg','images/photo521.jpg','images/photo516.jpg','images/photo522.jpg','images/photo523.jpg','images/photo532.jpg','images/photo530.jpg','images/photo534.jpg','images/photo525.jpg','images/photo539.jpg','images/photo540.jpg','images/photo527.jpg','images/photo533.jpg','images/photo538.jpg','images/photo537.jpg'],
