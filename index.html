@@ -436,7 +436,8 @@ nav {
 #g-asia-2,
 #g-latam,
 #g-africa,
-#g-landscapes {
+#g-landscapes,
+#g-olympics {
   gap: 10px;
   margin-left: 0;
   margin-right: 0;
@@ -483,9 +484,9 @@ nav {
 #p-mountains #g-mountains-2 { grid-template-columns: repeat(4, 1fr); }
 #p-mountains #g-mountains-2 .cell { aspect-ratio: 2/3; }
 
-/* Olympics grid – 3 cols portrait */
+/* Olympics grid – same as Arctic Horizons */
 #p-olympics .page-grid { grid-template-columns: repeat(4, 1fr); }
-#p-olympics .page-grid .cell { aspect-ratio: 2/3; }
+#p-olympics .page-grid .cell { aspect-ratio: 1/1; }
 
 /* ─── FOOTER ─── */
 footer {
@@ -1204,12 +1205,12 @@ footer span {
   }
   #p-urban .mobile-grid .cell { aspect-ratio: 3/2; }
 
-  /* Olympics mobile */
+  /* Olympics mobile – same as Arctic Horizons */
   #p-olympics .mobile-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4px;
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
-  #p-olympics .mobile-grid .cell { aspect-ratio: 2/3; }
+  #p-olympics .mobile-grid .cell { aspect-ratio: 4/3; }
 
   #g-mountains-2-mobile {
     display: block !important;
@@ -1547,7 +1548,7 @@ footer span {
 <!-- JO PARIS 2024 -->
 <div id="p-olympics" class="page">
   <div class="page-hero">
-    <img src="images/photo_jo_hero.jpg" alt="Olympics Games Paris 2024"/>
+    <img src="images/photo1140.jpg" alt="Olympics Games Paris 2024"/>
     <div class="page-hero-title"><h1>Olympics Games Paris 2024</h1></div>
   </div>
   <div class="page-content">
@@ -1952,7 +1953,7 @@ const byProject = {
   'g-mountains-1': ['images/photo804.jpg','images/photo805.jpg','images/photo808.jpg','images/photo807.jpg','images/photo806.jpg','images/photo809.jpg','images/photo801.jpg','images/photo814.jpg','images/photo810.jpg','images/photo811.jpg','images/photo812.jpg','images/photo813.jpg','images/photo816.jpg','images/photo817.jpg','images/photo822.jpg','images/photo823.jpg','images/photo824.jpg','images/photo825.jpg','images/photo826.jpg','images/photo827.jpg','images/photo828.jpg','images/photo829.jpg','images/photo830.jpg','images/photo831.jpg','images/photo835.jpg','images/photo820.jpg','images/photo845.jpg','images/photo818.jpg'],
   'g-mountains-2': ['images/photo840.jpg','images/photo803.jpg','images/photo842.jpg','images/photo843.jpg','images/photo844.jpg','images/photo841.jpg','images/photo846.jpg','images/photo847.jpg'],
   'g-urban': ['images/photo1062.jpg','images/photo1065.jpg','images/photo1060.jpg','images/photo1061.jpg','images/photo1010.jpg','images/photo1052.jpg','images/photo1011.jpg','images/photo1054.jpg','images/photo1050.jpg','images/photo1049.jpg','images/photo1030.jpg','images/photo1045.jpg','images/photo1047.jpg','images/photo1048.jpg','images/photo1015.jpg','images/photo1017.jpg','images/photo1046.jpg','images/photo1016.jpg','images/photo1033.jpg','images/photo1013.jpg','images/photo1041.jpg','images/photo1014.jpg','images/photo1031.jpg','images/photo1012.jpg','images/photo1034.jpg','images/photo1040.jpg','images/photo1019.jpg','images/photo1018.jpg'],
-  'g-olympics': ['images/photo_jo_001.jpg','images/photo_jo_002.jpg','images/photo_jo_003.jpg','images/photo_jo_004.jpg']
+  'g-olympics': ['images/photo1100.jpg','images/photo1101.jpg','images/photo1102.jpg','images/photo1103.jpg','images/photo1104.jpg','images/photo1105.jpg','images/photo1106.jpg','images/photo1107.jpg','images/photo1108.jpg','images/photo1109.jpg','images/photo1110.jpg','images/photo1111.jpg','images/photo1112.jpg','images/photo1113.jpg','images/photo1114.jpg','images/photo1115.jpg','images/photo1116.jpg','images/photo1117.jpg','images/photo1118.jpg','images/photo1119.jpg','images/photo1120.jpg','images/photo1121.jpg','images/photo1122.jpg','images/photo1123.jpg','images/photo1124.jpg','images/photo1125.jpg','images/photo1126.jpg','images/photo1127.jpg','images/photo1128.jpg','images/photo1129.jpg','images/photo1130.jpg','images/photo1131.jpg','images/photo1132.jpg','images/photo1133.jpg','images/photo1134.jpg','images/photo1135.jpg','images/photo1136.jpg','images/photo1137.jpg','images/photo1138.jpg','images/photo1139.jpg']
 };
 
 const photosMobile = [
@@ -1979,7 +1980,6 @@ const byProjectMobile = {
   'g-landscapes-mobile':  ['images/photo912.jpg','images/photo910.jpg','images/photo901.jpg','images/photo903.jpg','images/photo904.jpg','images/photo907.jpg','images/photo908.jpg','images/photo919.jpg','images/photo915.jpg','images/photo920.jpg','images/photo913.jpg','images/photo914.jpg'],
   'g-mountains-1-mobile': ['images/photo804.jpg','images/photo805.jpg','images/photo808.jpg','images/photo807.jpg','images/photo806.jpg','images/photo809.jpg','images/photo801.jpg','images/photo814.jpg','images/photo810.jpg','images/photo811.jpg','images/photo812.jpg','images/photo813.jpg','images/photo816.jpg','images/photo817.jpg','images/photo822.jpg','images/photo823.jpg','images/photo824.jpg','images/photo825.jpg','images/photo826.jpg','images/photo827.jpg','images/photo828.jpg','images/photo829.jpg','images/photo830.jpg','images/photo831.jpg','images/photo835.jpg','images/photo820.jpg'],
   'g-urban-mobile':       [...byProject['g-urban']],
-  /* ── ADD YOUR JO PARIS 2024 MOBILE PHOTOS HERE ── */
   'g-olympics-mobile':    [...byProject['g-olympics']]
 };
 
