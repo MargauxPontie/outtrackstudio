@@ -99,7 +99,7 @@ nav {
   top: 100%;
   right: 0;
   padding-top: 16px;
-  min-width: 220px;
+  min-width: 240px;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-4px);
@@ -133,6 +133,13 @@ nav {
 
 .drop-menu a:last-child { border-bottom: none; }
 .drop-menu a:hover { color: var(--accent); padding-left: 24px; }
+
+.drop-menu .drop-divider {
+  height: 1px;
+  background: var(--mid);
+  margin: 4px 0;
+  pointer-events: none;
+}
 
 .projects-trigger-icon { display: none; }
 
@@ -476,6 +483,10 @@ nav {
 #p-mountains #g-mountains-2 { grid-template-columns: repeat(4, 1fr); }
 #p-mountains #g-mountains-2 .cell { aspect-ratio: 2/3; }
 
+/* Olympics grid – 3 cols portrait */
+#p-olympics .page-grid { grid-template-columns: repeat(4, 1fr); }
+#p-olympics .page-grid .cell { aspect-ratio: 2/3; }
+
 /* ─── FOOTER ─── */
 footer {
   padding: 40px 44px;
@@ -530,6 +541,123 @@ footer span {
 
 .footer-icon-link {
   display: none;
+}
+
+/* ─── RECOGNITION PAGE ─── */
+.recognition-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  border: 1px solid var(--mid);
+  padding: 48px 52px;
+  margin-bottom: 60px;
+}
+
+.recognition-text-side .rec-year {
+  font-size: .55rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.recognition-text-side .rec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: .04em;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.recognition-text-side .rec-title a {
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mid);
+  transition: color .25s, border-color .25s;
+}
+.recognition-text-side .rec-title a:hover { color: var(--accent); border-color: var(--accent); }
+
+.recognition-text-side .rec-subtitle {
+  font-size: var(--body-fs);
+  color: var(--accent);
+  letter-spacing: .08em;
+  margin-bottom: 22px;
+  font-style: italic;
+}
+
+.recognition-text-side .rec-body {
+  font-size: var(--body-fs);
+  line-height: 1.75;
+  color: var(--light);
+  letter-spacing: .03em;
+}
+
+.recognition-text-side .rec-body strong {
+  font-weight: 700;
+  color: var(--white);
+}
+
+.recognition-text-side .rec-body.fr-only strong {
+  color: var(--accent);
+}
+
+.recognition-carousel {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--dark);
+}
+
+.recognition-carousel .rc-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .75s ease;
+}
+
+.recognition-carousel .rc-slide.rc-active {
+  opacity: 1;
+}
+
+.recognition-carousel .rc-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  filter: brightness(.92);
+  transition: filter .4s;
+}
+
+.recognition-carousel .rc-slide img:hover { filter: brightness(1); }
+
+.rc-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.rc-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--mid);
+  cursor: pointer;
+  transition: background .3s;
+}
+.rc-dot.rc-dot-active { background: var(--accent); }
+
+@media (max-width: 700px) {
+  .recognition-block {
+    grid-template-columns: 1fr;
+    padding: 0;
+    border: none;
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+  .recognition-carousel { aspect-ratio: 4/3; }
 }
 
 </style>
@@ -1076,6 +1204,13 @@ footer span {
   }
   #p-urban .mobile-grid .cell { aspect-ratio: 3/2; }
 
+  /* Olympics mobile */
+  #p-olympics .mobile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+  #p-olympics .mobile-grid .cell { aspect-ratio: 2/3; }
+
   #g-mountains-2-mobile {
     display: block !important;
     position: relative;
@@ -1262,6 +1397,12 @@ footer span {
   line-height: 1.4;
 }
 
+.mobile-fullmenu ul li.menu-divider {
+  height: 1px;
+  background: var(--mid);
+  margin: 8px 0;
+}
+
 .mobile-fullmenu ul li a:active { color: var(--accent); }
 
 .mobile-fullmenu-footer {
@@ -1294,6 +1435,8 @@ footer span {
   </a>
   <div class="drop-menu">
     <div class="drop-menu-inner">
+      <a onclick="goPage('recognition')">Recognition &amp; Exhibitions</a>
+      <div class="drop-divider"></div>
       <a onclick="goPage('aerial')">Aerial Perspectives</a>
       <a onclick="goPage('latam')">Nomad in LatinAmerica</a>
       <a onclick="goPage('asia')">Crossroads of Asia</a>
@@ -1304,6 +1447,7 @@ footer span {
       <a onclick="goPage('peaks')">Contours of Peaks</a>
       <a onclick="goPage('mountains')">Mountains &amp; Summits</a>
       <a onclick="goPage('urban')">Urban &amp; Cities Shadows</a>
+      <a onclick="goPage('olympics')">Olympics Games Paris 2024</a>
     </div>
   </div>
   </li>
@@ -1319,7 +1463,7 @@ footer span {
 
   <section id="about">
     <p class="label">— About</p>
-    <p class="about-title">See Different. <br>Off the Line | New Horizons.</p>
+    <p class="about-title">See Different. <br>Off The Line | New Horizons.</p>
     <p class="about-body">Out.Track Studio is a creative space at the intersection of art, photography, perspective and exploration.<br>From the most natural and wild landscapes to urban environments, each project reflects a desire to step beyond limits : Physically, mentally and creatively.<br></p>
     <p class="about-body fr-only" style="font-style: italic; margin-top: 20px; color: var(--accent);">Out.Track Studio est un espace créatif au croisement de l'art, la photographie, la perception et l'exploration.<br>Des territoires reculés aux milieux urbains, chaque projet incarne une volonté de repousser les limites.</p>
   </section>
@@ -1349,6 +1493,80 @@ footer span {
     </div>
   </footer>
 
+</div>
+
+<!-- RECOGNITION & EXHIBITIONS -->
+<div id="p-recognition" class="page">
+  <div class="page-hero">
+    <img src="images/photo_recognition_hero.jpg" alt="Recognition &amp; Exhibitions"/>
+    <div class="page-hero-title"><h1>Recognition &amp; Exhibitions</h1></div>
+  </div>
+  <div class="page-content">
+    <p class="label">— Recognition &amp; Exhibitions</p>
+    <p class="page-desc">Awards, official selections, and exhibitions recognizing the photographic work of Out.Track Studio.</p>
+    <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Distinctions, sélections officielles et expositions témoignant du parcours photographique d'Out.Track Studio.</p>
+
+    <!-- ── CHAMONIX BLOCK ── -->
+    <div class="recognition-block">
+      <div class="recognition-text-side">
+        <p class="rec-year">— 2026</p>
+        <p class="rec-title"><a href="https://www.chamonixphotofestival.com" target="_blank">Chamonix Photos Festival</a></p>
+        <p class="rec-subtitle">France</p>
+        <p class="rec-body">These two photographs were selected among the <strong>finalists of the Chamonix Photos Festival 2026</strong>, in the categories « Macro &amp; Proxy » and « Animal Life ». The first one captures a herd of alpacas roaming through tall grasses at the foot of the Chimborazo Volcano, in Ecuador. The second one immortalizes the hatching of baby turtles on Chacahua Beach, in the state of Oaxaca, Mexico.<br><br>Both images will be exhibited in Chamonix from <strong>October 23 to 25, 2026</strong>, during the festival. This selection rewards a photographic approach centered on nature, wildlife and the celebration of scenes as rare as they are authentic.</p>
+        <p class="rec-body fr-only" style="font-style: italic; color: var(--accent); margin-top: 14px;">Ces deux photographies ont été sélectionnées parmi les <strong>finalistes du Chamonix Photos Festival 2026</strong>, dans les catégories « Macro &amp; Proxy » et « Vie Animale ». La première capture un troupeau d'alpagas évoluant dans les hautes herbes, au pied du Volcan Chimborazo, en Équateur. La seconde, immortalise l'éclosion de bébés tortues sur la Plage de Chacahua, dans l'État d'Oaxaca, au Mexique.<br><br>Ces deux images seront exposées à Chamonix du <strong>23 au 25 octobre 2026</strong>, à l'occasion du festival. Cette sélection vient récompenser une démarche photographique tournée vers la nature, le vivant et la mise en lumière de scènes aussi rares qu'authentiques.</p>
+      </div>
+      <div>
+        <div class="recognition-carousel" id="rc-chamonix">
+          <div class="rc-slide rc-active">
+            <img src="images/photo_chamonix_1.jpg" alt="Chamonix finalist — photo 1" onclick="lbOpenArr(['images/photo_chamonix_1.jpg','images/photo_chamonix_2.jpg'],0)"/>
+          </div>
+          <div class="rc-slide">
+            <img src="images/photo_chamonix_2.jpg" alt="Chamonix finalist — photo 2" onclick="lbOpenArr(['images/photo_chamonix_1.jpg','images/photo_chamonix_2.jpg'],1)"/>
+          </div>
+        </div>
+        <div class="rc-dots" id="rc-dots-chamonix">
+          <div class="rc-dot rc-dot-active" onclick="rcGoto('chamonix',0)"></div>
+          <div class="rc-dot" onclick="rcGoto('chamonix',1)"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 40px;"></div>
+    <footer>
+      <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
+      <div class="footer-right">
+        <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+        <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+        <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+        <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- JO PARIS 2024 -->
+<div id="p-olympics" class="page">
+  <div class="page-hero">
+    <img src="images/photo_jo_hero.jpg" alt="Olympics Games Paris 2024"/>
+    <div class="page-hero-title"><h1>Olympics Games Paris 2024</h1></div>
+  </div>
+  <div class="page-content">
+    <p class="label">— Projects</p>
+    <p class="page-desc">Paris, summer 2024. For a few weeks, the capital becomes the stage for the Olympic Games. From the Grand Palais to the Château de Versailles, by way of the Stade de France and other iconic sites, places steeped in history are transformed into arenas of competition. This series captures the intensity of an extraordinary event, where athletic performance meets exceptional heritage. Between the athletes' focus, the crowd's exhilaration, the beauty of reimagined sites and the emotion of decisive moments, these images bear witness to a city holding its breath before each event and vibrating in unison with every feat.</p>
+    <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">Paris, été 2024. Pendant quelques semaines, la capitale devient le théâtre des Jeux Olympiques. Du Grand Palais au Château de Versailles, en passant par le Stade de France et d'autres sites emblématiques, des lieux chargés d'histoire se transforment en scènes de compétition. Cette série capture l'intensité d'un événement hors norme, où la performance sportive rencontre un patrimoine exceptionnel. Entre la concentration des athlètes, l'effervescence du public, la beauté des sites réinventés et l'émotion des instants décisifs, ces images témoignent d'une ville qui suspend son souffle avant chaque épreuve et vibre à l'unisson à chaque exploit.</p>
+    <div class="page-grid desktop-only" id="g-olympics"></div>
+    <div class="page-grid mobile-grid" id="g-olympics-mobile"></div>
+    <div style="height: 40px;"></div>
+    <footer>
+      <a class="footer-copyright" onclick="goPage('legal')">© 2025 Out.Track Studio — All rights reserved. No use, reproduction or distribution without permission.</a>
+      <div class="footer-right">
+        <a class="footer-text-link" href="https://www.instagram.com/out.track_vision" target="_blank">@out.track_vision</a>
+        <a class="footer-text-link" href="mailto:margaux.pontie@gmail.com">margaux.pontie@gmail.com</a>
+        <a class="footer-icon-link" href="https://www.instagram.com/out.track_vision" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"></circle></svg></a>
+        <a class="footer-icon-link" href="mailto:margaux.pontie@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
+      </div>
+    </footer>
+  </div>
 </div>
 
 <!-- AERIAL PERSPECTIVES -->
@@ -1681,6 +1899,8 @@ footer span {
 <div class="mobile-fullmenu" id="mobile-fullmenu">
   <div class="mobile-fullmenu-close" onclick="closeMobileMenu()"></div>
   <ul>
+    <li><a onclick="closeMobileMenu(); goPage('recognition')">Recognition &amp; Exhibitions</a></li>
+    <li class="menu-divider"></li>
     <li><a onclick="closeMobileMenu(); goPage('aerial')">Aerial Perspectives</a></li>
     <li><a onclick="closeMobileMenu(); goPage('latam')">Nomad in LatinAmerica</a></li>
     <li><a onclick="closeMobileMenu(); goPage('asia')">Crossroads of Asia</a></li>
@@ -1691,6 +1911,7 @@ footer span {
     <li><a onclick="closeMobileMenu(); goPage('peaks')">Contours of Peaks</a></li>
     <li><a onclick="closeMobileMenu(); goPage('mountains')">Mountains &amp; Summits</a></li>
     <li><a onclick="closeMobileMenu(); goPage('urban')">Urban &amp; Cities Shadows</a></li>
+    <li><a onclick="closeMobileMenu(); goPage('olympics')">Olympics Games Paris 2024</a></li>
   </ul>
   <div class="mobile-fullmenu-footer">— Projects —</div>
 </div>
@@ -1730,7 +1951,15 @@ const byProject = {
   'g-landscapes': ['images/photo901.jpg','images/photo902.jpg','images/photo903.jpg','images/photo904.jpg','images/photo905.jpg','images/photo906.jpg','images/photo907.jpg','images/photo908.jpg','images/photo909.jpg','images/photo910.jpg','images/photo911.jpg','images/photo912.jpg','images/photo913.jpg','images/photo924.jpg','images/photo916.jpg','images/photo915.jpg','images/photo914.jpg','images/photo920.jpg','images/photo918.jpg','images/photo919.jpg'],
   'g-mountains-1': ['images/photo804.jpg','images/photo805.jpg','images/photo808.jpg','images/photo807.jpg','images/photo806.jpg','images/photo809.jpg','images/photo801.jpg','images/photo814.jpg','images/photo810.jpg','images/photo811.jpg','images/photo812.jpg','images/photo813.jpg','images/photo816.jpg','images/photo817.jpg','images/photo822.jpg','images/photo823.jpg','images/photo824.jpg','images/photo825.jpg','images/photo826.jpg','images/photo827.jpg','images/photo828.jpg','images/photo829.jpg','images/photo830.jpg','images/photo831.jpg','images/photo835.jpg','images/photo820.jpg','images/photo845.jpg','images/photo818.jpg'],
   'g-mountains-2': ['images/photo840.jpg','images/photo803.jpg','images/photo842.jpg','images/photo843.jpg','images/photo844.jpg','images/photo841.jpg','images/photo846.jpg','images/photo847.jpg'],
-  'g-urban': ['images/photo1062.jpg','images/photo1065.jpg','images/photo1060.jpg','images/photo1061.jpg','images/photo1010.jpg','images/photo1052.jpg','images/photo1011.jpg','images/photo1054.jpg','images/photo1050.jpg','images/photo1049.jpg','images/photo1030.jpg','images/photo1045.jpg','images/photo1047.jpg','images/photo1048.jpg','images/photo1015.jpg','images/photo1017.jpg','images/photo1046.jpg','images/photo1016.jpg','images/photo1033.jpg','images/photo1013.jpg','images/photo1041.jpg','images/photo1014.jpg','images/photo1031.jpg','images/photo1012.jpg','images/photo1034.jpg','images/photo1040.jpg','images/photo1019.jpg','images/photo1018.jpg']
+  'g-urban': ['images/photo1062.jpg','images/photo1065.jpg','images/photo1060.jpg','images/photo1061.jpg','images/photo1010.jpg','images/photo1052.jpg','images/photo1011.jpg','images/photo1054.jpg','images/photo1050.jpg','images/photo1049.jpg','images/photo1030.jpg','images/photo1045.jpg','images/photo1047.jpg','images/photo1048.jpg','images/photo1015.jpg','images/photo1017.jpg','images/photo1046.jpg','images/photo1016.jpg','images/photo1033.jpg','images/photo1013.jpg','images/photo1041.jpg','images/photo1014.jpg','images/photo1031.jpg','images/photo1012.jpg','images/photo1034.jpg','images/photo1040.jpg','images/photo1019.jpg','images/photo1018.jpg'],
+  /* ── ADD YOUR JO PARIS 2024 PHOTOS HERE ──
+     Replace the placeholder filenames below with your actual photo filenames.
+     Example: 'images/photo_jo_001.jpg','images/photo_jo_002.jpg', etc. */
+  'g-olympics': [
+    'images/photo_jo_001.jpg','images/photo_jo_002.jpg','images/photo_jo_003.jpg',
+    'images/photo_jo_004.jpg','images/photo_jo_005.jpg','images/photo_jo_006.jpg',
+    'images/photo_jo_007.jpg','images/photo_jo_008.jpg','images/photo_jo_009.jpg'
+  ]
 };
 
 const photosMobile = [
@@ -1757,6 +1986,8 @@ const byProjectMobile = {
   'g-landscapes-mobile':  ['images/photo912.jpg','images/photo910.jpg','images/photo901.jpg','images/photo903.jpg','images/photo904.jpg','images/photo907.jpg','images/photo908.jpg','images/photo919.jpg','images/photo915.jpg','images/photo920.jpg','images/photo913.jpg','images/photo914.jpg'],
   'g-mountains-1-mobile': ['images/photo804.jpg','images/photo805.jpg','images/photo808.jpg','images/photo807.jpg','images/photo806.jpg','images/photo809.jpg','images/photo801.jpg','images/photo814.jpg','images/photo810.jpg','images/photo811.jpg','images/photo812.jpg','images/photo813.jpg','images/photo816.jpg','images/photo817.jpg','images/photo822.jpg','images/photo823.jpg','images/photo824.jpg','images/photo825.jpg','images/photo826.jpg','images/photo827.jpg','images/photo828.jpg','images/photo829.jpg','images/photo830.jpg','images/photo831.jpg','images/photo835.jpg','images/photo820.jpg'],
   'g-urban-mobile':       [...byProject['g-urban']],
+  /* ── ADD YOUR JO PARIS 2024 MOBILE PHOTOS HERE ── */
+  'g-olympics-mobile':    [...byProject['g-olympics']]
 };
 
 const REF_TEXT = "Out.Track Studio est un espace créatif au croisement de l'art, la photographie, la perception et l'exploration. Des territoires reculés aux milieux urbains, chaque projet incarne une volonté de repousser les limites.";
@@ -1870,6 +2101,7 @@ Object.keys(byProject).forEach(function(g) { makeGrid(g, byProject[g]); });
 Object.keys(byProjectMobile).forEach(function(g) { makeGrid(g, byProjectMobile[g]); });
 
 let lbGroup = '', lbIdx = 0;
+let lbArrMode = false, lbArr = [];
 
 function lbImgs(g) {
   return Array.from(document.querySelectorAll('#'+g+' .cell[data-src]')).map(function(c){ return c.dataset.src; });
@@ -1878,6 +2110,7 @@ function lbImgs(g) {
 const bwPhotos = ['images/photo1062.jpg','images/photo1065.jpg','images/photo1060.jpg','images/photo1061.jpg'];
 
 function lbOpen(g, i) {
+  lbArrMode = false;
   lbGroup = g; lbIdx = i;
   const imgs = lbImgs(g);
   const src = imgs[i];
@@ -1885,6 +2118,19 @@ function lbOpen(g, i) {
   lbImg.src = src;
   lbImg.style.filter = bwPhotos.includes(src) ? 'grayscale(1)' : '';
   document.getElementById('lb-count').textContent = (i+1)+' / '+imgs.length;
+  document.getElementById('lb').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+
+function lbOpenArr(arr, i) {
+  lbArrMode = true;
+  lbArr = arr;
+  lbIdx = i;
+  const src = arr[i];
+  const lbImg = document.getElementById('lb-img');
+  lbImg.src = src;
+  lbImg.style.filter = '';
+  document.getElementById('lb-count').textContent = (i+1)+' / '+arr.length;
   document.getElementById('lb').classList.add('on');
   document.body.style.overflow = 'hidden';
 }
@@ -1897,6 +2143,17 @@ function lbShut() {
 function lbClose(e) { if (e.target.id === 'lb') lbShut(); }
 
 function lbMove(d) {
+  if (lbArrMode) {
+    lbIdx = (lbIdx + d + lbArr.length) % lbArr.length;
+    const img = document.getElementById('lb-img');
+    img.style.opacity = '0';
+    setTimeout(function(){
+      img.src = lbArr[lbIdx];
+      img.style.opacity = '1';
+    }, 160);
+    document.getElementById('lb-count').textContent = (lbIdx+1)+' / '+lbArr.length;
+    return;
+  }
   const imgs = lbImgs(lbGroup);
   lbIdx = (lbIdx + d + imgs.length) % imgs.length;
   const img = document.getElementById('lb-img');
@@ -1922,6 +2179,35 @@ document.querySelectorAll('.drop-menu a').forEach(function(link) {
   });
 });
 
+/* ── RECOGNITION CAROUSEL ── */
+const rcState = {};
+
+function rcGoto(id, idx) {
+  const container = document.getElementById('rc-' + id);
+  const dots = document.getElementById('rc-dots-' + id);
+  if (!container || !dots) return;
+  const slides = container.querySelectorAll('.rc-slide');
+  const dotEls = dots.querySelectorAll('.rc-dot');
+  slides.forEach(function(s, i) {
+    s.classList.toggle('rc-active', i === idx);
+  });
+  dotEls.forEach(function(d, i) {
+    d.classList.toggle('rc-dot-active', i === idx);
+  });
+  rcState[id] = idx;
+}
+
+function rcStartAuto(id, total, interval) {
+  rcState[id] = 0;
+  setInterval(function() {
+    const next = ((rcState[id] || 0) + 1) % total;
+    rcGoto(id, next);
+  }, interval || 4000);
+}
+
+rcStartAuto('chamonix', 2, 4500);
+
+/* ── MOUNTAINS MOBILE CAROUSEL ── */
 var carouselTimer = null;
 var carouselIdx   = 0;
 var carouselBuilt = false;
