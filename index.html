@@ -549,7 +549,7 @@ footer span {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: start;
   border: 1px solid var(--mid);
   padding: 48px 52px;
   margin-bottom: 60px;
@@ -1513,10 +1513,12 @@ footer span {
         <p class="rec-year">— 2026</p>
         <p class="rec-title"><a href="https://www.chamonixphotofestival.com" target="_blank">Chamonix Photos Festival</a></p>
         <p class="rec-subtitle">France</p>
+        <div class="rec-paragraphs">
         <p class="rec-body">These two photographs were selected among the <strong>finalists of the Chamonix Photos Festival 2026</strong>, in the categories « Macro &amp; Proxy » and « Animal Life ».The first depicts a herd of alpacas moving through tall grass beneath the Chimborazo volcano in Ecuador. The second captures baby turtles hatching on Chacahua Beach, in the state of Oaxaca, Mexico. These images will be exhibited in Chamonix from <strong>October 23 to 25, 2026</strong>, during the festival. This selection highlights a photographic approach focused on nature and wildlife, and on revealing rare and authentic moments.</p>
         <p class="rec-body fr-only" style="font-style: italic; color: var(--accent); margin-top: 14px;">Ces deux photographies ont été sélectionnées parmi les <strong>finalistes du Chamonix Photos Festival 2026</strong>, dans les catégories « Macro & Proxy » et « Vie Animale ». La première montre un troupeau d'alpagas évoluant dans les hautes herbes sous le Volcan Chimborazo en Équateur. La seconde immortalise l'éclosion de bébés tortues sur la Plage de Chacahua, dans l'État d'Oaxaca, au Mexique. Ces images seront exposées à Chamonix du <strong>23 au 25 octobre 2026</strong>, à l'occasion du festival. Cette sélection vient souligner une approche photographique tournée vers la nature, le vivant et la mise en lumière de scènes aussi rares qu'authentiques.</p>
+        </div>
       </div>
-      <div>
+      <div class="recognition-media">
         <div class="recognition-carousel" id="rc-chamonix">
           <div class="rc-slide rc-active">
             <img src="images/photo_chamonix_1.jpg" alt="Chamonix finalist — photo 1" onclick="lbOpenArr(['images/photo_chamonix_1.jpg','images/photo_chamonix_2.jpg'],0)"/>
@@ -2073,6 +2075,11 @@ function goPage(name) {
     setTimeout(() => { m.style.opacity = ''; m.style.pointerEvents = ''; }, 400);
   });
   window.scrollTo({top:0, behavior:'smooth'});
+  if (name === 'recognition') {
+    requestAnimationFrame(function() {
+      requestAnimationFrame(alignRecognitionCarousel);
+    });
+  }
 }
 
 function makeGrid(gridId, imgList) {
@@ -2199,6 +2206,43 @@ function rcStartAuto(id, total, interval) {
 }
 
 rcStartAuto('chamonix', 2, 4500);
+
+/* ── RECOGNITION : ALIGNEMENT PHOTO / PARAGRAPHES ── */
+function alignRecognitionCarousel() {
+  document.querySelectorAll('.recognition-block').forEach(function(block) {
+    const textSide = block.querySelector('.recognition-text-side');
+    const paragraphs = block.querySelector('.rec-paragraphs');
+    const media = block.querySelector('.recognition-media');
+    const carousel = media ? media.querySelector('.recognition-carousel') : null;
+    if (!textSide || !paragraphs || !media || !carousel) return;
+
+    if (window.innerWidth <= 700) {
+      media.style.marginTop = '';
+      carousel.style.height = '';
+      carousel.style.aspectRatio = '';
+      return;
+    }
+
+    const textRect = textSide.getBoundingClientRect();
+    const pRect = paragraphs.getBoundingClientRect();
+    const offsetTop = pRect.top - textRect.top;
+
+    media.style.marginTop = offsetTop + 'px';
+    carousel.style.aspectRatio = 'unset';
+    carousel.style.height = pRect.height + 'px';
+  });
+}
+
+window.addEventListener('resize', function() {
+  if (document.getElementById('p-recognition')?.classList.contains('on')) {
+    alignRecognitionCarousel();
+  }
+});
+document.fonts.ready.then(function() {
+  if (document.getElementById('p-recognition')?.classList.contains('on')) {
+    alignRecognitionCarousel();
+  }
+});
 
 /* ── MOUNTAINS MOBILE CAROUSEL ── */
 var carouselTimer = null;
