@@ -293,8 +293,29 @@ nav {
   animation: zoom 9s ease forwards;
 }
 
+.page-hero video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(.60);
+}
+
 #p-mountains .page-hero img {
   filter: grayscale(1) brightness(.60);
+}
+
+/* Recognition & Exhibitions : vidéo d'accueil desktop vs mobile */
+#p-recognition .page-hero video.mobile-grid { display: none; }
+#p-recognition .page-hero video.desktop-only { display: block; }
+
+@media (max-width: 700px) {
+  #p-recognition .page-hero video.desktop-only { display: none; }
+  #p-recognition .page-hero video.mobile-grid {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(.60);
+  }
 }
 
 .page-hero-title {
@@ -321,7 +342,7 @@ nav {
 
 @media (max-width: 700px) {
   .page-hero-title h1 {
-    font-size: clamp(2rem, 9vw, 3.2rem);
+    font-size: clamp(1.6rem, 7vw, 2.6rem);
     letter-spacing: .08em;
   }
 }
@@ -742,6 +763,26 @@ footer span {
 
 #p-mountains #g-mountains-2 .cell img {
   filter: grayscale(1) brightness(1.1);
+}
+
+#p-mountains .mountains-video {
+  width: 100%;
+  aspect-ratio: 16/7;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  filter: grayscale(1);
+  transition: filter .5s ease;
+}
+
+#p-mountains .mountains-video.color-on {
+  filter: none;
+}
+
+@media (max-width: 700px) {
+  #p-mountains .mountains-video {
+    aspect-ratio: 4/3;
+  }
 }
 
 #p-mountains #g-mountains-2 .cell:hover img {
@@ -1499,8 +1540,11 @@ footer span {
 <!-- RECOGNITION & EXHIBITIONS -->
 <div id="p-recognition" class="page">
   <div class="page-hero">
-  <video autoplay muted loop playsinline>
-    <source src="images/Video000.mp4" type="video/mp4">
+  <video class="desktop-only" autoplay muted loop playsinline>
+    <source src="images/Video003.mp4" type="video/mp4">
+  </video>
+  <video class="mobile-grid" autoplay muted loop playsinline>
+    <source src="images/Video004.mp4" type="video/mp4">
   </video>
   <div class="page-hero-title"><h1>Recognition &amp; Exhibitions</h1></div>
   </div>
@@ -1818,6 +1862,9 @@ footer span {
     <p class="label">— Projects</p>
     <p class="page-desc">In the mountains, the body is constantly engaged, and conditions change rapidly, requiring constant vigilance. This work does not seek performance, but rather captures a state, a fragile balance at the heart of altitude. Mountaineering and the ascent of snow-covered summits are part of this pursuit, shaped by commitment, precision, and exposure. What remains is breath, movement, and vast natural spaces. The mountain acts as a filter, reducing reality to its essential form. These images reflect this state, between solitude, intensity, and altered perception.</p>
     <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">En montagne, le corps est constamment engagé, et les conditions changent rapidement, imposant ainsi une vigilance permanente. Ce travail ne cherche pas la performance, mais capture un état, un équilibre fragile au cœur de l'altitude. L'alpinisme et l'ascension de sommets enneigés s'inscrivent dans cette recherche, entre engagement, précision et exposition. Ne restent que le souffle, le mouvement et de grands espaces naturels. La montagne agit comme un filtre, réduisant le réel à l'essentiel. Ces images traduisent cet état, entre solitude, intensité et perception transformée.</p>
+    <div style="width:100%; margin: 0 0 40px;">
+      <video class="mountains-video" src="images/Video002.mp4" autoplay muted loop playsinline onclick="this.classList.toggle('color-on')"></video>
+    </div>
     <div class="page-grid desktop-only" id="g-mountains-1"></div>
     <div class="page-grid mobile-grid" id="g-mountains-1-mobile"></div>
     <br><br>
