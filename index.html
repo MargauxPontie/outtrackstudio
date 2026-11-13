@@ -793,6 +793,7 @@ footer span {
 @media (max-width: 700px) {
   #p-mountains .mountains-video-wrap {
     padding-top: 50%; /* 16:8 */
+    margin-bottom: 20px;
   }
 }
 
@@ -1199,7 +1200,7 @@ footer span {
 }
 
 .teaser-media {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--dark);
   cursor: pointer;
@@ -1337,7 +1338,7 @@ footer span {
     gap: 28px;
     padding: 0 20px 60px;
   }
-  .teaser-media { aspect-ratio: 4 / 3; }
+  .teaser-media { aspect-ratio: 4 / 5; }
   #mountains-teaser .about-body {
     font-size: 0.82rem;
     line-height: 1.6;
@@ -1707,7 +1708,7 @@ footer span {
 
   <section id="mountains-teaser">
     <div class="teaser-media" onclick="goPage('mountains')">
-      <video src="images/Video002.mp4#t=1" data-start="1" autoplay muted playsinline></video>
+      <video src="images/Video002.mp4#t=1" data-start="1" poster="images/photo850.jpg" preload="auto" autoplay muted playsinline></video>
     </div>
     <div class="teaser-text">
       <p class="label">— High Places</p>
@@ -2091,7 +2092,7 @@ footer span {
     <p class="page-desc">In the mountains, the body is constantly engaged, and conditions change rapidly, requiring constant vigilance. This work does not seek performance, but rather captures a state, a fragile balance at the heart of altitude. Mountaineering and the ascent of snow-covered summits are part of this pursuit, shaped by commitment, precision, and exposure. What remains is breath, movement, and vast natural spaces. The mountain acts as a filter, reducing reality to its essential form. These images reflect this state, between solitude, intensity, and altered perception.</p>
     <p class="page-desc fr-only" style="font-style: italic; margin-top: -20px; color: var(--accent);">En montagne, le corps est constamment engagé, et les conditions changent rapidement, imposant ainsi une vigilance permanente. Ce travail ne cherche pas la performance, mais capture un état, un équilibre fragile au cœur de l'altitude. L'alpinisme et l'ascension de sommets enneigés s'inscrivent dans cette recherche, entre engagement, précision et exposition. Ne restent que le souffle, le mouvement et de grands espaces naturels. La montagne agit comme un filtre, réduisant le réel à l'essentiel. Ces images traduisent cet état, entre solitude, intensité et perception transformée.</p>
     <div class="mountains-video-wrap">
-      <video class="mountains-video" src="images/Video002.mp4#t=1" data-start="1" autoplay muted playsinline onclick="this.classList.toggle('color-on')"></video>
+      <video class="mountains-video" src="images/Video002.mp4#t=1" data-start="1" poster="images/photo850.jpg" preload="auto" autoplay muted playsinline onclick="this.classList.toggle('color-on')"></video>
     </div>
     <div class="page-grid desktop-only" id="g-mountains-1"></div>
     <div class="page-grid mobile-grid" id="g-mountains-1-mobile"></div>
@@ -2352,6 +2353,14 @@ function goPage(name) {
     setTimeout(() => { m.style.opacity = ''; m.style.pointerEvents = ''; }, 400);
   });
   window.scrollTo({top:0, behavior:'smooth'});
+  if (name === 'mountains') {
+    /* la page était masquée : on (re)lance la vidéo une fois affichée */
+    var mv = document.querySelector('#p-mountains .mountains-video');
+    if (mv && mv.paused) {
+      var pr = mv.play();
+      if (pr && pr.catch) pr.catch(function() {});
+    }
+  }
   if (name === 'recognition') {
     requestAnimationFrame(function() {
       requestAnimationFrame(alignRecognitionCarousel);
