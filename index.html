@@ -1325,6 +1325,8 @@ footer span {
     display: block;
   }
 
+  .desktop-word { display: none; }
+
   #contact-cta { aspect-ratio: 9 / 16; max-height: none; }
   .cta-inner { padding: 0 24px; }
   .cta-title { font-size: clamp(.9rem, 4.1vw, 1.5rem); letter-spacing: .08em; }
@@ -1768,7 +1770,7 @@ footer span {
         <p class="rec-title"><a href="https://www.chamonixphotofestival.com/resultats-concours-2026/" target="_blank">Chamonix Photo Festival</a></p>
         <p class="rec-subtitle">France</p>
         <div class="rec-paragraphs">
-        <p class="rec-body">These two photographs were selected among the <strong>finalists of the Chamonix Photo Festival 2026</strong>, in the categories « Macro &amp; Proxy » and « Animal Life ».The first depicts a herd of alpacas moving through tall grass beneath the Chimborazo volcano in Ecuador. The second captures baby turtles hatching on Chacahua Beach, in the state of Oaxaca, Mexico. These images were exhibited in Chamonix from <strong>October 23 to 25, 2026</strong>, during the festival. This selection highlights a photographic approach focused on nature and wildlife, on revealing rare and authentic moments.</p>
+        <p class="rec-body">These two photographs were selected among the <strong>finalists of the Chamonix Photo Festival 2026</strong>, in the categories « Macro &amp; Proxy » and « Animal Life ».The first depicts a herd of alpacas moving through tall grass beneath the Chimborazo volcano in Ecuador. The second captures baby turtles hatching on Chacahua Beach, in the state of Oaxaca, Mexico. These images were exhibited in Chamonix from <strong>October 23 to 25, 2026</strong>, during the festival. This selection highlights a photographic approach focused on nature and wildlife, on revealing <span class="desktop-word">rare and </span>authentic moments.</p>
         <p class="rec-body fr-only" style="font-style: italic; color: var(--accent); margin-top: 14px;">Ces deux photographies ont été sélectionnées parmi les <strong>finalistes du Chamonix Photo Festival 2026</strong>, dans les catégories « Macro & Proxy » et « Vie Animale ». La première montre un troupeau d'alpagas évoluant dans les hautes herbes sous le Volcan Chimborazo en Équateur. La seconde immortalise l'éclosion de bébés tortues sur la Plage de Chacahua, dans l'État d'Oaxaca, au Mexique. Ces images ont été exposées à Chamonix du <strong>23 au 25 octobre 2026</strong>, à l'occasion du festival. Cette sélection vient souligner une approche photographique tournée vers la nature, le vivant et la mise en lumière de scènes aussi rares qu'authentiques.</p>
         </div>
       </div>
@@ -2352,14 +2354,14 @@ function goPage(name) {
     setTimeout(() => { m.style.opacity = ''; m.style.pointerEvents = ''; }, 400);
   });
   window.scrollTo({top:0, behavior:'smooth'});
-  if (name === 'mountains') {
-    /* la page était masquée : on (re)lance la vidéo une fois affichée */
-    var mv = document.querySelector('#p-mountains .mountains-video');
-    if (mv && mv.paused) {
-      var pr = mv.play();
+  /* la page était masquée : on (re)lance ses vidéos une fois affichée */
+  document.querySelectorAll('#p-' + name + ' video[autoplay]').forEach(function(v) {
+    if (v.offsetParent !== null && v.paused) {
+      v.muted = true;
+      var pr = v.play();
       if (pr && pr.catch) pr.catch(function() {});
     }
-  }
+  });
   if (name === 'recognition') {
     requestAnimationFrame(function() {
       requestAnimationFrame(alignRecognitionCarousel);
@@ -2583,7 +2585,7 @@ document.querySelectorAll('video[data-start]').forEach(function(v) {
 
 /* ── VIDÉOS : relance la lecture dès qu'elles sont visibles (iOS / Android bloquent parfois l'autoplay) ── */
 (function() {
-  var vids = document.querySelectorAll('video[data-start]');
+  var vids = document.querySelectorAll('video[autoplay]');
   function tryPlay(v) {
     v.muted = true;
     v.setAttribute('playsinline', '');
